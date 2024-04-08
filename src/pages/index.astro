@@ -1,9 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
+import { Image } from 'astro:assets';
+import ImageBro1 from '../../public/voice-note-bro.svg';
+import ImageBro2 from '../../public/text-bro.svg';
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="WhatsApp Voice Notes To Text">
   <main>
     <div class="md:flex h-screen">
       <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
@@ -29,14 +31,14 @@ import Card from "../components/Card.astro";
       <div
         class="md:flex md:w-1/2 flex-col justify-center py-10 feature-image-container"
       >
-        <img
+        <Image
           class="feature-image-transition"
-          src="/voice-note-bro.svg"
+          src={ImageBro1}
           alt="Voice note to text 2"
         />
-        <img
+        <Image
           class="feature-image-transition"
-          src="/text-bro.svg"
+          src={ImageBro2}
           alt="Voice note to text"
         />
       </div>
