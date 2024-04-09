@@ -1,26 +1,61 @@
 ---
+import { SEO } from "astro-seo";
+import ImageBro from "../../public/voice-chat-bro.png";
+
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
+
+const description =
+  "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.";
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body data-theme='default'>
-		<slot />
-	</body>
-</html>
-<!-- <style is:global>
+  <head>
+    <SEO
+      title={title}
+      description={description}
+      openGraph={{
+        basic: {
+          title: "Transform your voice notes into text",
+          type: "website",
+          image: ImageBro.src,
+        },
+      }}
+      twitter={{
+        creator: "@thianlopezz",
+      }}
+      extend={{
+        // extending the default link tags
+        link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+        // extending the default meta tags
+        meta: [
+          {
+            name: "twitter:image",
+            content: ImageBro.src,
+          },
+          { name: "twitter:title", content: title },
+          {
+            name: "twitter:description",
+            content:
+              "Discover how VnToTxt can revolutionize your productivity by turning WhatsApp voice messages into text. Start now for enhanced communication.",
+          },
+        ],
+      }}
+    />
+    <meta charset="UTF-8" />
+    <!-- <meta name="description" content="Astro description" /> -->
+    <meta name="viewport" content="width=device-width" />
+    <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+    <meta name="generator" content={Astro.generator} />
+    <!-- <title>{title}</title> -->
+  </head>
+  <body data-theme="default">
+    <slot />
+  </body><!-- <style is:global>
 	:root {
 		--accent: 136, 58, 234;
 		--accent-light: 224, 204, 250;
@@ -49,3 +84,4 @@ const { title } = Astro.props;
 			monospace;
 	}
 </style> -->
+</html>
