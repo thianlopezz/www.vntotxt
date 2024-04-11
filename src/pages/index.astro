@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ImageBro1 from "../../public/voice-note-bro.svg";
 import ImageBro2 from "../../public/text-bro.svg";
+import VoiceChatPana from "../../public/voice-chat-pana.svg";
 ---
 
 <Layout title="WhatsApp Voice Notes To Text">
@@ -89,6 +90,67 @@ import ImageBro2 from "../../public/text-bro.svg";
             </div>
           </div>
         </div>
+      </div>
+    </section>
+    <section class="container md:h-screen mx-auto">
+      <div class="container flex flex-col md:flex-row">
+        <div class="flex flex-col justify-center py-10 w-full md:w-1/2">
+          <Image src={VoiceChatPana} alt="Voice note to text" />
+        </div>
+        <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+          <h2 class="text-2xl md:text-4xl mb-4 text-center md:text-justify">
+            Leverage your voice notes <br /> transcriptions 📝
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 py-5">
+            <div class="flex items-center">
+              <span class="text-4xl font-bold mr-2">1</span>
+              <div>
+                <h3 class="text-xl font-bold mb-1">From Spoken to Written</h3>
+                <p>
+                  Got a great idea but no hands free? Just speak! VNTOTXT
+                  captures your voice notes and turns them into text.
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-4xl font-bold mr-2">2</span>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Find What You Need</h3>
+                <p>
+                  With VNTOTXT, your words turn into text, so you can find
+                  exactly what you're looking for, fast!
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-4xl font-bold mr-2">3</span>
+              <div>
+                <h3 class="text-xl font-bold mb-1">Listen with Your Eyes</h3>
+                <p>
+                  VNTOTXT turns your voice notes into text, making sure you
+                  never miss a word. Perfect for catching every detail!
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <span class="text-4xl font-bold mr-2">4</span>
+              <div>
+                <h3 class="text-xl font-bold mb-1">For Everyone, Everywhere</h3>
+                <p>
+                  Noisy room? Hard to hear? VNTOTXT changes voice notes to text,
+                  so you can read what's being said.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex py-3 md:py-5 w-full">
+        <a
+          class="btn btn-primary m-auto"
+          href="https://api.whatsapp.com/send?phone=593967960981"
+          >Start forwarding <span class="text-xl">😎</span></a
+        >
       </div>
     </section>
   </main>
