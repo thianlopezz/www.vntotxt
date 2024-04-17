@@ -5,8 +5,11 @@ import ImageBro1 from "../../public/voice-note-bro.svg";
 import ImageBro2 from "../../public/text-bro.svg";
 import VoiceChatPana from "../../public/voice-chat-pana.svg";
 import SaveContactBro from "../../public/save-contact-bro.svg";
-import FordwardMessageBro from "../../public/forward-message-bro.svg";
+import ForwardMessageBro from "../../public/forward-message-bro.svg";
 import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
+import Card from "../components/Card.astro";
+import DescriptionDisplay from "../components/DescriptionDisplay.astro";
+import CardSubscription from "../components/CardSubscription.astro";
 ---
 
 <Layout title="WhatsApp Voice Notes To Text">
@@ -66,97 +69,41 @@ import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
           <div
             class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
           >
-            <div class="card w-96 bg-base-100 shadow-lg h-full">
-              <figure>
-                <Image
-                  class="w-2/3"
-                  src={SaveContactBro}
-                  alt="Save WhatsApp contact"
-                />
-              </figure>
-              <div class="card-body">
-                <div class="flex items-center">
-                  <div class="avatar placeholder mr-2">
-                    <div
-                      class="bg-accent text-neutral-content rounded-full w-12"
-                    >
-                      <span class="text-3xl">1</span>
-                    </div>
-                  </div>
-                </div>
-                <h3 class="card-title text-2xl font-bold mb-1">
-                  Save our contact
-                </h3>
-                <p class="text-lg text-gray-800 mb-2">
-                  Keep us close in your WhatsApp contacts.
-                </p>
-                <div class="card-actions justify-center">
-                  <a
-                    class="link link-primary"
-                    href="https://api.whatsapp.com/send?phone=593967960981"
-                    >+593 96 796 0981</a
-                  >
-                </div>
-              </div>
-            </div>
+            <Card
+              image={SaveContactBro}
+              altImage="Save WhatsApp contact"
+              number="1"
+              title="Save our contact"
+              body="Keep us close in your WhatsApp contacts."
+            >
+              <a
+                class="link link-primary"
+                href="https://api.whatsapp.com/send?phone=593967960981"
+                >+593 96 796 0981</a
+              ></Card
+            >
           </div>
           <div
             class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
           >
-            <div class="card w-96 bg-base-100 shadow-lg h-full">
-              <figure>
-                <Image
-                  class="w-2/3"
-                  src={FordwardMessageBro}
-                  alt="Fordward voice note"
-                />
-              </figure>
-              <div class="card-body">
-                <div class="flex items-center">
-                  <div class="avatar placeholder mr-2">
-                    <div
-                      class="bg-accent text-neutral-content rounded-full w-12"
-                    >
-                      <span class="text-3xl">2</span>
-                    </div>
-                  </div>
-                </div>
-                <h3 class="card-title text-2xl font-bold mb-1">
-                  Forward us a voice note
-                </h3>
-                <p class="text-lg text-gray-800 mb-2">
-                  Or just DM us an audio message.
-                </p>
-              </div>
-            </div>
+            <Card
+              image={ForwardMessageBro}
+              altImage="Forward voice note"
+              number="2"
+              title="Forward us a voice note"
+              body="Or just DM us an audio message."
+            />
           </div>
           <div
             class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
           >
-            <div class="card w-96 bg-base-100 shadow-lg h-full">
-              <figure>
-                <Image
-                  class="w-2/3"
-                  src={TranscribedAudioBro}
-                  alt="Fordward voice note"
-                />
-              </figure>
-              <div class="card-body">
-                <div class="flex items-center">
-                  <div class="avatar placeholder mr-2">
-                    <div
-                      class="bg-accent text-neutral-content rounded-full w-12"
-                    >
-                      <span class="text-3xl">3</span>
-                    </div>
-                  </div>
-                </div>
-                <h3 class="card-title text-2xl font-bold mb-1">Wait for it</h3>
-                <p class="text-lg text-gray-800 mb-2">
-                  We'll send you back your audio transcribed in few seconds.
-                </p>
-              </div>
-            </div>
+            <Card
+              image={TranscribedAudioBro}
+              altImage="Wait for transcribed audio"
+              number="3"
+              title="Wait for it"
+              body="We'll send you back your audio transcribed in few seconds."
+            />
           </div>
         </div>
       </div>
@@ -178,69 +125,26 @@ import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
       </div>
       <div class="w-full md:w-7/12 p-10 flex flex-col justify-center">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-5">
-          <div class="flex items-center">
-            <div>
-              <div class="avatar placeholder mb-3">
-                <div class="bg-accent text-neutral-content rounded-full w-12">
-                  <span class="text-3xl"><i class="bx bx-world"></i></span>
-                </div>
-              </div>
-              <h3 class="text-xl font-bold mb-1">For Everyone, Everywhere</h3>
-              <p>
-                Noisy room? Hard to hear? VNTOTXT changes voice notes to text,
-                so you can read what's being said.
-              </p>
-            </div>
-          </div>
-          <div class="flex items-center">
-            <div>
-              <div class="avatar placeholder mb-3">
-                <div class="bg-accent text-neutral-content rounded-full w-12">
-                  <span class="text-3xl">
-                    <!-- <i class="bx bx-headphone"></i> -->
-                    <i class="bx bxs-face"></i>
-                  </span>
-                </div>
-              </div>
-              <h3 class="text-xl font-bold mb-1">Listen with Your Eyes</h3>
-              <p>
-                VNTOTXT turns your voice notes into text, making sure you never
-                miss a word. Perfect for catching every detail!
-              </p>
-            </div>
-          </div>
-          <div class="flex items-center">
-            <div>
-              <div class="avatar placeholder mb-3">
-                <div class="bg-accent text-neutral-content rounded-full w-12">
-                  <span class="text-3xl">
-                    <i class="bx bx-search-alt"></i>
-                  </span>
-                </div>
-              </div>
-              <h3 class="text-xl font-bold mb-1">Find What You Need</h3>
-              <p>
-                With VNTOTXT, your words turn into text, so you can find exactly
-                what you're looking for, fast!
-              </p>
-            </div>
-          </div>
-          <div class="flex items-center">
-            <div>
-              <div class="avatar placeholder mb-3">
-                <div class="bg-accent text-neutral-content rounded-full w-12">
-                  <span class="text-3xl">
-                    <i class="bx bxs-user-voice"></i>
-                  </span>
-                </div>
-              </div>
-              <h3 class="text-xl font-bold mb-1">From Spoken to Written</h3>
-              <p>
-                Got a great idea but no hands free? Just speak! VNTOTXT captures
-                your voice notes and turns them into text.
-              </p>
-            </div>
-          </div>
+          <DescriptionDisplay
+            boxicon="bx bx-world"
+            title="For Everyone, Everywherezx"
+            descripton="Noisy room? Hard to hear? VNTOTXT changes voice notes to text, so you can read what's being said."
+          />
+          <DescriptionDisplay
+            boxicon="bx bxs-face"
+            title="Listen with Your Eyes"
+            descripton="VNTOTXT turns your voice notes into text, making sure you never miss a word. Perfect for catching every detail!"
+          />
+          <DescriptionDisplay
+            boxicon="bx bx-search-alt"
+            title="Find What You Need"
+            descripton="With VNTOTXT, your words turn into text, so you can find exactly what you're looking for, fast!"
+          />
+          <DescriptionDisplay
+            boxicon="bx bxs-user-voice"
+            title="From Spoken to Written"
+            descripton="Got a great idea but no hands free? Just speak! VNTOTXT captures your voice notes and turns them into text."
+          />
         </div>
       </div>
     </div>
@@ -256,15 +160,13 @@ import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
     id="pricing"
     class="container flex-col content-center mx-auto py-10 md:h-screen"
   >
-    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">
-      Princing
-    </h2>
+    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">Pricing</h2>
     <div class="px-5 md:px-10">
       <!-- bg-primary -->
       <div class="bg-neautral py-10 rounded-lg">
         <p class="text-center mb-10">
           <span class="badge badge-primary badge-outline badge-lg"
-            >As simple as</span
+            >Our fees</span
           >
         </p>
         <div
@@ -273,226 +175,103 @@ import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
           <div
             class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
           >
-            <div class="card w-96 bg-base-100 shadow-lg h-full">
-              <div class="card-body">
-                <h3 class="card-title text-4xl font-bold mb-1">Free Plan</h3>
-                <h4 class="card-title text-4xl font-bold mb-1">
-                  $0
-                  <small class="text-lg">/month</small>
-                </h4>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>15 mininutes of transcriptions per month</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Remaining quota in the same transcripted message</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Multilanguaje transcriptions</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Basic customer support</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Standard processing speed</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td
-                        >Access to the web application to see your
-                        transcriptions</td
-                      >
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-x"></i>
-                        </span>
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="card-actions justify-center">
-                  <a
-                    class="btn btn-primary btn-block text-base-100"
-                    href="/vntotxt-free">Subscribe</a
-                  >
-                </div>
-              </div>
-            </div>
+            <CardSubscription
+              title="Free Plan"
+              price="0"
+              checkoutLink="/vntotxt-free"
+              features={[
+                {
+                  description:
+                    "<strong>15 mininutes</strong> of transcriptions per month",
+                  included: true,
+                },
+                {
+                  description:
+                    "Remaining quota in the <strong>same transcripted message</strong>",
+                  included: true,
+                },
+                { description: "Multilanguaje transcriptions", included: true },
+                {
+                  description: "<strong>Basic</strong> customer support",
+                  included: true,
+                },
+                {
+                  description: "<strong>Standard</strong> processing speed",
+                  included: true,
+                },
+                {
+                  description:
+                    "Access to the web application to see your transcriptions",
+                  included: false,
+                },
+              ]}
+            />
           </div>
           <div
             class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
           >
-            <div class="card w-96 bg-base-100 shadow-lg h-full">
-              <div class="card-body">
-                <h3 class="card-title text-4xl font-bold mb-1">Pro Plan</h3>
-                <h4 class="text-2xl font-bold mb-1 text-gray-600">
-                  <!-- $0
-                  <small class="text-lg">/month</small> -->
-                  Comming soon
-                </h4>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>100 mininutes of transcriptions per month</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Remaining quota in a separated message</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Multilanguaje transcriptions</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Standard customer support</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Enhanced processing speed</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td
-                        >Access to the web application to see your
-                        transcriptions</td
-                      >
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="card-actions justify-center">
-                  <button
-                    class="btn btn-primary btn-block text-base-100"
-                    disabled="disabled">Subscribe</button
-                  >
-                </div>
-              </div>
-            </div>
+            <CardSubscription
+              title="Pro Plan"
+              features={[
+                {
+                  description:
+                    "<strong>100 mininutes</strong> of transcriptions per month",
+                  included: true,
+                },
+                {
+                  description:
+                    "Remaining quota in a <strong>separated message</strong>",
+                  included: true,
+                },
+                { description: "Multilanguaje transcriptions", included: true },
+                {
+                  description: "<strong>Standard</strong> customer support",
+                  included: true,
+                },
+                {
+                  description: "<strong>Enhanced</strong> processing speed",
+                  included: true,
+                },
+                {
+                  description:
+                    "Access to the web application to see your transcriptions",
+                  included: true,
+                },
+              ]}
+            />
           </div>
           <div
             class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
           >
-            <div class="card w-96 bg-base-100 shadow-lg h-full">
-              <div class="card-body">
-                <h3 class="card-title text-4xl font-bold mb-1">Premium Plan</h3>
-                <h4 class="text-2xl font-bold mb-1 text-gray-600">
-                  <!-- $0
-                <small class="text-lg">/month</small> -->
-                  Comming soon
-                </h4>
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Unlimited transcriptions</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Remaining quota in a separated message</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Multilanguaje transcriptions</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Premium customer support</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td>Priority processing speed</td>
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                    <tr>
-                      <td
-                        >Access to the web application to see your
-                        transcriptions</td
-                      >
-                      <th>
-                        <span class="text-3xl">
-                          <i class="bx bx-check"></i>
-                        </span>
-                      </th>
-                    </tr>
-                  </tbody>
-                </table>
-                <div class="card-actions justify-center">
-                  <button
-                    class="btn btn-primary btn-block text-base-100"
-                    disabled="disabled">Subscribe</button
-                  >
-                </div>
-              </div>
-            </div>
+            <CardSubscription
+              title="Premium Plan"
+              features={[
+                {
+                  description:
+                    "<strong>Unlimited</strong> transcriptions per month",
+                  included: true,
+                },
+                {
+                  description:
+                    "Remaining quota in a <strong>separated message</strong>",
+                  included: true,
+                },
+                { description: "Multilanguaje transcriptions", included: true },
+                {
+                  description: "<strong>Premium</strong> customer support",
+                  included: true,
+                },
+                {
+                  description: "<strong>Priority</strong> processing speed",
+                  included: true,
+                },
+                {
+                  description:
+                    "Access to the web application to see your transcriptions",
+                  included: true,
+                },
+              ]}
+            />
           </div>
         </div>
       </div>

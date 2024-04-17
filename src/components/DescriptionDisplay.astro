@@ -1,0 +1,29 @@
+---
+interface Props {
+  title: string;
+  descripton: string;
+  boxicon?: string;
+}
+
+const { title, descripton, boxicon } = Astro.props;
+---
+
+<div class="flex items-center">
+  <div>
+    {
+      boxicon && (
+        <div class="avatar placeholder mb-3">
+          <div class="bg-accent text-neutral-content rounded-full w-12">
+            <span class="text-3xl">
+              <i class={boxicon} />
+            </span>
+          </div>
+        </div>
+      )
+    }
+    <h3 class="text-xl font-bold mb-1">{title}</h3>
+    <p>
+      {descripton}
+    </p>
+  </div>
+</div>
