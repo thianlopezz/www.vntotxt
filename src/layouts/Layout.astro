@@ -1,15 +1,17 @@
 ---
 import { SEO } from "astro-seo";
+import { getRelativeLocaleUrlList } from "astro:i18n";
 import Navbar from "../components/Navbar.astro";
 import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
 
 interface Props {
+  language: string;
   title: string;
 }
 
-const { title } = Astro.props;
+const { language, title } = Astro.props;
 
 const description =
   "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.";
@@ -18,10 +20,12 @@ let siteUrl = Astro.request.url;
 siteUrl[siteUrl.length - 1] === "/"
   ? (siteUrl = siteUrl.slice(0, -1))
   : siteUrl;
+
+const localeUrls = getRelativeLocaleUrlList();
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={language}>
   <head>
     <SEO
       title={title}
@@ -88,9 +92,19 @@ siteUrl[siteUrl.length - 1] === "/"
       type="font/ttf"
       crossorigin
     />
+    <meta http-equiv="refresh" content={"0;url=/" + language == 'en' ? "/" : language + "/"} />
   </head>
   <body data-theme="default" class="bg-neutral">
     <Navbar />
+    <!-- <nav>
+      {
+        localeUrls.map((s) => (
+          <a href={s} class="link">
+            {s}
+          </a>
+        ))
+      }
+    </nav> -->
     <slot />
   </body>
 </html>

@@ -1,37 +1,37 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
-import ImageBro1 from "../../public/voice-note-bro.svg";
-import ImageBro2 from "../../public/text-bro.svg";
-import VoiceChatPana from "../../public/voice-chat-pana.svg";
-import SaveContactBro from "../../public/save-contact-bro.svg";
-import ForwardMessageBro from "../../public/forward-message-bro.svg";
-import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
-import Card from "../components/Card.astro";
-import DescriptionDisplay from "../components/DescriptionDisplay.astro";
-import CardSubscription from "../components/CardSubscription.astro";
+import ImageBro1 from "../../../public/voice-note-bro.svg";
+import ImageBro2 from "../../../public/text-bro.svg";
+import VoiceChatPana from "../../../public/voice-chat-pana.svg";
+import SaveContactBro from "../../../public/save-contact-bro.svg";
+import ForwardMessageBro from "../../../public/forward-message-bro.svg";
+import TranscribedAudioBro from "../../../public/transcribed-audio-bro.svg";
+import Card from "../../components/Card.astro";
+import DescriptionDisplay from "../../components/DescriptionDisplay.astro";
+import CardSubscription from "../../components/CardSubscription.astro";
 ---
 
-<Layout language="en" title="WhatsApp Voice Notes To Text">
+<Layout language="es" title="Notas de Voz de WhatsApp a Texto">
   <main>
     <section class="md:flex h-screen mx-auto bg-info lg:px-36">
       <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
         <h1
           class="text-5xl sm:text-6xl mb-4 text-center md:text-left font-ubuntu font-bold"
         >
-          Transcribe your <br />
-          <span class="text-primary md:text-7xl">voice notes</span>
-          <br /> now 🔈
+          Transcribe tus <br />
+          <span class="text-primary md:text-7xl">notas de voz</span>
+          <br /> ahora 🔈
         </h1>
         <p class="my-5 text-center md:text-justify text-xl text-gray-800">
-          Instantly convert your WhatsApp voice messages into text with a single
-          forward.
+          Convierte tus mensajes de voz de WhatsApp en texto instantáneamente
+          con solo reenviarlos.
         </p>
         <div class="flex pt-3 md:pt-0">
           <a
             class="btn btn-primary btn-wide m-auto md:m-0"
             href="https://api.whatsapp.com/send?phone=593967960981"
-            >Get started <span class="text-xl">😎</span></a
+            >Empezar ya! <span class="text-xl">😎</span></a
           >
         </div>
       </div>
@@ -44,7 +44,7 @@ import CardSubscription from "../components/CardSubscription.astro";
           alt="Voice note to text"
         /> -->
         <!-- class="feature-image-transition" -->
-        <Image src={ImageBro2} alt="Voice note to text 2" />
+        <Image src={ImageBro2} alt="Notas de voz a texto" />
       </div>
     </section>
   </main>
@@ -53,14 +53,14 @@ import CardSubscription from "../components/CardSubscription.astro";
     class="container flex-col content-center mx-auto py-10 md:h-screen"
   >
     <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">
-      How it works
+      Cómo funciona
     </h2>
     <div class="px-5 md:px-10">
       <!-- bg-primary -->
       <div class="bg-neautral py-10 rounded-lg">
         <p class="text-center mb-10">
           <span class="badge badge-primary badge-outline badge-lg"
-            >As simple as</span
+            >Tan simple como</span
           >
         </p>
         <div
@@ -71,10 +71,10 @@ import CardSubscription from "../components/CardSubscription.astro";
           >
             <Card
               image={SaveContactBro}
-              altImage="Save WhatsApp contact"
+              altImage="Guardar contacto de WhatsApp"
               number="1"
-              title="Save our contact"
-              body="Keep us close in your WhatsApp contacts."
+              title="Guarda nuestro contacto"
+              body="Mantennos cerca en tus contactos de WhatsApp."
             >
               <a
                 class="link link-primary"
@@ -88,10 +88,10 @@ import CardSubscription from "../components/CardSubscription.astro";
           >
             <Card
               image={ForwardMessageBro}
-              altImage="Forward voice note"
+              altImage="Reenviar nota de voz"
               number="2"
-              title="Forward us a voice note"
-              body="Or just DM us an audio message."
+              title="Reenvíanos una nota de voz"
+              body="O simplemente envíanos un mensaje de audio por DM."
             />
           </div>
           <div
@@ -99,10 +99,10 @@ import CardSubscription from "../components/CardSubscription.astro";
           >
             <Card
               image={TranscribedAudioBro}
-              altImage="Wait for transcribed audio"
+              altImage="Esperar transcripción"
               number="3"
-              title="Wait for it"
-              body="We'll send you back your audio transcribed in few seconds."
+              title="Espera tu audio transcrito"
+              body="Te devolveremos tu audio transcrito en unos segundos."
             />
           </div>
         </div>
@@ -116,8 +116,8 @@ import CardSubscription from "../components/CardSubscription.astro";
     <h2
       class="text-4xl text-center md:text-center font-ubuntu font-bold pt-10 md:pt-0 px-5"
     >
-      Leverage your voice notes <br />
-      <span class="text-primary text-4xl">transcriptions</span> 📝
+      Aprovecha las <span class="text-primary text-4xl">transcripciones</span>
+      <br /> de tus notas de voz 📝
     </h2>
     <div class="flex flex-col-reverse md:flex-row">
       <div class="flex flex-col justify-center py-10 w-full md:w-5/12">
@@ -127,23 +127,23 @@ import CardSubscription from "../components/CardSubscription.astro";
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-5">
           <DescriptionDisplay
             boxicon="bx bx-world"
-            title="For Everyone, Everywherezx"
-            descripton="Noisy room? Hard to hear? VNTOTXT changes voice notes to text, so you can read what's being said."
+            title="Para todos, en todas partes"
+            descripton="¿Sala ruidosa? ¿Difícil de escuchar? VNTOTXT convierte las notas de voz en texto, para que puedas leer lo que se dice."
           />
           <DescriptionDisplay
             boxicon="bx bxs-face"
-            title="Listen with Your Eyes"
-            descripton="VNTOTXT turns your voice notes into text, making sure you never miss a word. Perfect for catching every detail!"
+            title="Escucha con tus ojos"
+            descripton="VNTOTXT convierte tus notas de voz en texto, asegurando que no te pierdas ni una palabra. ¡Perfecto para captar cada detalle!"
           />
           <DescriptionDisplay
             boxicon="bx bx-search-alt"
-            title="Find What You Need"
-            descripton="With VNTOTXT, your words turn into text, so you can find exactly what you're looking for, fast!"
+            title="Encuentra lo que necesitas"
+            descripton="Con VNTOTXT, tus palabras se convierten en texto, así puedes encontrar exactamente lo que buscas, ¡rápido!"
           />
           <DescriptionDisplay
             boxicon="bx bxs-user-voice"
-            title="From Spoken to Written"
-            descripton="Got a great idea but no hands free? Just speak! VNTOTXT captures your voice notes and turns them into text."
+            title="De lo hablado a lo escrito"
+            descripton="¿Tienes una gran idea pero sin manos libres? ¡Solo habla! VNTOTXT captura tus notas de voz y las convierte en texto."
           />
         </div>
       </div>
@@ -152,7 +152,7 @@ import CardSubscription from "../components/CardSubscription.astro";
       <a
         class="btn btn-primary m-auto"
         href="https://api.whatsapp.com/send?phone=593967960981"
-        >Start forwarding <span class="text-xl">😎</span></a
+        >Empieza a reenviar tus Vn's <span class="text-xl">😎</span></a
       >
     </div>
   </section>
@@ -160,13 +160,13 @@ import CardSubscription from "../components/CardSubscription.astro";
     id="pricing"
     class="container flex-col content-center mx-auto py-10 md:h-screen"
   >
-    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">Pricing</h2>
+    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">Precios</h2>
     <div class="px-5 md:px-10">
       <!-- bg-primary -->
       <div class="bg-neautral py-10 rounded-lg">
         <p class="text-center mb-10">
           <span class="badge badge-primary badge-outline badge-lg"
-            >Our fees</span
+            >Nuestras tarifas</span
           >
         </p>
         <div
@@ -182,26 +182,30 @@ import CardSubscription from "../components/CardSubscription.astro";
               features={[
                 {
                   description:
-                    "<strong>15 mininutes</strong> of transcriptions per month",
+                    "<strong>15 minutos</strong> de transcripciones por mes",
                   included: true,
                 },
                 {
                   description:
-                    "Remaining quota in the <strong>same transcripted message</strong>",
-                  included: true,
-                },
-                { description: "Multilanguaje transcriptions", included: true },
-                {
-                  description: "<strong>Basic</strong> customer support",
+                    "Cuota restante en el <strong>mismo mensaje</strong> de la transcripción",
                   included: true,
                 },
                 {
-                  description: "<strong>Standard</strong> processing speed",
+                  description: "Transcripciones multilenguaje",
+                  included: true,
+                },
+                {
+                  description: "Soporte <strong>Basico</strong>",
                   included: true,
                 },
                 {
                   description:
-                    "Access to the web application to see your transcriptions",
+                    "Velocidad de procesamiento <strong>Standard</strong>",
+                  included: true,
+                },
+                {
+                  description:
+                    "Acceso a la aplicación web a ver tus transcripciones",
                   included: false,
                 },
               ]}
@@ -212,29 +216,34 @@ import CardSubscription from "../components/CardSubscription.astro";
           >
             <CardSubscription
               title="Pro Plan"
+              commingText="Muy Pronto"
               features={[
                 {
                   description:
-                    "<strong>100 mininutes</strong> of transcriptions per month",
+                    "<strong>100 minutos</strong> de transcripciones por mes",
                   included: true,
                 },
                 {
                   description:
-                    "Remaining quota in a <strong>separated message</strong>",
-                  included: true,
-                },
-                { description: "Multilanguaje transcriptions", included: true },
-                {
-                  description: "<strong>Standard</strong> customer support",
+                    "Cuota restante en un <strong>mesaje separado</strong> de la transcripción",
                   included: true,
                 },
                 {
-                  description: "<strong>Enhanced</strong> processing speed",
+                  description: "Transcripciones multilenguaje",
+                  included: true,
+                },
+                {
+                  description: "Sporte <strong>Standard</strong>",
                   included: true,
                 },
                 {
                   description:
-                    "Access to the web application to see your transcriptions",
+                    "Velocidad de procesamiento <strong>Mejorada</strong>",
+                  included: true,
+                },
+                {
+                  description:
+                    "Acceso a la aplicación web a ver tus transcripciones",
                   included: true,
                 },
               ]}
@@ -245,29 +254,34 @@ import CardSubscription from "../components/CardSubscription.astro";
           >
             <CardSubscription
               title="Premium Plan"
+              commingText="Muy Pronto"
               features={[
                 {
                   description:
-                    "<strong>Unlimited</strong> transcriptions per month",
+                    "Transcriptions <strong>Ilimitadas</strong> por mes",
                   included: true,
                 },
                 {
                   description:
-                    "Remaining quota in a <strong>separated message</strong>",
-                  included: true,
-                },
-                { description: "Multilanguaje transcriptions", included: true },
-                {
-                  description: "<strong>Premium</strong> customer support",
+                    "Cuota restante en un <strong>mesaje separado</strong> de la transcripción",
                   included: true,
                 },
                 {
-                  description: "<strong>Priority</strong> processing speed",
+                  description: "Transcripciones multilenguaje",
+                  included: true,
+                },
+                {
+                  description: "Soporte <strong>Premium</strong>",
                   included: true,
                 },
                 {
                   description:
-                    "Access to the web application to see your transcriptions",
+                    "Velocidad de procesamiento <strong>Prioritaria</strong>",
+                  included: true,
+                },
+                {
+                  description:
+                    "Acceso a la aplicación web a ver tus transcripciones",
                   included: true,
                 },
               ]}
@@ -278,33 +292,6 @@ import CardSubscription from "../components/CardSubscription.astro";
     </div>
   </section>
 </Layout>
-
-<style>
-  .feature-image-container {
-    position: relative;
-  }
-
-  .feature-image-transition {
-    position: absolute;
-    width: 100%;
-    height: auto;
-    animation: imageFade 7s infinite;
-  }
-
-  .feature-image-transition:nth-child(2) {
-    animation-delay: 3.5s;
-  }
-
-  @keyframes imageFade {
-    0%,
-    100% {
-      opacity: 1;
-    }
-    50% {
-      opacity: 0;
-    }
-  }
-</style>
 
 <script is:inline>
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
