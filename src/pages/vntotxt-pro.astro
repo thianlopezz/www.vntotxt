@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="VnToTxt Pro Plan">
+  <main>
+    <section class="container md:flex h-screen mx-auto">
+      <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+        <h1 class="text-4xl md:text-5xl mb-4 text-center md:text-justify">
+          Transform your <br /> voice notes <br /> now 🔈
+        </h1>
+        <p class="mb-2 text-center md:text-justify text-xl">
+          Instantly convert your WhatsApp voice messages into text with a single
+          forward.
+        </p>
+        <p class="mb-4 text-center md:text-justify text-xl">
+          Start making your conversations more accessible and searchable with
+          VnToTxt.
+        </p>
+        <div class="flex pt-3 md:pt-0">
+          <a
+            class="btn btn-primary m-auto md:m-0"
+            href="https://api.whatsapp.com/send?phone=593967960981"
+            >Get started <span class="text-xl">😎</span></a
+          >
+        </div>
+      </div>
+      <div class="md:flex md:w-1/2 flex-col justify-center py-10">
+        <div id="paypal-button-container"></div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script
+  is:inline
+  src="https://www.paypal.com/sdk/js?client-id=AWv1dYyq_AlE6G7h2JcYVpFuaQvSgXyIGQtPlGCP-PWGdfAYFo0gNutAtODkjRxQsRDXzB7u5sHp2QPg&vault=true&intent=subscription"
+></script>
+<script is:inline>
+  window.onload = function () {
+    // Render the PayPal button into #paypal-button-container
+    paypal
+      .Buttons({
+        createSubscription: function (data, actions) {
+          return actions.subscription.create({
+            plan_id: "P-3D548772MF324970XMYOLQDA", // Creates the subscription
+          });
+        },
+        onApprove: function (data, actions) {
+          debugger;
+          alert("You have successfully subscribed to " + data.subscriptionID); // Optional message given to subscriber
+        },
+      })
+      .render("#paypal-button-container"); // Renders the PayPal button
+  };
+</script>

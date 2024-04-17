@@ -1,6 +1,8 @@
 ---
 import { SEO } from "astro-seo";
+import Navbar from "../components/Navbar.astro";
 import ImageBro from "../../public/voice-chat-bro.png";
+import "../styles/main.css";
 
 interface Props {
   title: string;
@@ -57,36 +59,38 @@ siteUrl[siteUrl.length - 1] === "/"
     <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="generator" content={Astro.generator} />
     <!-- <title>{title}</title> -->
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Bold.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Light.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Medium.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/Ubuntu-Regular.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link href='/node_modules/boxicons/css/boxicons.min.css' rel='stylesheet'>
   </head>
-  <body data-theme="default">
+  <body data-theme="default" class="bg-neutral">
+    <Navbar />
     <slot />
-  </body><!-- <style is:global>
-	:root {
-		--accent: 136, 58, 234;
-		--accent-light: 224, 204, 250;
-		--accent-dark: 49, 10, 101;
-		--accent-gradient: linear-gradient(
-			45deg,
-			rgb(var(--accent)),
-			rgb(var(--accent-light)) 30%,
-			white 60%
-		);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background: #13151a;
-		background-size: 224px;
-	}
-	code {
-		font-family:
-			Menlo,
-			Monaco,
-			Lucida Console,
-			Liberation Mono,
-			DejaVu Sans Mono,
-			Bitstream Vera Sans Mono,
-			Courier New,
-			monospace;
-	}
-</style> -->
+  </body>
 </html>
