@@ -3,6 +3,7 @@ import { SEO } from "astro-seo";
 import Navbar from "../components/Navbar.astro";
 import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
+import "boxicons/css/boxicons.min.css";
 
 interface Props {
   title: string;
@@ -87,7 +88,6 @@ siteUrl[siteUrl.length - 1] === "/"
       type="font/ttf"
       crossorigin
     />
-    <link href='/node_modules/boxicons/css/boxicons.min.css' rel='stylesheet'>
   </head>
   <body data-theme="default" class="bg-neutral">
     <Navbar />
