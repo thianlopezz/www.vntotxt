@@ -1,5 +1,4 @@
 ---
-import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ImageBro1 from "../../public/voice-note-bro.svg";
 import ImageBro2 from "../../public/text-bro.svg";
@@ -10,9 +9,10 @@ import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
 import Card from "../components/Card.astro";
 import DescriptionDisplay from "../components/DescriptionDisplay.astro";
 import CardSubscription from "../components/CardSubscription.astro";
+import NavigationLayout from "../layouts/NavigationLayout.astro";
 ---
 
-<Layout language="en" title="WhatsApp Voice Notes To Text">
+<NavigationLayout language="en" title="WhatsApp Voice Notes To Text">
   <main>
     <section class="md:flex h-screen mx-auto bg-info lg:px-36">
       <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
@@ -31,6 +31,7 @@ import CardSubscription from "../components/CardSubscription.astro";
           <a
             class="btn btn-primary btn-wide m-auto md:m-0"
             href="https://api.whatsapp.com/send?phone=593967960981"
+            target="_blank"
             >Get started <span class="text-xl">😎</span></a
           >
         </div>
@@ -79,6 +80,7 @@ import CardSubscription from "../components/CardSubscription.astro";
               <a
                 class="link link-primary"
                 href="https://api.whatsapp.com/send?phone=593967960981"
+                target="_blank"
                 >+593 96 796 0981</a
               ></Card
             >
@@ -277,7 +279,7 @@ import CardSubscription from "../components/CardSubscription.astro";
       </div>
     </div>
   </section>
-</Layout>
+</NavigationLayout>
 
 <style>
   .feature-image-container {

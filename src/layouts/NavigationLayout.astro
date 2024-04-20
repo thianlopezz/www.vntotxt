@@ -1,0 +1,21 @@
+---
+import { SEO } from "astro-seo";
+import { getRelativeLocaleUrlList } from "astro:i18n";
+import Navbar from "../components/Navbar.astro";
+import ImageBro from "../../public/voice-chat-bro.png";
+import "../styles/main.css";
+import "boxicons/css/boxicons.min.css";
+import Layout from "./Layout.astro";
+
+interface Props {
+  language: string;
+  title: string;
+}
+
+const { language, title } = Astro.props;
+---
+
+<Layout title={title} language={language}>
+  <Navbar />
+  <slot />
+</Layout>

@@ -1,11 +1,52 @@
 ---
 import Layout from "../layouts/Layout.astro";
+
+const socialMedia = [
+  {
+    link: "",
+    boxicon: "bx bxl-instagram",
+  },
+  {
+    link: "",
+    boxicon: "bx bxl-facebook-circle",
+  },
+  {
+    link: "",
+    boxicon: "bx bxl-whatsapp",
+  },
+];
 ---
+
 <Layout language="en" title="Thank you!">
   <section class="flex items-center justify-center h-screen bg-green-100">
     <div class="text-center">
-      <h1 class="text-4xl font-bold mb-4">Subscription Successful!</h1>
-      <p class="text-xl">Thank you for your purchase. You have successfully subscribed to our service.</p>
+      <h1 class="text-4xl font-bold mb-4 font-ubuntu">
+        Subscription Successful!
+      </h1>
+      <p class="text-xl">
+        Thank you for your purchase. You have successfully subscribed to our
+        service.
+      </p>
+      <a
+        href="https://api.whatsapp.com/send?phone=593967960981"
+        target="_blank"
+        class="btn btn-primary mt-4">Start transcribing</a
+      >
+      <div class="mt-8">
+        <h2 class="text-2xl text-center">Let's connect</h2>
+        <div class="flex justify-center mt-4">
+          {
+            socialMedia.map((item) => (
+              <a
+                href={item.link}
+                class="btn btn-circle btn-accent text-2xl mx-2"
+              >
+                <i class={item.boxicon} />
+              </a>
+            ))
+          }
+        </div>
+      </div>
     </div>
   </section>
 </Layout>

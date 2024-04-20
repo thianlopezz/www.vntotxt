@@ -1,20 +1,22 @@
 ---
 import { SEO } from "astro-seo";
 import { getRelativeLocaleUrlList } from "astro:i18n";
-import Navbar from "../components/Navbar.astro";
 import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
 
+
+
+const descriptionDefault =
+  "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.";
+
 interface Props {
   language: string;
   title: string;
+  description?: string;
 }
 
-const { language, title } = Astro.props;
-
-const description =
-  "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.";
+const { language, title, description = descriptionDefault } = Astro.props;
 
 let siteUrl = Astro.request.url;
 siteUrl[siteUrl.length - 1] === "/"
@@ -32,7 +34,7 @@ const localeUrls = getRelativeLocaleUrlList();
       description={description}
       openGraph={{
         basic: {
-          title: "Transform your voice notes into text",
+          title,
           type: "website",
           image: siteUrl + ImageBro.src,
         },
@@ -93,22 +95,15 @@ const localeUrls = getRelativeLocaleUrlList();
       crossorigin
     />
     <link
-     rel="stylesheet"
-     href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-   />
-    <meta http-equiv="refresh" content={"0;url=/" + language == 'en' ? "/" : language + "/"} />
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
+    />
+    <meta
+      http-equiv="refresh"
+      content={"0;url=/" + language == "en" ? "/" : language + "/"}
+    />
   </head>
   <body data-theme="default" class="bg-neutral">
-    <Navbar />
-    <!-- <nav>
-      {
-        localeUrls.map((s) => (
-          <a href={s} class="link">
-            {s}
-          </a>
-        ))
-      }
-    </nav> -->
     <slot />
   </body>
 </html>
