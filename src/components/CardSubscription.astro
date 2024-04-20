@@ -52,24 +52,26 @@ const {
         }
       </tbody>
     </table>
-    <div class="card-actions justify-center">
-      {
-        checkoutLink ? (
-          <a
-            class="btn btn-primary btn-block text-base-100"
-            href={checkoutLink}
-          >
-            {subscribeText}
-          </a>
-        ) : (
-          <button
-            class="btn btn-primary btn-block text-base-100"
-            disabled="disabled"
-          >
-            {subscribeText}
-          </button>
-        )
-      }
-    </div>
+    {
+      checkoutLink && (
+        <div class="card-actions justify-center">
+          {checkoutLink ? (
+            <a
+              class="btn btn-primary btn-block text-base-100"
+              href={checkoutLink}
+            >
+              {subscribeText}
+            </a>
+          ) : (
+            <button
+              class="btn btn-primary btn-block text-base-100"
+              disabled="disabled"
+            >
+              {subscribeText}
+            </button>
+          )}
+        </div>
+      )
+    }
   </div>
 </div>

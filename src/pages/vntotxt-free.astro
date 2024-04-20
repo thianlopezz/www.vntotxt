@@ -4,49 +4,49 @@ import CardSubscription from "../components/CardSubscription.astro";
 ---
 
 <Layout language="en" title="VnToTxt Free Plan">
-  <main>
-    <section class="container md:flex h-screen">
-      <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
-        <CardSubscription
-          title="Free Plan"
-          price="0"
-          features={[
-            {
-              description:
-                "<strong>15 mininutes</strong> of transcriptions per month",
-              included: true,
-            },
-            {
-              description:
-                "Remaining quota in the <strong>same transcripted message</strong>",
-              included: true,
-            },
-            { description: "Multilanguage transcriptions", included: true },
-            {
-              description: "<strong>Basic</strong> customer support",
-              included: true,
-            },
-            {
-              description: "<strong>Standard</strong> processing speed",
-              included: true,
-            },
-            {
-              description:
-                "Access to the web application to see your transcriptions",
-              included: false,
-            },
-          ]}
-        />
-      </div>
-      <div class="md:flex md:w-1/2 flex-col justify-center py-10">
-        <div class="alert alert-info" style="display: none"></div>
-        <div class="alert alert-error" style="display: none"></div>
+  <section class="md:flex md:h-screen">
+    <main class="w-full md:w-1/2 p-10 flex justify-center">
+      <CardSubscription
+        title="Free Plan"
+        price="0"
+        features={[
+          {
+            description:
+              "<strong>15 mininutes</strong> of transcriptions per month",
+            included: true,
+          },
+          {
+            description:
+              "Remaining quota in the <strong>same transcripted message</strong>",
+            included: true,
+          },
+          { description: "Multilanguage transcriptions", included: true },
+          {
+            description: "<strong>Basic</strong> customer support",
+            included: true,
+          },
+          {
+            description: "<strong>Standard</strong> processing speed",
+            included: true,
+          },
+          {
+            description:
+              "Access to the web application to see your transcriptions",
+            included: false,
+          },
+        ]}
+      />
+    </main>
+    <div class="flex-col justify-center py-6 px-4 md:px-20 md:flex md:w-1/2 bg-info">
+      <div class="my-20 md:my-0 mx-auto w-full sm:w-4/5 md:max-w-xs">
+        <div class="alert alert-info mb-4" style="display: none"></div>
+        <div class="alert alert-error mb-4" style="display: none"></div>
         <form
           id="verifyWaForm"
           onsubmit="sendVerificationCodeProcess(event)"
-          class="mx-auto"
+          class="w-full mx-auto md:max-w-xs"
         >
-          <label class="form-control w-full max-w-xs">
+          <label class="form-control w-full md:max-w-xs">
             <div class="label">
               <span class="label-text">What is your Whatsapp number?</span>
               <!-- <span class="label-text-alt">Top Right label</span> -->
@@ -55,7 +55,7 @@ import CardSubscription from "../components/CardSubscription.astro";
               id="phone"
               type="tel"
               name="phone"
-              class="input input-bordered w-full max-w-xs"
+              class="input input-bordered w-full md:max-w-xs"
               required
             />
             <div class="label">
@@ -77,7 +77,7 @@ import CardSubscription from "../components/CardSubscription.astro";
         </form>
         <!-- style="display: none" -->
         <form
-          style="display: none"
+        style="display: none"
           id="verifyCodeForm"
           onsubmit="verificationCodeProcess(event)"
           class="mx-auto"
@@ -87,7 +87,7 @@ import CardSubscription from "../components/CardSubscription.astro";
             type="hidden"
             name="subscriptionRequestId"
           />
-          <label class="form-control w-full max-w-xs">
+          <label class="form-control w-full md:max-w-xs">
             <div class="label">
               <span class="label-text">Verification code</span>
               <!-- <span class="label-text-alt">Top Right label</span> -->
@@ -96,7 +96,7 @@ import CardSubscription from "../components/CardSubscription.astro";
               id="verificationCodeInput"
               type="text"
               name="verificationCode"
-              class="input input-borderedw-full max-w-xs"
+              class="input input-borderedw-full md:max-w-xs"
               required
             />
             <div class="label">
@@ -117,8 +117,8 @@ import CardSubscription from "../components/CardSubscription.astro";
           </div>
         </form>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </Layout>
 
 <script
@@ -164,6 +164,7 @@ import CardSubscription from "../components/CardSubscription.astro";
       waId = phoneNumber.replace("+", "");
 
       loadingSendVerificationCode.style.display = "";
+      phoneInputField.disabled = true;
 
       try {
         let response = await fetch(VNTOTXT_API + "/v1/request-subscription", {
@@ -181,19 +182,21 @@ import CardSubscription from "../components/CardSubscription.astro";
           response = await response.json();
           const { success, data, message } = response;
           if (success) {
-            phoneInputField.disabled = true;
             divWaVerifyButton.style.display = "none";
             verifyCodeForm.style.display = "";
             subscriptionRequestIdInput.value = data.subscriptionRequestId;
           } else {
+            phoneInputField.disabled = false;
             error.style.display = "";
             error.innerHTML = message;
           }
         } else {
+          phoneInputField.disabled = false;
           error.style.display = "";
           error.innerHTML = `There was an error validating the phone number. Please try again.`;
         }
       } catch (error) {
+        phoneInputField.disabled = false;
         error.style.display = "";
         error.innerHTML = `There was an error validating the phone number. Please try again.`;
         loadingSendVerificationCode.style.display = "none";
