@@ -1,0 +1,259 @@
+---
+import Layout from "../layouts/Layout.astro";
+import CardSubscription from "../components/CardSubscription.astro";
+---
+
+<Layout language="en" title="VnToTxt Free Plan">
+  <main>
+    <section class="container md:flex h-screen">
+      <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+        <CardSubscription
+          title="Free Plan"
+          price="0"
+          features={[
+            {
+              description:
+                "<strong>15 mininutes</strong> of transcriptions per month",
+              included: true,
+            },
+            {
+              description:
+                "Remaining quota in the <strong>same transcripted message</strong>",
+              included: true,
+            },
+            { description: "Multilanguage transcriptions", included: true },
+            {
+              description: "<strong>Basic</strong> customer support",
+              included: true,
+            },
+            {
+              description: "<strong>Standard</strong> processing speed",
+              included: true,
+            },
+            {
+              description:
+                "Access to the web application to see your transcriptions",
+              included: false,
+            },
+          ]}
+        />
+      </div>
+      <div class="md:flex md:w-1/2 flex-col justify-center py-10">
+        <div class="alert alert-info" style="display: none"></div>
+        <div class="alert alert-error" style="display: none"></div>
+        <form
+          id="verifyWaForm"
+          onsubmit="sendVerificationCodeProcess(event)"
+          class="mx-auto"
+        >
+          <label class="form-control w-full max-w-xs">
+            <div class="label">
+              <span class="label-text">What is your Whatsapp number?</span>
+              <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              class="input input-bordered w-full max-w-xs"
+              required
+            />
+            <div class="label">
+              <span class="label-text-alt"
+                >Enter the WhatsApp number that will ge the subscription</span
+              >
+              <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+          </label>
+          <div id="divWaVerifyButton" class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+              >Send verification code
+              <span
+                style="display: none"
+                id="loadingSendVerificationCode"
+                class="loading loading-spinner"></span>
+            </button>
+          </div>
+        </form>
+        <!-- style="display: none" -->
+        <form
+          style="display: none"
+          id="verifyCodeForm"
+          onsubmit="verificationCodeProcess(event)"
+          class="mx-auto"
+        >
+          <input
+            id="subscriptionRequestIdInput"
+            type="hidden"
+            name="subscriptionRequestId"
+          />
+          <label class="form-control w-full max-w-xs">
+            <div class="label">
+              <span class="label-text">Verification code</span>
+              <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+              id="verificationCodeInput"
+              type="text"
+              name="verificationCode"
+              class="input input-borderedw-full max-w-xs"
+              required
+            />
+            <div class="label">
+              <span class="label-text-alt"
+                >Enter the verification code sent to yout WhatsApp</span
+              >
+              <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+          </label>
+          <div class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+              >Verify and subscribe
+              <span
+                style="display: none"
+                id="loadingVerification"
+                class="loading loading-spinner"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<script
+  is:inline
+  src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"
+></script>
+<script is:inline>
+  // const VNTOTXT_API = "https://api.vntotxt.com";
+  const VNTOTXT_API =
+    "https://super-barnacle-pjw6wp6qwjjfrxqx-3000.app.github.dev";
+
+  const verifyWaForm = document.querySelector("#verifyWaForm");
+  const verifyCodeForm = document.querySelector("#verifyCodeForm");
+  const divWaVerifyButton = document.querySelector("#divWaVerifyButton");
+  const subscriptionRequestIdInput = document.querySelector(
+    "#subscriptionRequestIdInput"
+  );
+
+  const loadingSendVerificationCode = document.querySelector(
+    "#loadingSendVerificationCode"
+  );
+
+  const loadingVerification = document.querySelector("#loadingVerification");
+
+  const phoneInputField = document.querySelector("#phone");
+  const phoneInput = window.intlTelInput(phoneInputField, {
+    utilsScript:
+      "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+  });
+
+  const info = document.querySelector(".alert-info");
+  const error = document.querySelector(".alert-error");
+
+  async function sendVerificationCodeProcess(event) {
+    event.preventDefault();
+
+    const phoneNumber = phoneInput.getNumber();
+
+    info.style.display = "none";
+    error.style.display = "none";
+
+    if (phoneInput.isValidNumber()) {
+      waId = phoneNumber.replace("+", "");
+
+      loadingSendVerificationCode.style.display = "";
+
+      try {
+        let response = await fetch(VNTOTXT_API + "/v1/request-subscription", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            waId,
+            tierId: 1,
+          }),
+        });
+
+        if (response.ok) {
+          response = await response.json();
+          const { success, data, message } = response;
+          if (success) {
+            phoneInputField.disabled = true;
+            divWaVerifyButton.style.display = "none";
+            verifyCodeForm.style.display = "";
+            subscriptionRequestIdInput.value = data.subscriptionRequestId;
+          } else {
+            error.style.display = "";
+            error.innerHTML = message;
+          }
+        } else {
+          error.style.display = "";
+          error.innerHTML = `There was an error validating the phone number. Please try again.`;
+        }
+      } catch (error) {
+        error.style.display = "";
+        error.innerHTML = `There was an error validating the phone number. Please try again.`;
+        loadingSendVerificationCode.style.display = "none";
+        console.error(error);
+      }
+
+      loadingSendVerificationCode.style.display = "none";
+    } else {
+      error.style.display = "";
+      error.innerHTML = `Invalid phone number.`;
+    }
+  }
+
+  async function verificationCodeProcess(event) {
+    event.preventDefault();
+
+    const verificationCode = document.querySelector(
+      "#verificationCodeInput"
+    ).value;
+    const subscriptionRequestId = subscriptionRequestIdInput.value;
+
+    info.style.display = "none";
+    error.style.display = "none";
+
+    loadingVerification.style.display = "";
+
+    try {
+      let response = await fetch(VNTOTXT_API + "/v1/verify-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subscriptionRequestId,
+          pin: verificationCode,
+        }),
+      });
+
+      if (response.ok) {
+        response = await response.json();
+        const { success, data, message } = response;
+        if (success) {
+          phoneInputField.disabled = true;
+          window.location.href =
+            "/subscription-success/?subscriptionId=" + data.subscriptionId;
+        } else {
+          error.style.display = "";
+          error.innerHTML = message;
+        }
+      } else {
+        error.style.display = "";
+        error.innerHTML = `There was an error validating the phone number. Please try again.`;
+      }
+    } catch (error) {
+      error.style.display = "";
+      error.innerHTML = `There was an error validating the phone number. Please try again.`;
+      loadingVerification.style.display = "none";
+      console.error(error);
+    }
+
+    loadingVerification.style.display = "none";
+  }
+</script>
