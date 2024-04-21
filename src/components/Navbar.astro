@@ -1,3 +1,10 @@
+---
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
 <div class="navbar bg-secondary">
   <div class="navbar-start">
     <div class="dropdown">
@@ -19,9 +26,9 @@
         tabindex="0"
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-        <li><a href="#how-it-works">How it works</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#pricing">Princing</a></li>
+        <li><a href="#how-it-works">{t('nav.howItWorks')}</a></li>
+        <li><a href="#features">{t('nav.features')}</a></li>
+        <li><a href="#pricing">{t('nav.pricing')}</a></li>
       </ul>
     </div>
     <a class="btn btn-ghost text-xl">VnToTxt</a>

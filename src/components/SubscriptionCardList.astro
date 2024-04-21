@@ -1,0 +1,100 @@
+---
+import CardSubscription from "./CardSubscription.astro";
+---
+
+<div class="flex flex-col md:flex-row justify-center justify-items-center">
+  <div class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3">
+    <CardSubscription
+      title="Free Plan"
+      price="0"
+      checkoutLink="/vntotxt-free"
+      features={[
+        {
+          description:
+            "<strong>15 mininutes</strong> of transcriptions per month",
+          included: true,
+        },
+        {
+          description:
+            "Remaining quota in the <strong>same transcripted message</strong>",
+          included: true,
+        },
+        { description: "Multilanguage transcriptions", included: true },
+        {
+          description: "<strong>Basic</strong> customer support",
+          included: true,
+        },
+        {
+          description: "<strong>Standard</strong> processing speed",
+          included: true,
+        },
+        {
+          description:
+            "Access to the web application to see your transcriptions",
+          included: false,
+        },
+      ]}
+    />
+  </div>
+  <div class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3">
+    <CardSubscription
+      title="Pro Plan"
+      features={[
+        {
+          description:
+            "<strong>100 mininutes</strong> of transcriptions per month",
+          included: true,
+        },
+        {
+          description:
+            "Remaining quota in a <strong>separated message</strong>",
+          included: true,
+        },
+        { description: "Multilanguage transcriptions", included: true },
+        {
+          description: "<strong>Standard</strong> customer support",
+          included: true,
+        },
+        {
+          description: "<strong>Enhanced</strong> processing speed",
+          included: true,
+        },
+        {
+          description:
+            "Access to the web application to see your transcriptions",
+          included: true,
+        },
+      ]}
+    />
+  </div>
+  <div class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3">
+    <CardSubscription
+      title="Premium Plan"
+      features={[
+        {
+          description: "<strong>Unlimited</strong> transcriptions per month",
+          included: true,
+        },
+        {
+          description:
+            "Remaining quota in a <strong>separated message</strong>",
+          included: true,
+        },
+        { description: "Multilanguage transcriptions", included: true },
+        {
+          description: "<strong>Premium</strong> customer support",
+          included: true,
+        },
+        {
+          description: "<strong>Priority</strong> processing speed",
+          included: true,
+        },
+        {
+          description:
+            "Access to the web application to see your transcriptions",
+          included: true,
+        },
+      ]}
+    />
+  </div>
+</div>

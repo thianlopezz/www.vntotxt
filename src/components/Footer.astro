@@ -1,4 +1,9 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const socialMedia = [
   {
     link: "https://www.instagram.com/vntotxt/",
@@ -15,15 +20,17 @@ const socialMedia = [
 ];
 ---
 
-<footer class="footer footer-center p-10 bg-secondary text-base-content rounded">
+<footer
+  class="footer footer-center p-10 bg-secondary text-base-content rounded"
+>
   <nav class="grid grid-flow-col gap-4">
-    <a href="/privacy-policy" class="link link-hover">Privacy</a>
+    <a href="/privacy-policy" class="link link-hover">{t("footer.privacy")}</a>
     <a
       href="https://api.whatsapp.com/send?phone=593990901765"
       target="_blank"
-      class="link link-hover">Contact</a
+      class="link link-hover">{t("footer.contact")}</a
     >
-    <a class="link link-hover" href="/es">Español</a>
+    <a class="link link-hover" href="/es">{t("footer.language")}</a>
   </nav>
   <nav>
     <div class="grid grid-flow-col gap-4">
@@ -37,6 +44,6 @@ const socialMedia = [
     </div>
   </nav>
   <aside>
-    <p>Copyright © 2024 - All right reserved by Ecudevs S.A</p>
+    <p>Copyright © 2024 - {t('footer.rights')} Ecudevs S.A</p>
   </aside>
 </footer>

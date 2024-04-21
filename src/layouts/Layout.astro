@@ -1,6 +1,7 @@
 ---
 import { SEO } from "astro-seo";
 import { getRelativeLocaleUrlList } from "astro:i18n";
+import { getLangFromUrl } from '../i18n/utils';
 import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
@@ -22,10 +23,14 @@ siteUrl[siteUrl.length - 1] === "/"
   : siteUrl;
 
 const localeUrls = getRelativeLocaleUrlList();
+
+
+
+const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
-<html lang={language}>
+<html lang={lang}>
   <head>
     <SEO
       title={title}

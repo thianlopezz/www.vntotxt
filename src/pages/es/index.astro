@@ -9,58 +9,63 @@ import ForwardMessageBro from "../../../public/forward-message-bro.svg";
 import TranscribedAudioBro from "../../../public/transcribed-audio-bro.svg";
 import Card from "../../components/Card.astro";
 import DescriptionDisplay from "../../components/DescriptionDisplay.astro";
-import CardSubscription from "../../components/CardSubscription.astro";
+import NavigationLayout from "../../layouts/NavigationLayout.astro";
+import SubscriptionCardListEs from "../../components/SubscriptionCardListEs.astro";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
-<Layout language="es" title="Notas de Voz de WhatsApp a Texto">
-  <main>
-    <section class="md:flex h-screen mx-auto bg-info lg:px-36">
-      <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
-        <h1
-          class="text-5xl sm:text-6xl mb-4 text-center md:text-left font-ubuntu font-bold"
+<NavigationLayout language="en" title="WhatsApp Voice Notes To Text">
+  <main class="md:flex md:h-screen mx-auto bg-secondary lg:px-36">
+    <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+      <h1
+        class="text-5xl sm:text-6xl mb-4 text-center md:text-left font-ubuntu font-bold"
+      >
+        {t("home.mainTitle.1")}
+        <br />
+        <span class="text-primary md:text-7xl">{t("home.mainTitle.2")}</span>
+        <br />
+        {t("home.mainTitle.3")} 🔈
+      </h1>
+      <p class="my-5 text-center md:text-justify text-xl text-gray-800">
+        {t("home.mainDescription")}
+      </p>
+      <div class="flex pt-3 md:pt-0">
+        <a
+          class="btn btn-primary btn-wide m-auto md:m-0"
+          href="https://api.whatsapp.com/send?phone=593967960981"
+          target="_blank"
+          >{t("home.mainCallToAction")} <span class="text-xl">😎</span></a
         >
-          Transcribe tus <br />
-          <span class="text-primary md:text-7xl">notas de voz</span>
-          <br /> ahora 🔈
-        </h1>
-        <p class="my-5 text-center md:text-justify text-xl text-gray-800">
-          Convierte tus mensajes de voz de WhatsApp en texto instantáneamente
-          con solo reenviarlos.
-        </p>
-        <div class="flex pt-3 md:pt-0">
-          <a
-            class="btn btn-primary btn-wide m-auto md:m-0"
-            href="https://api.whatsapp.com/send?phone=593967960981"
-            >Empezar ya! <span class="text-xl">😎</span></a
-          >
-        </div>
       </div>
-      <!-- feature-image-container -->
-      <div class="md:flex md:w-1/2 flex-col justify-center py-10">
-        <!-- class="feature-image-transition" -->
-        <!-- <Image
+    </div>
+    <!-- feature-image-container -->
+    <div class="md:flex md:w-1/2 flex-col justify-center py-10">
+      <!-- class="feature-image-transition" -->
+      <!-- <Image
           
           src={ImageBro1}
           alt="Voice note to text"
         /> -->
-        <!-- class="feature-image-transition" -->
-        <Image src={ImageBro2} alt="Notas de voz a texto" />
-      </div>
-    </section>
+      <!-- class="feature-image-transition" -->
+      <Image src={ImageBro2} alt="Voice note to text 2" />
+    </div>
   </main>
   <section
     id="how-it-works"
     class="container flex-col content-center mx-auto py-10 md:h-screen"
   >
-    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">
-      Cómo funciona
+    <h2 class="text-4xl text-center md:mb-5 md:mt-10 font-ubuntu font-bold">
+      {t("home.howItWorks.title")}
     </h2>
     <div class="px-5 md:px-10">
       <!-- bg-primary -->
       <div class="bg-neautral py-10 rounded-lg">
         <p class="text-center mb-10">
-          <span class="badge badge-primary badge-outline badge-lg"
-            >Tan simple como</span
+          <span class="badge badge-primary badge-outline badge-lg">
+            {t("home.howItWorks.subtitle")}</span
           >
         </p>
         <div
@@ -71,15 +76,15 @@ import CardSubscription from "../../components/CardSubscription.astro";
           >
             <Card
               image={SaveContactBro}
-              altImage="Guardar contacto de WhatsApp"
+              altImage={t("home.howItWorks.step-1.altImage")}
               number="1"
-              title="Guarda nuestro contacto"
-              body="Mantennos cerca en tus contactos de WhatsApp."
+              title={t("home.howItWorks.step-1.title")}
+              body={t("home.howItWorks.step-1.body")}
             >
               <a
                 class="link link-primary"
                 href="https://api.whatsapp.com/send?phone=593967960981"
-                >+593 96 796 0981</a
+                target="_blank">+593 96 796 0981</a
               ></Card
             >
           </div>
@@ -88,10 +93,10 @@ import CardSubscription from "../../components/CardSubscription.astro";
           >
             <Card
               image={ForwardMessageBro}
-              altImage="Reenviar nota de voz"
+              altImage={t("home.howItWorks.step-2.altImage")}
               number="2"
-              title="Reenvíanos una nota de voz"
-              body="O simplemente envíanos un mensaje de audio por DM."
+              title={t("home.howItWorks.step-2.title")}
+              body={t("home.howItWorks.step-2.body")}
             />
           </div>
           <div
@@ -99,10 +104,10 @@ import CardSubscription from "../../components/CardSubscription.astro";
           >
             <Card
               image={TranscribedAudioBro}
-              altImage="Esperar transcripción"
+              altImage={t("home.howItWorks.step-3.altImage")}
               number="3"
-              title="Espera tu audio transcrito"
-              body="Te devolveremos tu audio transcrito en unos segundos."
+              title={t("home.howItWorks.step-3.title")}
+              body={t("home.howItWorks.step-3.body")}
             />
           </div>
         </div>
@@ -111,13 +116,15 @@ import CardSubscription from "../../components/CardSubscription.astro";
   </section>
   <section
     id="features"
-    class="md:h-screen bg-info flex flex-col justify-center items-center"
+    class="md:h-screen bg-secondary flex flex-col justify-center items-center"
   >
     <h2
       class="text-4xl text-center md:text-center font-ubuntu font-bold pt-10 md:pt-0 px-5"
     >
-      Aprovecha las <span class="text-primary text-4xl">transcripciones</span>
-      <br /> de tus notas de voz 📝
+      {t("home.features.title.1")}
+      <span class="text-primary text-4xl">{t("home.features.title.2")}</span>
+      <br />
+      {t("home.features.title.3")} 📝
     </h2>
     <div class="flex flex-col-reverse md:flex-row">
       <div class="flex flex-col justify-center py-10 w-full md:w-5/12">
@@ -127,23 +134,23 @@ import CardSubscription from "../../components/CardSubscription.astro";
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-5">
           <DescriptionDisplay
             boxicon="bx bx-world"
-            title="Para todos, en todas partes"
-            descripton="¿Sala ruidosa? ¿Difícil de escuchar? VNTOTXT convierte las notas de voz en texto, para que puedas leer lo que se dice."
+            title={t("home.features.item.1.title")}
+            descripton={t("home.features.item.1.description")}
           />
           <DescriptionDisplay
             boxicon="bx bxs-face"
-            title="Escucha con tus ojos"
-            descripton="VNTOTXT convierte tus notas de voz en texto, asegurando que no te pierdas ni una palabra. ¡Perfecto para captar cada detalle!"
+            title={t("home.features.item.2.title")}
+            descripton={t("home.features.item.2.description")}
           />
           <DescriptionDisplay
             boxicon="bx bx-search-alt"
-            title="Encuentra lo que necesitas"
-            descripton="Con VNTOTXT, tus palabras se convierten en texto, así puedes encontrar exactamente lo que buscas, ¡rápido!"
+            title={t("home.features.item.3.title")}
+            descripton={t("home.features.item.3.description")}
           />
           <DescriptionDisplay
             boxicon="bx bxs-user-voice"
-            title="De lo hablado a lo escrito"
-            descripton="¿Tienes una gran idea pero sin manos libres? ¡Solo habla! VNTOTXT captura tus notas de voz y las convierte en texto."
+            title={t("home.features.item.3.title")}
+            descripton={t("home.features.item.3.description")}
           />
         </div>
       </div>
@@ -152,146 +159,69 @@ import CardSubscription from "../../components/CardSubscription.astro";
       <a
         class="btn btn-primary m-auto"
         href="https://api.whatsapp.com/send?phone=593967960981"
-        >Empieza a reenviar tus Vn's <span class="text-xl">😎</span></a
+        >{t("home.features.callToAction")} <span class="text-xl">😎</span></a
       >
     </div>
   </section>
   <section
     id="pricing"
-    class="container flex-col content-center mx-auto py-10 md:h-screen"
+    class="container flex-col content-center mx-auto pt-10 md:py-0"
   >
-    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">Precios</h2>
+    <h2 class="text-4xl text-center md:mb-5 md:mt-10 font-ubuntu font-bold">
+      {t("home.pricing.title")}
+    </h2>
     <div class="px-5 md:px-10">
       <!-- bg-primary -->
       <div class="bg-neautral py-10 rounded-lg">
         <p class="text-center mb-10">
           <span class="badge badge-primary badge-outline badge-lg"
-            >Nuestras tarifas</span
+            >{t("home.pricing.subtitle")}</span
           >
         </p>
-        <div
-          class="flex flex-col md:flex-row justify-center justify-items-center"
-        >
-          <div
-            class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
-          >
-            <CardSubscription
-              title="Free Plan"
-              price="0"
-              checkoutLink="/vntotxt-free"
-              features={[
-                {
-                  description:
-                    "<strong>15 minutos</strong> de transcripciones por mes",
-                  included: true,
-                },
-                {
-                  description:
-                    "Cuota restante en el <strong>mismo mensaje</strong> de la transcripción",
-                  included: true,
-                },
-                {
-                  description: "Transcripciones multilenguaje",
-                  included: true,
-                },
-                {
-                  description: "Soporte <strong>Basico</strong>",
-                  included: true,
-                },
-                {
-                  description:
-                    "Velocidad de procesamiento <strong>Standard</strong>",
-                  included: true,
-                },
-                {
-                  description:
-                    "Acceso a la aplicación web a ver tus transcripciones",
-                  included: false,
-                },
-              ]}
-            />
-          </div>
-          <div
-            class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
-          >
-            <CardSubscription
-              title="Pro Plan"
-              commingText="Muy Pronto"
-              features={[
-                {
-                  description:
-                    "<strong>100 minutos</strong> de transcripciones por mes",
-                  included: true,
-                },
-                {
-                  description:
-                    "Cuota restante en un <strong>mesaje separado</strong> de la transcripción",
-                  included: true,
-                },
-                {
-                  description: "Transcripciones multilenguaje",
-                  included: true,
-                },
-                {
-                  description: "Sporte <strong>Standard</strong>",
-                  included: true,
-                },
-                {
-                  description:
-                    "Velocidad de procesamiento <strong>Mejorada</strong>",
-                  included: true,
-                },
-                {
-                  description:
-                    "Acceso a la aplicación web a ver tus transcripciones",
-                  included: true,
-                },
-              ]}
-            />
-          </div>
-          <div
-            class="w-full md:w-1/3 flex flex-col items-center mb-6 md:mb-0 px-3"
-          >
-            <CardSubscription
-              title="Premium Plan"
-              commingText="Muy Pronto"
-              features={[
-                {
-                  description:
-                    "Transcriptions <strong>Ilimitadas</strong> por mes",
-                  included: true,
-                },
-                {
-                  description:
-                    "Cuota restante en un <strong>mesaje separado</strong> de la transcripción",
-                  included: true,
-                },
-                {
-                  description: "Transcripciones multilenguaje",
-                  included: true,
-                },
-                {
-                  description: "Soporte <strong>Premium</strong>",
-                  included: true,
-                },
-                {
-                  description:
-                    "Velocidad de procesamiento <strong>Prioritaria</strong>",
-                  included: true,
-                },
-                {
-                  description:
-                    "Acceso a la aplicación web a ver tus transcripciones",
-                  included: true,
-                },
-              ]}
-            />
-          </div>
-        </div>
+        <SubscriptionCardListEs />
       </div>
     </div>
   </section>
-</Layout>
+</NavigationLayout>
+
+<style>
+  .feature-image-container {
+    position: relative;
+  }
+
+  .feature-image-transition {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    animation: imageFade 7s infinite;
+  }
+
+  .feature-image-transition:nth-child(2) {
+    animation-delay: 3.5s;
+  }
+
+  @keyframes imageFade {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    anchor.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+      });
+    });
+  });
+</script>
 
 <script is:inline>
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
