@@ -52,7 +52,7 @@ export const ui = {
     "footer.rights": "All right reserved by",
   },
   es: {
-    "nav.howItWorks": "Como funciona",
+    "nav.howItWorks": "Cómo funciona",
     "nav.features": "Funcionalidades",
     "nav.pricing": "Precios",
     "home.mainTitle.1": "Transcribe tus",
