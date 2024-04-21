@@ -3,15 +3,15 @@ import Layout from "../layouts/Layout.astro";
 
 const socialMedia = [
   {
-    link: "",
+    link: "https://www.instagram.com/vntotxt/",
     boxicon: "bx bxl-instagram",
   },
   {
-    link: "",
+    link: "https://www.facebook.com/vntotxt",
     boxicon: "bx bxl-facebook-circle",
   },
   {
-    link: "",
+    link: "https://api.whatsapp.com/send?phone=593967960981",
     boxicon: "bx bxl-whatsapp",
   },
 ];
@@ -39,6 +39,7 @@ const socialMedia = [
             socialMedia.map((item) => (
               <a
                 href={item.link}
+                target="_blank"
                 class="btn btn-circle btn-accent text-2xl mx-2"
               >
                 <i class={item.boxicon} />

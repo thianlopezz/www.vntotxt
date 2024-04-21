@@ -6,6 +6,7 @@ import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
 import Layout from "./Layout.astro";
+import Footer from "../components/Footer.astro";
 
 interface Props {
   language: string;
@@ -18,4 +19,5 @@ const { language, title } = Astro.props;
 <Layout title={title} language={language}>
   <Navbar />
   <slot />
+  <Footer />
 </Layout>

@@ -13,47 +13,44 @@ import NavigationLayout from "../layouts/NavigationLayout.astro";
 ---
 
 <NavigationLayout language="en" title="WhatsApp Voice Notes To Text">
-  <main>
-    <section class="md:flex h-screen mx-auto bg-info lg:px-36">
-      <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
-        <h1
-          class="text-5xl sm:text-6xl mb-4 text-center md:text-left font-ubuntu font-bold"
+  <main class="md:flex md:h-screen mx-auto bg-info lg:px-36">
+    <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
+      <h1
+        class="text-5xl sm:text-6xl mb-4 text-center md:text-left font-ubuntu font-bold"
+      >
+        Transcribe your <br />
+        <span class="text-primary md:text-7xl">voice notes</span>
+        <br /> now 🔈
+      </h1>
+      <p class="my-5 text-center md:text-justify text-xl text-gray-800">
+        Instantly convert your WhatsApp voice messages into text with a single
+        forward.
+      </p>
+      <div class="flex pt-3 md:pt-0">
+        <a
+          class="btn btn-primary btn-wide m-auto md:m-0"
+          href="https://api.whatsapp.com/send?phone=593967960981"
+          target="_blank">Get started <span class="text-xl">😎</span></a
         >
-          Transcribe your <br />
-          <span class="text-primary md:text-7xl">voice notes</span>
-          <br /> now 🔈
-        </h1>
-        <p class="my-5 text-center md:text-justify text-xl text-gray-800">
-          Instantly convert your WhatsApp voice messages into text with a single
-          forward.
-        </p>
-        <div class="flex pt-3 md:pt-0">
-          <a
-            class="btn btn-primary btn-wide m-auto md:m-0"
-            href="https://api.whatsapp.com/send?phone=593967960981"
-            target="_blank"
-            >Get started <span class="text-xl">😎</span></a
-          >
-        </div>
       </div>
-      <!-- feature-image-container -->
-      <div class="md:flex md:w-1/2 flex-col justify-center py-10">
-        <!-- class="feature-image-transition" -->
-        <!-- <Image
+    </div>
+    <!-- feature-image-container -->
+    <div class="md:flex md:w-1/2 flex-col justify-center py-10">
+      <!-- class="feature-image-transition" -->
+      <!-- <Image
           
           src={ImageBro1}
           alt="Voice note to text"
         /> -->
-        <!-- class="feature-image-transition" -->
-        <Image src={ImageBro2} alt="Voice note to text 2" />
-      </div>
-    </section>
+      <!-- class="feature-image-transition" -->
+      <Image src={ImageBro2} alt="Voice note to text 2" />
+    </div>
   </main>
   <section
     id="how-it-works"
     class="container flex-col content-center mx-auto py-10 md:h-screen"
   >
-    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">
+    <h2 class="text-4xl text-center md:mb-5 md:mt-10 font-ubuntu font-bold">
       How it works
     </h2>
     <div class="px-5 md:px-10">
@@ -80,8 +77,7 @@ import NavigationLayout from "../layouts/NavigationLayout.astro";
               <a
                 class="link link-primary"
                 href="https://api.whatsapp.com/send?phone=593967960981"
-                target="_blank"
-                >+593 96 796 0981</a
+                target="_blank">+593 96 796 0981</a
               ></Card
             >
           </div>
@@ -129,7 +125,7 @@ import NavigationLayout from "../layouts/NavigationLayout.astro";
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 py-5">
           <DescriptionDisplay
             boxicon="bx bx-world"
-            title="For Everyone, Everywherezx"
+            title="For Everyone, Everywhere"
             descripton="Noisy room? Hard to hear? VNTOTXT changes voice notes to text, so you can read what's being said."
           />
           <DescriptionDisplay
@@ -160,9 +156,9 @@ import NavigationLayout from "../layouts/NavigationLayout.astro";
   </section>
   <section
     id="pricing"
-    class="container flex-col content-center mx-auto py-10 md:h-screen"
+    class="container flex-col content-center mx-auto pt-10 md:py-0"
   >
-    <h2 class="text-4xl text-center mb-5 font-ubuntu font-bold">Pricing</h2>
+    <h2 class="text-4xl text-center md:mb-5 md:mt-10 font-ubuntu font-bold">Pricing</h2>
     <div class="px-5 md:px-10">
       <!-- bg-primary -->
       <div class="bg-neautral py-10 rounded-lg">

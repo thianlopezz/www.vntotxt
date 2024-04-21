@@ -1,0 +1,42 @@
+---
+const socialMedia = [
+  {
+    link: "https://www.instagram.com/vntotxt/",
+    boxicon: "bx bxl-instagram",
+  },
+  {
+    link: "https://www.facebook.com/vntotxt",
+    boxicon: "bx bxl-facebook-circle",
+  },
+  {
+    link: "https://api.whatsapp.com/send?phone=593967960981",
+    boxicon: "bx bxl-whatsapp",
+  },
+];
+---
+
+<footer class="footer footer-center p-10 bg-info text-base-content rounded">
+  <nav class="grid grid-flow-col gap-4">
+    <a href="/privacy-policy" class="link link-hover">Privacy</a>
+    <a
+      href="https://api.whatsapp.com/send?phone=593990901765"
+      target="_blank"
+      class="link link-hover">Contact</a
+    >
+    <a class="link link-hover" href="/es">Español</a>
+  </nav>
+  <nav>
+    <div class="grid grid-flow-col gap-4">
+      {
+        socialMedia.map((item) => (
+          <a href={item.link} class="text-4xl mx-2 text-primary">
+            <i class={item.boxicon} />
+          </a>
+        ))
+      }
+    </div>
+  </nav>
+  <aside>
+    <p>Copyright © 2024 - All right reserved by Ecudevs S.A</p>
+  </aside>
+</footer>
