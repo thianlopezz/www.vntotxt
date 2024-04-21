@@ -5,6 +5,7 @@ import { getLangFromUrl } from "../i18n/utils";
 import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
+import Analytics from "../components/Common/Analytics.astro";
 
 const descriptionDefault =
   "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.";
@@ -103,20 +104,7 @@ const lang = getLangFromUrl(Astro.url);
       http-equiv="refresh"
       content={"0;url=/" + language == "en" ? "/" : language + "/"}
     />
-    <!-- Google tag (gtag.js) -->
-    <script
-      type="text/partytown"
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-MNQ9N548LW"></script>
-    <script type="text/partytown">
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "G-MNQ9N548LW");
-    </script>
+    <Analytics id="G-MNQ9N548LW" partytown={true} />
   </head>
   <body data-theme="default" class="bg-neutral">
     <slot />
