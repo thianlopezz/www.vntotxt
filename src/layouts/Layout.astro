@@ -103,9 +103,6 @@ const lang = getLangFromUrl(Astro.url);
       http-equiv="refresh"
       content={"0;url=/" + language == "en" ? "/" : language + "/"}
     />
-  </head>
-  <body data-theme="default" class="bg-neutral">
-    <slot />
     <!-- Google tag (gtag.js) -->
     <script
       type="text/partytown"
@@ -120,5 +117,8 @@ const lang = getLangFromUrl(Astro.url);
 
       gtag("config", "G-MNQ9N548LW");
     </script>
+  </head>
+  <body data-theme="default" class="bg-neutral">
+    <slot />
   </body>
 </html>
