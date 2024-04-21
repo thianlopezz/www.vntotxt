@@ -5,8 +5,6 @@ import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
 
-
-
 const descriptionDefault =
   "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.";
 
@@ -102,6 +100,20 @@ const localeUrls = getRelativeLocaleUrlList();
       http-equiv="refresh"
       content={"0;url=/" + language == "en" ? "/" : language + "/"}
     />
+    <!-- Google tag (gtag.js) -->
+    <script
+      type="text/partytown"
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=MEASUREMENT_ID"></script>
+    <script type="text/partytown">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MNQ9N548LW");
+    </script>
   </head>
   <body data-theme="default" class="bg-neutral">
     <slot />
