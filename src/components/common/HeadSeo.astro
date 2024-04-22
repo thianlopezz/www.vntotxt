@@ -20,9 +20,12 @@ siteUrl[siteUrl.length - 1] === "/"
   description={description}
   openGraph={{
     basic: {
+      url: siteUrl,
       title,
       type: "website",
       image: siteUrl + ImageBro.src,
+    },
+    optional: {
       description,
     },
   }}
