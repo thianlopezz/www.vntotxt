@@ -294,17 +294,17 @@ const t = useTranslations(lang);
   }
 
   function getIp(callback) {
-    fetch("https://ipinfo.io/json?token=f59435832cc609")
+    fetch("https://ipinfo.io/json?token=f59435832cc609", {
+      headers: { Accept: "application/json" },
+    })
       .then((resp) => resp.json())
       .catch((e) => {
-        debugger;
         console.warn("Fail to get ipinfo", e.message);
         return {
           country: "us",
         };
       })
       .then((resp) => {
-        debugger;
         callback(resp.country);
       });
   }
