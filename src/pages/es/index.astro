@@ -1,5 +1,4 @@
 ---
-import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import ImageBro1 from "../../../public/voice-note-bro.svg";
 import ImageBro2 from "../../../public/text-bro.svg";
@@ -10,8 +9,8 @@ import TranscribedAudioBro from "../../../public/transcribed-audio-bro.svg";
 import Card from "../../components/Card.astro";
 import DescriptionDisplay from "../../components/DescriptionDisplay.astro";
 import NavigationLayout from "../../layouts/NavigationLayout.astro";
-import SubscriptionCardListEs from "../../components/SubscriptionCardListEs.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import SubscriptionCardList from "../../components/SubscriptionCardList.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -178,7 +177,7 @@ const t = useTranslations(lang);
             >{t("home.pricing.subtitle")}</span
           >
         </p>
-        <SubscriptionCardListEs />
+        <SubscriptionCardList />
       </div>
     </div>
   </section>

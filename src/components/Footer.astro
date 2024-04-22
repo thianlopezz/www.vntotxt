@@ -6,14 +6,17 @@ const t = useTranslations(lang);
 
 const socialMedia = [
   {
+    name: "instagram",
     link: "https://www.instagram.com/vntotxt/",
     boxicon: "bx bxl-instagram",
   },
   {
+    name: "facebook",
     link: "https://www.facebook.com/vntotxt",
     boxicon: "bx bxl-facebook-circle",
   },
   {
+    name: "whatsapp",
     link: "https://api.whatsapp.com/send?phone=593967960981",
     boxicon: "bx bxl-whatsapp",
   },
@@ -30,13 +33,19 @@ const socialMedia = [
       target="_blank"
       class="link link-hover">{t("footer.contact")}</a
     >
-    <a class="link link-hover" href="/es">{t("footer.language")}</a>
+    <a class="link link-hover" href={`/${lang == "en" ? "es" : ""}`}
+      >{t("footer.language")}</a
+    >
   </nav>
   <nav>
     <div class="grid grid-flow-col gap-4">
       {
         socialMedia.map((item) => (
-          <a href={item.link} class="text-4xl mx-2 text-primary">
+          <a
+            aria-label={item.name}
+            href={item.link}
+            class="text-4xl mx-2 text-primary"
+          >
             <i class={item.boxicon} />
           </a>
         ))
@@ -44,6 +53,6 @@ const socialMedia = [
     </div>
   </nav>
   <aside>
-    <p>Copyright © 2024 - {t('footer.rights')} Ecudevs S.A</p>
+    <p>Copyright © 2024 - {t("footer.rights")}</p>
   </aside>
 </footer>

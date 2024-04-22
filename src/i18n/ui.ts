@@ -7,6 +7,7 @@ export const defaultLang = "en";
 
 export const ui = {
   en: {
+    "global.startTranscribing": "Start transcribing",
     "nav.howItWorks": "How it works",
     "nav.features": "Features",
     "nav.pricing": "Pricing",
@@ -49,9 +50,54 @@ export const ui = {
     "footer.privacy": "Privacy",
     "footer.contact": "Contact",
     "footer.language": "Español",
-    "footer.rights": "All right reserved by",
+    "footer.rights": "All rights reserved",
+    // Subcriptions
+    "plan.free.title": "Free Plan",
+    "plan.pro.title": "Pro Plan",
+    "plan.premium.title": "Premium Plan",
+    "plan.free.feature.transcriptions":
+      "<strong>15 minutes</strong> of <strong>free</strong> transcriptions per month",
+    "plan.pro.feature.transcriptions":
+      "<strong>100 minutes</strong> of transcriptions per month",
+    "plan.premium.feature.transcriptions":
+      "<strong>Unlimited</strong> transcriptions per month",
+    "plan.feature.quota.same":
+      "Remaining quota in the <strong>same transcripted message</strong>",
+    "plan.feature.quota.separated":
+      "Remaining quota in a <strong>separated message</strong>",
+    "plan.feature.multilanguage": "Multilanguage transcriptions",
+    "plan.feature.support.basic": "<strong>Basic</strong> customer support",
+    "plan.feature.support.standard":
+      "<strong>Standard</strong> customer support",
+    "plan.feature.support.premium": "<strong>Premium</strong> customer support",
+    "plan.feature.processing.standard":
+      "<strong>Standard</strong> processing speed",
+    "plan.feature.processing.enhanced":
+      "<strong>Enhanced</strong> processing speed",
+    "plan.feature.processing.priority":
+      "<strong>Priority</strong> processing speed",
+    "plan.feature.webapp":
+      "Access to the web application to see your transcriptions",
+    // checkout
+    "checkout.verification.title": "WhatsApp number verification",
+    "checkout.verification.description":
+      "Let's do a quick verification to activate the subscription to the number you own.",
+    "checkout.verification.wanumber": "What is your Whatsapp number?",
+    "checkout.verification.wanumber.helper":
+      "Enter the WhatsApp number that will ge the subscription",
+    "checkout.verification.send": "Send verification code",
+    "checkout.verification.code": "Verification code",
+    "checkout.verification.code.enter":
+      "Enter the verification code sent to yout WhatsApp",
+    "checkout.verification.subscribe": "Verify and subscribe",
+    // Thank you
+    "thankyou.mainTitle": "Subscription Successful!",
+    "thankyou.mainDescription": "Thank you for your purchase. You have successfully subscribed to our plan.",
+    "thankyou.connect": "Let's connect",
+    "thankyou.backhome": "Go back home",
   },
   es: {
+    "global.startTranscribing": "Empieza a transcribir",
     "nav.howItWorks": "Cómo funciona",
     "nav.features": "Funcionalidades",
     "nav.pricing": "Precios",
@@ -65,10 +111,12 @@ export const ui = {
     "home.howItWorks.subtitle": "Tan simple como",
     "home.howItWorks.step-1.altImage": "Guardar nuestro contacto de WhatsApp",
     "home.howItWorks.step-1.title": "Guarda nuestro contacto de WhatsApp",
-    "home.howItWorks.step-1.body": "Mantennos cerca en tus contactos de WhatsApp.",
+    "home.howItWorks.step-1.body":
+      "Mantennos cerca en tus contactos de WhatsApp.",
     "home.howItWorks.step-2.altImage": "Reenviar nota de voz",
     "home.howItWorks.step-2.title": "Reenvíanos una nota de voz",
-    "home.howItWorks.step-2.body": "O simplemente envíanos un mensaje de audio por DM.",
+    "home.howItWorks.step-2.body":
+      "O simplemente envíanos un mensaje de audio por DM.",
     "home.howItWorks.step-3.altImage": "Espera tu audio transcrito",
     "home.howItWorks.step-3.title": "Espera tu audio transcrito",
     "home.howItWorks.step-3.body":
@@ -95,5 +143,48 @@ export const ui = {
     "footer.contact": "Contacto",
     "footer.language": "English",
     "footer.rights": "Todos los derechos reservados",
+    // Subcriptions
+    "plan.free.title": "Free Plan",
+    "plan.pro.title": "Pro Plan",
+    "plan.premium.title": "Premium Plan",
+    "plan.free.feature.transcriptions":
+      "<strong>15 minutos</strong> de transcripciones <strong>gratis</strong> por mes",
+    "plan.pro.feature.transcriptions":
+      "<strong>100 minutos</strong> de transcripciones por mes",
+    "plan.premium.feature.transcriptions":
+      "<strong>Minutos ilimitados</strong> de transcripciones por mes",
+    "plan.feature.quota.same":
+      "Cuota restante en el <strong>mismo mensaje</strong> de la transcripción",
+    "plan.feature.quota.separated":
+      "Cuota restante en un <strong>mensaje separado</strong> de la transcripción",
+    "plan.feature.multilanguage": "Transcripciones multilenguaje",
+    "plan.feature.support.basic": "Soporte <strong>Básico</strong>",
+    "plan.feature.support.standard": "Soporte <strong>Standard</strong>",
+    "plan.feature.support.premium": "Soporte <strong>Premium</strong>",
+    "plan.feature.processing.standard":
+      "Velocidad de procesamiento <strong>Standard</strong>",
+    "plan.feature.processing.enhanced":
+      "Velocidad de procesamiento <strong>Mejorada</strong>",
+    "plan.feature.processing.priority":
+      "Velocidad de procesamiento <strong>Prioritaria</strong>",
+    "plan.feature.webapp":
+      "Acceso a la aplicación web a ver tus transcripciones",
+    // checkout
+    "checkout.verification.title": "Verificación de número de WhatsApp",
+    "checkout.verification.description":
+      "Hagamos una breve verficación para activar la subcripción con tu número.",
+    "checkout.verification.wanumber": "¿Cuál es tu número de Whatsapp?",
+    "checkout.verification.wanumber.helper":
+      "Ingresa el número de WhatsApp que tendrá la subscripción",
+    "checkout.verification.send": "Enviar código de verificación",
+    "checkout.verification.code": "Código de verificación",
+    "checkout.verification.code.enter":
+      "Ingresa el código de verificación enviado a tu WhatsApp",
+    "checkout.verification.subscribe": "Verificar y suscribirse",
+    // Thank you
+    "thankyou.mainTitle": "¡Suscripción exitosa!",
+    "thankyou.mainDescription": "Gracias. Te has suscrito exitosamente a nuestro plan.",
+    "thankyou.connect": "Conéctate con nosotros",
+    "thankyou.backhome": "Regresar al inicio",
   },
 } as const;
