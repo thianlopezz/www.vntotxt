@@ -7,7 +7,7 @@ export const defaultLang = "en";
 
 export const ui = {
   en: {
-    "page.title": "WhatsApp Voice Notes To Text",
+    "page.title": "Convert your WhatsApp Voice Notes To Text",
     "page.description":
       "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.",
     "page.twitter.description":
@@ -103,7 +103,7 @@ export const ui = {
     "thankyou.backhome": "Go back home",
   },
   es: {
-    "page.title": "Notas de voz de WhatsApp a texto",
+    "page.title": "Convierte Notas de voz de WhatsApp a Texto",
     "page.description":
       "Descubre VnToTxt: Transforma tus notas de voz de WhatsApp en texto sin ningún esfuerzo. Únete y mejora tu comunicación y productividad con nuestro innovador servicio de transcripción.",
     "page.twitter.description":
