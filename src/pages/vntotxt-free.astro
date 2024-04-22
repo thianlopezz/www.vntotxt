@@ -177,6 +177,8 @@ const t = useTranslations(lang);
       "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
   });
 
+  // getIp(console.log);
+
   const info = document.querySelector(".alert-info");
   const error = document.querySelector(".alert-error");
 
@@ -292,12 +294,11 @@ const t = useTranslations(lang);
   }
 
   function getIp(callback) {
-    fetch("https://ipinfo.io/json?token=f59435832cc609", {
-      headers: { Accept: "application/json" },
-    })
+    fetch("https://ipinfo.io/json?token=f59435832cc609")
       .then((resp) => resp.json())
       .catch((e) => {
-        console.warn("Fail to get ipinfo", e);
+        debugger;
+        console.warn("Fail to get ipinfo", e.message);
         return {
           country: "us",
         };
