@@ -1,0 +1,47 @@
+---
+import { SEO } from "astro-seo";
+import ImageBro from "../../../public/voice-chat-bro.png";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { title = t("page.title"), description = t("page.description") } =
+  Astro.props;
+
+let siteUrl = Astro.request.url;
+siteUrl[siteUrl.length - 1] === "/"
+  ? (siteUrl = siteUrl.slice(0, -1))
+  : siteUrl;
+---
+
+<SEO
+  title={title}
+  description={description}
+  openGraph={{
+    basic: {
+      title,
+      type: "website",
+      image: siteUrl + ImageBro.src,
+    },
+  }}
+  twitter={{
+    creator: "@thianlopezz",
+  }}
+  extend={{
+    // extending the default link tags
+    link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
+    // extending the default meta tags
+    meta: [
+      {
+        name: "twitter:image",
+        content: siteUrl + ImageBro.src,
+      },
+      { name: "twitter:title", content: title },
+      {
+        name: "twitter:description",
+        content: t("page.twitter.description"),
+      },
+    ],
+  }}
+/>

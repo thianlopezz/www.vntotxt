@@ -7,6 +7,11 @@ export const defaultLang = "en";
 
 export const ui = {
   en: {
+    "page.title": "WhatsApp Voice Notes To Text",
+    "page.description":
+      "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.",
+    "page.twitter.description":
+      "Discover how VnToTxt can revolutionize your productivity by turning WhatsApp voice messages into text. Start now for enhanced communication.",
     "global.startTranscribing": "Start transcribing",
     "nav.howItWorks": "How it works",
     "nav.features": "Features",
@@ -92,11 +97,17 @@ export const ui = {
     "checkout.verification.subscribe": "Verify and subscribe",
     // Thank you
     "thankyou.mainTitle": "Subscription Successful!",
-    "thankyou.mainDescription": "Thank you for your purchase. You have successfully subscribed to our plan.",
+    "thankyou.mainDescription":
+      "Thank you for your purchase. You have successfully subscribed to our plan.",
     "thankyou.connect": "Let's connect",
     "thankyou.backhome": "Go back home",
   },
   es: {
+    "page.title": "Notas de voz de WhatsApp a texto",
+    "page.description":
+      "Descubre VnToTxt: Transforma tus notas de voz de WhatsApp en texto sin ningún esfuerzo. Únete y mejora tu comunicación y productividad con nuestro innovador servicio de transcripción.",
+    "page.twitter.description":
+      "Descubre como VnToTxt puede revolucionar tu productividad convirtiendo notas de voz de WhatsApp en texto. Empiza ahora y mejora tu comunicación",
     "global.startTranscribing": "Empieza a transcribir",
     "nav.howItWorks": "Cómo funciona",
     "nav.features": "Funcionalidades",
@@ -183,7 +194,8 @@ export const ui = {
     "checkout.verification.subscribe": "Verificar y suscribirse",
     // Thank you
     "thankyou.mainTitle": "¡Suscripción exitosa!",
-    "thankyou.mainDescription": "Gracias. Te has suscrito exitosamente a nuestro plan.",
+    "thankyou.mainDescription":
+      "Gracias. Te has suscrito exitosamente a nuestro plan.",
     "thankyou.connect": "Conéctate con nosotros",
     "thankyou.backhome": "Regresar al inicio",
   },

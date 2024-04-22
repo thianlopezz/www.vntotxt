@@ -1,14 +1,13 @@
 ---
-import { SEO } from "astro-seo";
 import { getRelativeLocaleUrlList } from "astro:i18n";
-import { getLangFromUrl } from "../i18n/utils";
-import ImageBro from "../../public/voice-chat-bro.png";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
 import Analytics from "../components/common/Analytics.astro";
+import HeadSeo from "../components/common/HeadSeo.astro";
+import HeadAssets from "../components/common/HeadAssets.astro";
 
-const descriptionDefault =
-  "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.";
+const lang = getLangFromUrl(Astro.url);
 
 interface Props {
   language: string;
@@ -16,94 +15,26 @@ interface Props {
   description?: string;
 }
 
-const { language, title, description = descriptionDefault } = Astro.props;
-
-let siteUrl = Astro.request.url;
-siteUrl[siteUrl.length - 1] === "/"
-  ? (siteUrl = siteUrl.slice(0, -1))
-  : siteUrl;
+const { language, title, description } = Astro.props;
 
 const localeUrls = getRelativeLocaleUrlList();
-
-const lang = getLangFromUrl(Astro.url);
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
-    <SEO
-      title={title}
-      description={description}
-      openGraph={{
-        basic: {
-          title,
-          type: "website",
-          image: siteUrl + ImageBro.src,
-        },
-      }}
-      twitter={{
-        creator: "@thianlopezz",
-      }}
-      extend={{
-        // extending the default link tags
-        link: [{ rel: "icon", type: "image/svg+xml", href: "/favicon.svg" }],
-        // extending the default meta tags
-        meta: [
-          {
-            name: "twitter:image",
-            content: siteUrl + ImageBro.src,
-          },
-          { name: "twitter:title", content: title },
-          {
-            name: "twitter:description",
-            content:
-              "Discover how VnToTxt can revolutionize your productivity by turning WhatsApp voice messages into text. Start now for enhanced communication.",
-          },
-        ],
-      }}
-    />
+    <HeadSeo title={title} description={description} />
     <meta charset="UTF-8" />
     <!-- <meta name="description" content="Astro description" /> -->
     <meta name="viewport" content="width=device-width" />
     <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="generator" content={Astro.generator} />
     <!-- <title>{title}</title> -->
-    <link
-      rel="preload"
-      href="/fonts/Ubuntu-Bold.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Ubuntu-Light.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Ubuntu-Medium.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href="/fonts/Ubuntu-Regular.ttf"
-      as="font"
-      type="font/ttf"
-      crossorigin
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
-    />
     <meta
       http-equiv="refresh"
       content={"0;url=/" + language == "en" ? "/" : language + "/"}
     />
+    <HeadAssets />
     <Analytics id="G-MNQ9N548LW" partytown={true} />
   </head>
   <body data-theme="default" class="bg-neutral">
