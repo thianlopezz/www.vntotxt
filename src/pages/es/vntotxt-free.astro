@@ -47,6 +47,7 @@ const t = useTranslations(lang);
       </div>
     </main>
     <div
+      id="checkoutVerification"
       class="flex-col justify-center py-6 px-4 md:px-20 md:flex md:w-1/2 bg-secondary"
     >
       <div class="my-20 md:my-0 mx-auto w-full sm:w-4/5 md:max-w-xs">
@@ -156,24 +157,38 @@ const t = useTranslations(lang);
   // const VNTOTXT_API =
   //   "https://super-barnacle-pjw6wp6qwjjfrxqx-3000.app.github.dev";
 
+  window.onload = function () {
+    // scroll to checkoutVerification
+    const checkoutVerification = document.querySelector(
+      "#checkoutVerification",
+    );
+    if (checkoutVerification) {
+      checkoutVerification.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const verifyWaForm = document.querySelector("#verifyWaForm");
   const verifyCodeForm = document.querySelector("#verifyCodeForm");
   const divWaVerifyButton = document.querySelector("#divWaVerifyButton");
   const subscriptionRequestIdInput = document.querySelector(
-    "#subscriptionRequestIdInput"
+    "#subscriptionRequestIdInput",
   );
 
   const loadingSendVerificationCode = document.querySelector(
-    "#loadingSendVerificationCode"
+    "#loadingSendVerificationCode",
   );
 
   const loadingVerification = document.querySelector("#loadingVerification");
 
   const phoneInputField = document.querySelector("#phone");
   const phoneInput = window.intlTelInput(phoneInputField, {
+    initialCountry: "auto",
+    geoIpLookup: getIp,
     utilsScript:
       "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
   });
+
+  // getIp(console.log);
 
   const info = document.querySelector(".alert-info");
   const error = document.querySelector(".alert-error");
@@ -243,7 +258,7 @@ const t = useTranslations(lang);
     event.preventDefault();
 
     const verificationCode = document.querySelector(
-      "#verificationCodeInput"
+      "#verificationCodeInput",
     ).value;
     const subscriptionRequestId = subscriptionRequestIdInput.value;
 
@@ -269,8 +284,7 @@ const t = useTranslations(lang);
         const { success, data, message } = response;
         if (success) {
           phoneInputField.disabled = true;
-          window.location.href =
-            "/subscription-success/?subscriptionId=" + data.subscriptionId;
+          window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionId=${data.subscriptionId}`;
         } else {
           error.style.display = "";
           errorText.innerHTML = message;
@@ -287,5 +301,21 @@ const t = useTranslations(lang);
     }
 
     loadingVerification.style.display = "none";
+  }
+
+  function getIp(callback) {
+    fetch("https://ipinfo.io/json?token=f59435832cc609", {
+      headers: { Accept: "application/json" },
+    })
+      .then((resp) => resp.json())
+      .catch((e) => {
+        console.warn("Fail to get ipinfo", e.message);
+        return {
+          country: "us",
+        };
+      })
+      .then((resp) => {
+        callback(resp.country);
+      });
   }
 </script>
