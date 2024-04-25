@@ -47,6 +47,7 @@ const t = useTranslations(lang);
       </div>
     </main>
     <div
+      id="checkoutVerification"
       class="flex-col justify-center py-6 px-4 md:px-20 md:flex md:w-1/2 bg-secondary"
     >
       <div class="my-20 md:my-0 mx-auto w-full sm:w-4/5 md:max-w-xs">
@@ -156,15 +157,25 @@ const t = useTranslations(lang);
   // const VNTOTXT_API =
   //   "https://super-barnacle-pjw6wp6qwjjfrxqx-3000.app.github.dev";
 
+  window.onload = function () {
+    // scroll to checkoutVerification
+    const checkoutVerification = document.querySelector(
+      "#checkoutVerification",
+    );
+    if (checkoutVerification) {
+      checkoutVerification.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   const verifyWaForm = document.querySelector("#verifyWaForm");
   const verifyCodeForm = document.querySelector("#verifyCodeForm");
   const divWaVerifyButton = document.querySelector("#divWaVerifyButton");
   const subscriptionRequestIdInput = document.querySelector(
-    "#subscriptionRequestIdInput"
+    "#subscriptionRequestIdInput",
   );
 
   const loadingSendVerificationCode = document.querySelector(
-    "#loadingSendVerificationCode"
+    "#loadingSendVerificationCode",
   );
 
   const loadingVerification = document.querySelector("#loadingVerification");
@@ -247,7 +258,7 @@ const t = useTranslations(lang);
     event.preventDefault();
 
     const verificationCode = document.querySelector(
-      "#verificationCodeInput"
+      "#verificationCodeInput",
     ).value;
     const subscriptionRequestId = subscriptionRequestIdInput.value;
 
