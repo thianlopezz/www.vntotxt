@@ -25,7 +25,7 @@ export const GET: APIRoute = async () => {
   )
 
   const manifest = {
-    name: t('page.title'),
+    name: "vntotxt",
     description: t('page.description'),
     start_url: '/',
     display: 'standalone',
