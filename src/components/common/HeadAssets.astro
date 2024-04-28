@@ -1,3 +1,17 @@
+---
+import { getImage } from 'astro:assets'
+import faviconSrc from '../../../public/logo.png';
+import faviconSvgSrc from '../../../public/logo.svg';
+
+const appleTouchIcon = await getImage({
+  src: faviconSrc,
+  width: 180,
+  height: 180,
+  format: 'png'
+})
+const faviconSvg = await getImage({ src: faviconSvgSrc, format: 'svg' })
+---
+
 <link
   rel="preload"
   href="/fonts/Ubuntu-Bold.ttf"
@@ -30,3 +44,7 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css"
 />
+<link rel="icon" href="/favicon.ico" sizes="32x32" />
+<link rel="icon" href={faviconSvg.src} type="image/svg+xml" />
+<link rel="apple-touch-icon" href={appleTouchIcon.src} />
+<link rel="manifest" href="/manifest.json" />

@@ -17,6 +17,7 @@
     "astro": "^4.5.16",
     "astro-seo": "^0.8.3",
     "boxicons": "^2.1.4",
+    "sharp-ico": "^0.1.5",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.4"
   },
