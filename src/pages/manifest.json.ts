@@ -8,7 +8,6 @@ const t = useTranslations("en");
 const faviconPngSizes = [192, 512]
 
 export const GET: APIRoute = async () => {
-  console.log('aaass');
   const icons = await Promise.all(
     faviconPngSizes.map(async (size) => {
       const image = await getImage({
