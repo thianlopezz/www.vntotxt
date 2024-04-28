@@ -1,0 +1,35 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+interface Props {
+  _class?: string;
+}
+
+const { _class } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class=`flex justify-start ${_class}`>
+    <div
+        class="flex flex-col gap-2 w-11/12 leading-1.5 p-4 border-gray-200 bg-lime-50 rounded-e-xl rounded-es-xl"
+    >
+        <div class="flex items-center space-x-2 rtl:space-x-reverse">
+            <p>
+                {t('featurePhone.transcription')}
+            </p>
+        </div>
+        <div class="flex justify-between">
+            <span class="text-xs text-gray-400"></span>
+            <span class="text-xs text-gray-400"
+                >{
+                    new Date().toLocaleTimeString("en-US", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                    })
+                }</span
+            >
+        </div>
+    </div>
+</div>

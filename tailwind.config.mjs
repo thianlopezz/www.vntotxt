@@ -8,6 +8,13 @@ export default {
         // sans: [...defaultTheme.fontFamily.sans],
         ubuntu: ['Ubuntu', ...defaultTheme.fontFamily.sans],
       },
+      scale: {
+          '-100': '-1',
+      },
+      animation: {
+        popup: 'popup 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
+        'fade-in-up': 'fadeInUp 0.8s ease-out both'
+      }
     },
   },
   daisyui: {

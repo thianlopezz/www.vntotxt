@@ -1,5 +1,7 @@
 ---
+import Image from "astro/components/Image.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Logo from "../../public/logo_transparent_540.png";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -25,14 +27,19 @@ const t = useTranslations(lang);
       <ul
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
-        <li><a aria-label="how it works" href="#how-it-works">{t("nav.howItWorks")}</a></li>
-        <li><a aria-label="features"href="#features">{t("nav.features")}</a></li>
+        <li>
+          <a aria-label="how it works" href="#how-it-works"
+            >{t("nav.howItWorks")}</a>
+        </li>
+        <li>
+          <a aria-label="features" href="#features">{t("nav.features")}</a>
+        </li>
         <li><a aria-label="pricing" href="#pricing">{t("nav.pricing")}</a></li>
       </ul>
     </div>
-    <a href={`${lang == "es" ? "/es" : "/"}`} class="btn btn-ghost text-xl"
-      >VnToTxt</a
-    >
+    <a href={`${lang == "es" ? "/es" : "/"}`} class="btn btn-ghost text-xl">
+      <Image src={Logo} alt="VnToText Logo" class="w-10" />
+    </a>
   </div>
   <div class="navbar-end hidden lg:flex">
     <ul class="menu menu-horizontal px-1">

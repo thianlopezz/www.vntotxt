@@ -20,12 +20,12 @@ export const ui = {
     "home.mainTitle.2": "voice notes",
     "home.mainTitle.3": "now",
     "home.mainDescription":
-      "Instantly convert your WhatsApp voice messages into text with a single forward.",
+      "Instantly convert your WhatsApp voice messages into text with a single forward, our Bot will help you.",
     "home.mainCallToAction": "Get started!",
     "home.howItWorks.title": "How it works",
     "home.howItWorks.subtitle": "As simple as",
     "home.howItWorks.step-1.altImage": "Save WhatsApp contact",
-    "home.howItWorks.step-1.title": "Save our contact",
+    "home.howItWorks.step-1.title": "Save our WhatsApp Bot contact",
     "home.howItWorks.step-1.body": "Keep us close in your WhatsApp contacts.",
     "home.howItWorks.step-2.altImage": "Forward voice note",
     "home.howItWorks.step-2.title": "Forward us a voice note",
@@ -101,6 +101,8 @@ export const ui = {
       "Thank you for your purchase. You have successfully subscribed to our plan.",
     "thankyou.connect": "Let's connect",
     "thankyou.backhome": "Go back home",
+    // feature phone
+    "featurePhone.transcription" : "Hope you've been doing well! I was wondering if you're free this weekend and up for some fun. I thought it might be nice to catch up, maybe grab a bite to eat at that new place we talked about last time, and then possibly catch a movie or stroll around downtown if the weather’s nice."
   },
   es: {
     "page.title": "Convierte Notas de voz de WhatsApp a Texto",
@@ -198,5 +200,7 @@ export const ui = {
       "Gracias. Te has suscrito exitosamente a nuestro plan.",
     "thankyou.connect": "Conéctate con nosotros",
     "thankyou.backhome": "Regresar al inicio",
+    // feature phone
+    "featurePhone.transcription" : "¡Espero que estés bien! Me preguntaba si estarás libre este fin de semana y si te apetece hacer algo divertido. Pensé que podría ser genial ponernos al día, quizás comer algo en ese nuevo lugar del que hablamos la última vez, y luego podríamos ver una película o dar un paseo por el centro si el clima es bueno."
   },
 } as const;
