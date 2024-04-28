@@ -118,12 +118,12 @@ export const ui = {
     "home.mainTitle.2": "notas de voz",
     "home.mainTitle.3": "ahora",
     "home.mainDescription":
-      "Convierte tus mensajes de voz de WhatsApp en texto instantáneamente con solo reenviarlos.",
+      "Convierte tus mensajes de voz de WhatsApp en texto instantáneamente con solo reenviarlos, nuestro Bot te ayuda.",
     "home.mainCallToAction": "Empezar ya!",
     "home.howItWorks.title": "Cómo funciona",
     "home.howItWorks.subtitle": "Tan simple como",
     "home.howItWorks.step-1.altImage": "Guardar nuestro contacto de WhatsApp",
-    "home.howItWorks.step-1.title": "Guarda nuestro contacto de WhatsApp",
+    "home.howItWorks.step-1.title": "Guarda el contacto de nuestro Bot de WhatsApp",
     "home.howItWorks.step-1.body":
       "Mantennos cerca en tus contactos de WhatsApp.",
     "home.howItWorks.step-2.altImage": "Reenviar nota de voz",
