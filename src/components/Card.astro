@@ -16,7 +16,7 @@ const { image, altImage = "", number, title, body } = Astro.props;
   {
     image && (
       <figure>
-        <Image class="w-2/3" src={image} alt={altImage} />
+        <Image class="w-2/3" src={image} alt={altImage} loading="eager" />
       </figure>
     )
   }
