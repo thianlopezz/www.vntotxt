@@ -89,7 +89,7 @@ export const ui = {
       "Let's do a quick verification to activate the subscription to the number you own.",
     "checkout.verification.wanumber": "What is your Whatsapp number?",
     "checkout.verification.wanumber.helper":
-      "Enter the WhatsApp number that will ge the subscription",
+      "Enter the WhatsApp number that will get the subscription",
     "checkout.verification.send": "Send verification code",
     "checkout.verification.code": "Verification code",
     "checkout.verification.code.enter":
