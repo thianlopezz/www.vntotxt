@@ -8,7 +8,7 @@ interface Props {
   title: string;
   price?: string;
   checkoutLink?: string;
-  commingText?: string;
+  comingText?: string;
   subscribeText?: string;
   features: Feature[];
 }
@@ -18,7 +18,7 @@ const {
   price,
   features,
   checkoutLink,
-  commingText = "Comming soon",
+  comingText = "Comingsoon",
   subscribeText = "Subscribe",
 } = Astro.props;
 ---
@@ -33,7 +33,7 @@ const {
           <small class="text-lg">/month</small>
         </h4>
       ) : (
-        <h4 class="text-2xl font-bold mb-1 text-gray-600">{commingText}</h4>
+        <h4 class="text-2xl font-bold mb-1 text-gray-600">{comingText}</h4>
       )
     }
     <table class="table">
