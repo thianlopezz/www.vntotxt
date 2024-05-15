@@ -1,56 +1,459 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CardSubscription from "../components/CardSubscription.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
+const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
+const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
+
+console.log(VNTOTXT_API);
 ---
 
-<Layout language="en" title="VnToTxt Pro Plan">
-  <main>
-    <section class="container md:flex h-screen mx-auto">
-      <div class="w-full md:w-1/2 p-10 flex flex-col justify-center">
-        <h1 class="text-4xl md:text-5xl mb-4 text-center md:text-justify">
-          Transform your <br /> voice notes <br /> now 🔈
-        </h1>
-        <p class="mb-2 text-center md:text-justify text-xl">
-          Instantly convert your WhatsApp voice messages into text with a single
-          forward.
-        </p>
-        <p class="mb-4 text-center md:text-justify text-xl">
-          Start making your conversations more accessible and searchable with
-          VnToTxt.
-        </p>
-        <div class="flex pt-3 md:pt-0">
-          <a
-            class="btn btn-primary m-auto md:m-0"
-            href="https://api.whatsapp.com/send?phone=593967960981"
-            >Get started <span class="text-xl">😎</span></a
-          >
+<Layout language={lang} title="Vntotxt PRO Plan">
+  <section class="md:flex md:h-screen">
+    <main class="flex-col w-full pt-5 pb-10 md:w-1/2">
+      <div class="px-10 py-5 text-sm breadcrumbs">
+        <ul>
+          <li><a href={`${lang == "es" ? "/es" : "/"}`}>Home</a></li>
+          <li>Vntotxt PRO</li>
+        </ul>
+      </div>
+      <div class="flex justify-center py-5">
+        <CardSubscription
+          title={t("plan.pro.title")}
+          features={[
+            {
+              description: t("plan.pro.feature.transcriptions"),
+              included: true,
+            },
+            {
+              description: t("plan.feature.quota.separated"),
+              included: true,
+            },
+            { description: t("plan.feature.multilanguage"), included: true },
+            {
+              description: t("plan.feature.support.standard"),
+              included: true,
+            },
+            {
+              description: t("plan.feature.processing.enhanced"),
+              included: true,
+            },
+            {
+              description: t("plan.feature.webapp"),
+              included: true,
+            },
+          ]}
+        />
+      </div>
+    </main>
+    <div
+      id="checkoutVerification"
+      class="flex-col justify-center py-6 px-4 md:px-20 md:flex md:w-1/2 bg-secondary"
+    >
+      <div class="my-20 md:my-0 mx-auto w-full sm:w-4/5 md:max-w-xs">
+        <div class="alert alert-info mb-4 text-base-100" style="display: none;">
+          <i class="bx bx-info-circle"></i>
+          <span></span>
         </div>
+        <div
+          class="alert alert-error mb-4 text-base-100"
+          style="display: none;"
+        >
+          <i class="bx bxs-error-circle"></i>
+          <span></span>
+        </div>
+        <div id="checkoutHeading">
+          <h1 class="text-3xl font-ubuntu">
+            {t("checkout.verification.title")}
+          </h1>
+          <p class="mb-6">
+            {t("checkout.verification.description")}
+          </p>
+        </div>
+        <div style="display: none" id="paymentHeading">
+          <h1 class="text-3xl font-ubuntu">Checkout</h1>
+          <p class="mb-6">Please proceed with the Paypal payment</p>
+        </div>
+        <form
+          id="verifyWaForm"
+          onsubmit="sendVerificationCodeProcess(event)"
+          class="w-full mx-auto md:max-w-xs"
+        >
+          <label class="form-control w-full md:max-w-xs">
+            <div class="label">
+              <span class="label-text"
+                >{t("checkout.verification.wanumber")}</span
+              >
+              <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+              id="phone"
+              type="tel"
+              name="phone"
+              class="input input-bordered w-full md:max-w-xs"
+              required
+            />
+            <div class="label">
+              <span class="label-text-alt"
+                >{t("checkout.verification.wanumber.helper")}</span
+              >
+              <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+          </label>
+          <div id="divWaVerifyButton" class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+              >{t("checkout.verification.send")}
+              <span
+                style="display: none"
+                id="loadingSendVerificationCode"
+                class="loading loading-spinner"></span>
+            </button>
+          </div>
+        </form>
+        <!-- style="display: none" -->
+        <form
+          style="display: none"
+          id="verifyCodeForm"
+          onsubmit="verificationCodeProcess(event)"
+          class="mx-auto"
+        >
+          <input
+            id="subscriptionRequestIdInput"
+            type="hidden"
+            name="subscriptionRequestId"
+          />
+          <label class="form-control w-full md:max-w-xs">
+            <div class="label">
+              <span class="label-text">{t("checkout.verification.code")}</span>
+              <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+              id="verificationCodeInput"
+              type="text"
+              name="verificationCode"
+              class="input input-bordered w-full md:max-w-xs"
+              required
+            />
+            <div class="label">
+              <span class="label-text-alt"
+                >{t("checkout.verification.code.enter")}</span
+              >
+              <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+          </label>
+          <div class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+              >{t("checkout.verification.subscribe")}
+              <span
+                style="display: none"
+                id="loadingVerification"
+                class="loading loading-spinner"></span>
+            </button>
+          </div>
+        </form>
+        <!-- <div style="display: none" id="paypal-button-container-P-0PC67333FG471260VMY42XTY"></div> -->
+        <div
+          style="display: none"
+          id={"paypal-button-container-" + PAYPAL_PRO_PLAN_ID}
+        >
+        </div>
+        <input type="hidden" id="requestId" />
       </div>
-      <div class="md:flex md:w-1/2 flex-col justify-center py-10">
-        <div id="paypal-button-container"></div>
-      </div>
-    </section>
-  </main>
+    </div>
+  </section>
 </Layout>
 
 <script
   is:inline
-  src="https://www.paypal.com/sdk/js?client-id=AWv1dYyq_AlE6G7h2JcYVpFuaQvSgXyIGQtPlGCP-PWGdfAYFo0gNutAtODkjRxQsRDXzB7u5sHp2QPg&vault=true&intent=subscription"
+  src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"
 ></script>
-<script is:inline>
+
+<script
+  type="module"
+  src={`https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&vault=true&intent=subscription`}
+  data-sdk-integration-source="button-factory"></script>
+
+<script
+  is:inline
+  type="module"
+  define:vars={{ VNTOTXT_API, PAYPAL_CLIENT_ID, PAYPAL_PRO_PLAN_ID }}
+>
+  const lang = "en";
+
+  let verifyWaForm;
+  let verifyCodeForm;
+
+  let divWaVerifyButton;
+
+  let checkoutHeading;
+  let paymentHeading;
+
+  let subscriptionRequestIdInput;
+
+  let phoneInputField;
+  let phoneInput;
+
+  let paypalDiv;
+
+  let info;
+  let error;
+  let infoText;
+  let errorText;
+
+  let loadingSendVerificationCode;
+  let loadingVerification;
+
   window.onload = function () {
-    // Render the PayPal button into #paypal-button-container
-    paypal
-      .Buttons({
-        createSubscription: function (data, actions) {
-          return actions.subscription.create({
-            plan_id: "P-3D548772MF324970XMYOLQDA", // Creates the subscription
-          });
-        },
-        onApprove: function (data, actions) {
-          debugger;
-          alert("You have successfully subscribed to " + data.subscriptionID); // Optional message given to subscriber
-        },
-      })
-      .render("#paypal-button-container"); // Renders the PayPal button
+    // scroll to checkoutVerification
+    const checkoutVerification = document.querySelector(
+      "#checkoutVerification",
+    );
+    if (checkoutVerification) {
+      checkoutVerification.scrollIntoView({ behavior: "smooth" });
+    }
+
+    instanceDocComponents();
+
+    // Attach event listeners after the DOM is fully loaded
+    // const verifyWaForm = document.querySelector("#verifyWaForm");
+    verifyWaForm.addEventListener("submit", sendVerificationCodeProcess);
+
+    // const verifyCodeForm = document.querySelector("#verifyCodeForm");
+    verifyCodeForm.addEventListener("submit", verificationCodeProcess);
   };
+
+  function instanceDocComponents() {
+    verifyWaForm = document.querySelector("#verifyWaForm");
+    verifyCodeForm = document.querySelector("#verifyCodeForm");
+
+    divWaVerifyButton = document.querySelector("#divWaVerifyButton");
+
+    checkoutHeading = document.querySelector("#checkoutHeading");
+    paymentHeading = document.querySelector("#paymentHeading");
+
+    subscriptionRequestIdInput = document.querySelector(
+      "#subscriptionRequestIdInput",
+    );
+
+    // const paypalDiv = document.querySelector("#paypal-button-container-P-0PC67333FG471260VMY42XTY");
+    paypalDiv = document.querySelector(
+      "#paypal-button-container-" + PAYPAL_PRO_PLAN_ID,
+    );
+
+    info = document.querySelector(".alert-info");
+    error = document.querySelector(".alert-error");
+
+    infoText = document.querySelector(".alert-info span");
+    errorText = document.querySelector(".alert-error span");
+
+    loadingSendVerificationCode = document.querySelector(
+      "#loadingSendVerificationCode",
+    );
+
+    loadingVerification = document.querySelector("#loadingVerification");
+
+    phoneInputField = document.querySelector("#phone");
+    phoneInput = window.intlTelInput(phoneInputField, {
+      initialCountry: "auto",
+      geoIpLookup: getIp,
+      utilsScript:
+        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
+    });
+  }
+
+  async function sendVerificationCodeProcess(event) {
+    event.preventDefault();
+
+    info.style.display = "none";
+    error.style.display = "none";
+
+    if (phoneInput.isValidNumber()) {
+      const phoneNumber = phoneInput.getNumber();
+      const waId = phoneNumber.replace("+", "");
+
+      loadingSendVerificationCode.style.display = "";
+      phoneInputField.disabled = true;
+
+      try {
+        let response = await fetch(VNTOTXT_API + "/v1/request-subscription", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            waId,
+            tierId: 2,
+          }),
+        });
+
+        if (response.ok) {
+          response = await response.json();
+          const { success, data, message } = response;
+          if (success) {
+            divWaVerifyButton.style.display = "none";
+            verifyCodeForm.style.display = "";
+            subscriptionRequestIdInput.value = data.subscriptionRequestId;
+          } else {
+            phoneInputField.disabled = false;
+            error.style.display = "";
+            errorText.innerHTML = message;
+          }
+        } else {
+          phoneInputField.disabled = false;
+          error.style.display = "";
+          errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+        }
+      } catch (e) {
+        phoneInputField.disabled = false;
+        error.style.display = "";
+        errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+        loadingSendVerificationCode.style.display = "none";
+        console.error(e);
+      }
+
+      loadingSendVerificationCode.style.display = "none";
+    } else {
+      error.style.display = "";
+      errorText.innerHTML = `Invalid phone number.`;
+    }
+  }
+
+  async function verificationCodeProcess(event) {
+    event.preventDefault();
+
+    const verificationCode = document.querySelector(
+      "#verificationCodeInput",
+    ).value;
+    const subscriptionRequestId = subscriptionRequestIdInput.value;
+
+    info.style.display = "none";
+    error.style.display = "none";
+
+    loadingVerification.style.display = "";
+
+    try {
+      let response = await fetch(VNTOTXT_API + "/v1/verify-request", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subscriptionRequestId,
+          pin: verificationCode,
+        }),
+      });
+
+      if (response.ok) {
+        response = await response.json();
+        const { success, data, message } = response;
+        if (success) {
+          phoneInputField.disabled = true;
+          // window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionId=${data.subscriptionId}`;
+          verifyCodeForm.style.display = "none";
+          checkoutHeading.style.display = "none";
+          verifyWaForm.style.display = "none";
+          paymentHeading.style.display = "";
+          paypalDiv.style.display = "";
+
+          subscriptionRequestIdInput.value = data.subscriptionRequestId;
+        } else {
+          error.style.display = "";
+          errorText.innerHTML = message;
+        }
+      } else {
+        error.style.display = "";
+        errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+      }
+    } catch (e) {
+      error.style.display = "";
+      errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+      loadingVerification.style.display = "none";
+      console.error(e);
+    }
+
+    loadingVerification.style.display = "none";
+  }
+
+  async function confirmPurchase(paypalSubscription) {
+    const subscriptionRequestId = subscriptionRequestIdInput.value;
+    // const subscriptionRequestId = 1;
+
+    try {
+      let response = await fetch(VNTOTXT_API + "/v1/confirm-purchase", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          subscriptionRequestId,
+          paypalSubscription,
+          lang,
+        }),
+      });
+
+      if (response.ok) {
+        response = await response.json();
+        const { success, data, message } = response;
+        if (success) {
+          window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?orderID=${paypalSubscription.orderID}&subscriptionID=${paypalSubscription.subscriptionID}`;
+        } else {
+          error.style.display = "";
+          errorText.innerHTML = message;
+        }
+      } else {
+        error.style.display = "";
+        errorText.innerHTML = `There was an error validating your subscription. Please try again.`;
+      }
+    } catch (e) {
+      error.style.display = "";
+      errorText.innerHTML = `There was an error validating your subscription. Please try again.`;
+      loadingVerification.style.display = "none";
+      console.error(e);
+    }
+  }
+
+  function getIp(callback) {
+    fetch("https://ipinfo.io/json?token=f59435832cc609", {
+      headers: { Accept: "application/json" },
+    })
+      .then((resp) => resp.json())
+      .catch((e) => {
+        console.warn("Fail to get ipinfo", e.message);
+        return {
+          country: "us",
+        };
+      })
+      .then((resp) => {
+        callback(resp.country);
+      });
+  }
+
+  paypal
+    .Buttons({
+      style: {
+        shape: "rect",
+        color: "black",
+        layout: "vertical",
+        label: "subscribe",
+      },
+      createSubscription: function (data, actions) {
+        return actions.subscription.create({
+          /* Creates the subscription */
+          // plan_id: "P-0PC67333FG471260VMY42XTY", // PROD
+          plan_id: PAYPAL_PRO_PLAN_ID, // TEST
+        });
+      },
+      onApprove: function (data, actions) {
+        // alert(data.subscriptionID); // You can add optional success message for the subscriber here
+        confirmPurchase(data)
+          .then(() => console.log("Purchase confirmed"))
+          .error(console.error);
+      },
+    })
+    // .render("#paypal-button-container-P-0PC67333FG471260VMY42XTY"); // Renders the PayPal button
+    .render("#paypal-button-container-" + PAYPAL_PRO_PLAN_ID); // Renders the PayPal button
 </script>
