@@ -11,7 +11,7 @@ export default defineConfig({
     }),
     partytown({
       config: {
-        forward: ["dataLayer.push"]
+        forward: ["dataLayer.push"],
       },
     }),
   ],
@@ -21,4 +21,9 @@ export default defineConfig({
     prefixDefaultLocale: true,
     redirectToDefaultLocale: true,
   },
+  vite: {
+    define: {
+      'process.env': process.env
+    }
+  }
 });
