@@ -1,0 +1,110 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+    paypalPlanId: string;
+}
+
+const { paypalPlanId } = Astro.props;
+---
+
+<div class="my-20 md:my-0 mx-auto w-full sm:w-4/5 md:max-w-xs">
+    <div class="alert alert-info mb-4 text-base-100" style="display: none;">
+        <i class="bx bx-info-circle"></i>
+        <span></span>
+    </div>
+    <div class="alert alert-error mb-4 text-base-100" style="display: none;">
+        <i class="bx bxs-error-circle"></i>
+        <span></span>
+    </div>
+    <div id="checkoutHeading">
+        <h1 class="text-3xl font-ubuntu">
+            {t("checkout.verification.title")}
+        </h1>
+        <p class="mb-6">
+            {t("checkout.verification.description")}
+        </p>
+    </div>
+    <div style="display: none" id="paymentHeading">
+        <h1 class="text-3xl font-ubuntu">Checkout</h1>
+        <p class="mb-6">
+            {t("checkout.paypal.description")}
+        </p>
+    </div>
+    <form id="verifyWaForm" class="w-full mx-auto md:max-w-xs">
+        <label class="form-control w-full md:max-w-xs">
+            <div class="label">
+                <span class="label-text"
+                    >{t("checkout.verification.wanumber")}</span
+                >
+                <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+                id="phone"
+                type="tel"
+                name="phone"
+                class="input input-bordered w-full md:max-w-xs"
+                required
+            />
+            <div class="label">
+                <span class="label-text-alt"
+                    >{t("checkout.verification.wanumber.helper")}</span
+                >
+                <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+        </label>
+        <div id="divWaVerifyButton" class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+                >{t("checkout.verification.send")}
+                <span
+                    style="display: none"
+                    id="loadingSendVerificationCode"
+                    class="loading loading-spinner"></span>
+            </button>
+        </div>
+    </form>
+    <!-- style="display: none" -->
+    <form style="display: none" id="verifyCodeForm" class="mx-auto">
+        <input
+            id="subscriptionRequestIdInput"
+            type="hidden"
+            name="subscriptionRequestId"
+        />
+        <label class="form-control w-full md:max-w-xs">
+            <div class="label">
+                <span class="label-text">{t("checkout.verification.code")}</span
+                >
+                <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+                id="verificationCodeInput"
+                type="text"
+                name="verificationCode"
+                class="input input-bordered w-full md:max-w-xs"
+                required
+            />
+            <div class="label">
+                <span class="label-text-alt"
+                    >{t("checkout.verification.code.enter")}</span
+                >
+                <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+        </label>
+        <div class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+                >{t("checkout.verification.verify")}
+                <span
+                    style="display: none"
+                    id="loadingVerification"
+                    class="loading loading-spinner"></span>
+            </button>
+        </div>
+    </form>
+    <!-- <div style="display: none" id="paypal-button-container-P-0PC67333FG471260VMY42XTY"></div> -->
+    <div style="display: none" id={"paypal-button-container-" + paypalPlanId}>
+    </div>
+    <input type="hidden" id="requestId" />
+</div>

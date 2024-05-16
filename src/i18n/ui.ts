@@ -60,6 +60,7 @@ export const ui = {
     "plan.free.title": "Free Plan",
     "plan.pro.title": "Pro Plan",
     "plan.premium.title": "Premium Plan",
+    "plan.feature.trial": "<strong>Free</strong> 30-day trial period",
     "plan.free.feature.transcriptions":
       "<strong>15 minutes</strong> of <strong>free</strong> transcriptions per month",
     "plan.pro.feature.transcriptions":
@@ -94,7 +95,9 @@ export const ui = {
     "checkout.verification.code": "Verification code",
     "checkout.verification.code.enter":
       "Enter the verification code sent to yout WhatsApp",
+    "checkout.verification.verify": "Verify",
     "checkout.verification.subscribe": "Verify and subscribe",
+    "checkout.paypal.description": "Please proceed with the Paypal payment",
     // Thank you
     "thankyou.mainTitle": "Subscription Successful!",
     "thankyou.mainDescription":
@@ -102,7 +105,7 @@ export const ui = {
     "thankyou.connect": "Let's connect",
     "thankyou.backhome": "Go back home",
     // feature phone
-    "featurePhone.transcription" : "Hope you've been doing well! I was wondering if you're free this weekend and up for some fun. I thought it might be nice to catch up, maybe grab a bite to eat at that new place we talked about last time, and then possibly catch a movie or stroll around downtown if the weather’s nice."
+    "featurePhone.transcription": "Hope you've been doing well! I was wondering if you're free this weekend and up for some fun. I thought it might be nice to catch up, maybe grab a bite to eat at that new place we talked about last time, and then possibly catch a movie or stroll around downtown if the weather’s nice."
   },
   es: {
     "page.title": "Convierte Notas de voz de WhatsApp a Texto",
@@ -160,6 +163,7 @@ export const ui = {
     "plan.free.title": "Free Plan",
     "plan.pro.title": "Pro Plan",
     "plan.premium.title": "Premium Plan",
+    "plan.feature.trial": "Período de prueba <strong>gratuito</strong> de 30 días",
     "plan.free.feature.transcriptions":
       "<strong>15 minutos</strong> de transcripciones <strong>gratis</strong> por mes",
     "plan.pro.feature.transcriptions":
@@ -193,7 +197,9 @@ export const ui = {
     "checkout.verification.code": "Código de verificación",
     "checkout.verification.code.enter":
       "Ingresa el código de verificación enviado a tu WhatsApp",
+    "checkout.verification.verify": "Verificar",
     "checkout.verification.subscribe": "Verificar y suscribirse",
+    "checkout.paypal.description": "Por favor continúa con el pago a través de Paypal",
     // Thank you
     "thankyou.mainTitle": "¡Suscripción exitosa!",
     "thankyou.mainDescription":
@@ -201,6 +207,6 @@ export const ui = {
     "thankyou.connect": "Conéctate con nosotros",
     "thankyou.backhome": "Regresar al inicio",
     // feature phone
-    "featurePhone.transcription" : "¡Espero que estés bien! Me preguntaba si estarás libre este fin de semana y si te apetece hacer algo divertido. Pensé que podría ser genial ponernos al día, quizás comer algo en ese nuevo lugar del que hablamos la última vez, y luego podríamos ver una película o dar un paseo por el centro si el clima es bueno."
+    "featurePhone.transcription": "¡Espero que estés bien! Me preguntaba si estarás libre este fin de semana y si te apetece hacer algo divertido. Pensé que podría ser genial ponernos al día, quizás comer algo en ese nuevo lugar del que hablamos la última vez, y luego podríamos ver una película o dar un paseo por el centro si el clima es bueno."
   },
 } as const;

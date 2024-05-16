@@ -21,7 +21,7 @@ window.errorText = null;
 window.loadingSendVerificationCode = null;
 window.loadingVerification = null;
 
-window.instanceDocComponents = function (paypalPlainId) {
+window.instanceDocComponents = function (paypalPlanId) {
   verifyWaForm = document.querySelector("#verifyWaForm");
   verifyCodeForm = document.querySelector("#verifyCodeForm");
 
@@ -36,7 +36,7 @@ window.instanceDocComponents = function (paypalPlainId) {
 
   // const paypalDiv = document.querySelector("#paypal-button-container-P-0PC67333FG471260VMY42XTY");
   paypalDiv = document.querySelector(
-    "#paypal-button-container-" + paypalPlainId,
+    "#paypal-button-container-" + paypalPlanId,
   );
 
   info = document.querySelector(".alert-info");

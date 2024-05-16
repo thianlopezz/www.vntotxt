@@ -1,0 +1,39 @@
+---
+import CardSubscription from "./CardSubscription.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<CardSubscription
+    title={t("plan.pro.title")}
+    price="4.99"
+    features={[
+        {
+            description: t("plan.feature.trial"),
+            included: true,
+        },
+        {
+            description: t("plan.pro.feature.transcriptions"),
+            included: true,
+        },
+        {
+            description: t("plan.feature.quota.separated"),
+            included: true,
+        },
+        { description: t("plan.feature.multilanguage"), included: true },
+        {
+            description: t("plan.feature.support.standard"),
+            included: true,
+        },
+        {
+            description: t("plan.feature.processing.enhanced"),
+            included: true,
+        },
+        {
+            description: t("plan.feature.webapp"),
+            included: true,
+        },
+    ]}
+/>
