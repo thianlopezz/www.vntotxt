@@ -8,8 +8,6 @@ const t = useTranslations(lang);
 const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
 const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
 const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
-
-console.log(VNTOTXT_API);
 ---
 
 <Layout language={lang} title="Vntotxt PRO Plan">
@@ -78,11 +76,7 @@ console.log(VNTOTXT_API);
           <h1 class="text-3xl font-ubuntu">Checkout</h1>
           <p class="mb-6">Please proceed with the Paypal payment</p>
         </div>
-        <form
-          id="verifyWaForm"
-          onsubmit="sendVerificationCodeProcess(event)"
-          class="w-full mx-auto md:max-w-xs"
-        >
+        <form id="verifyWaForm" class="w-full mx-auto md:max-w-xs">
           <label class="form-control w-full md:max-w-xs">
             <div class="label">
               <span class="label-text"
@@ -118,7 +112,6 @@ console.log(VNTOTXT_API);
         <form
           style="display: none"
           id="verifyCodeForm"
-          onsubmit="verificationCodeProcess(event)"
           class="mx-auto"
         >
           <input
@@ -172,40 +165,18 @@ console.log(VNTOTXT_API);
   src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"
 ></script>
 
+<script src="../scripts/form-utils.js"></script>
+
 <script
   type="module"
   src={`https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&vault=true&intent=subscription`}
   data-sdk-integration-source="button-factory"></script>
 
 <script
-  is:inline
   type="module"
-  define:vars={{ VNTOTXT_API, PAYPAL_CLIENT_ID, PAYPAL_PRO_PLAN_ID }}
+  define:vars={{ VNTOTXT_API, PAYPAL_CLIENT_ID, PAYPAL_PRO_PLAN_ID, lang }}
 >
-  const lang = "en";
-
-  let verifyWaForm;
-  let verifyCodeForm;
-
-  let divWaVerifyButton;
-
-  let checkoutHeading;
-  let paymentHeading;
-
-  let subscriptionRequestIdInput;
-
-  let phoneInputField;
-  let phoneInput;
-
-  let paypalDiv;
-
-  let info;
-  let error;
-  let infoText;
-  let errorText;
-
-  let loadingSendVerificationCode;
-  let loadingVerification;
+  window.lang = lang;
 
   window.onload = function () {
     // scroll to checkoutVerification
@@ -216,221 +187,15 @@ console.log(VNTOTXT_API);
       checkoutVerification.scrollIntoView({ behavior: "smooth" });
     }
 
-    instanceDocComponents();
+    instanceDocComponents(PAYPAL_PRO_PLAN_ID);
 
-    // Attach event listeners after the DOM is fully loaded
-    // const verifyWaForm = document.querySelector("#verifyWaForm");
-    verifyWaForm.addEventListener("submit", sendVerificationCodeProcess);
-
-    // const verifyCodeForm = document.querySelector("#verifyCodeForm");
-    verifyCodeForm.addEventListener("submit", verificationCodeProcess);
+    verifyWaForm.addEventListener("submit", (event) =>
+      sendVerificationCodeProcess(VNTOTXT_API, event),
+    );
+    verifyCodeForm.addEventListener("submit", (event) =>
+      verificationCodeProcess(VNTOTXT_API, event),
+    );
   };
-
-  function instanceDocComponents() {
-    verifyWaForm = document.querySelector("#verifyWaForm");
-    verifyCodeForm = document.querySelector("#verifyCodeForm");
-
-    divWaVerifyButton = document.querySelector("#divWaVerifyButton");
-
-    checkoutHeading = document.querySelector("#checkoutHeading");
-    paymentHeading = document.querySelector("#paymentHeading");
-
-    subscriptionRequestIdInput = document.querySelector(
-      "#subscriptionRequestIdInput",
-    );
-
-    // const paypalDiv = document.querySelector("#paypal-button-container-P-0PC67333FG471260VMY42XTY");
-    paypalDiv = document.querySelector(
-      "#paypal-button-container-" + PAYPAL_PRO_PLAN_ID,
-    );
-
-    info = document.querySelector(".alert-info");
-    error = document.querySelector(".alert-error");
-
-    infoText = document.querySelector(".alert-info span");
-    errorText = document.querySelector(".alert-error span");
-
-    loadingSendVerificationCode = document.querySelector(
-      "#loadingSendVerificationCode",
-    );
-
-    loadingVerification = document.querySelector("#loadingVerification");
-
-    phoneInputField = document.querySelector("#phone");
-    phoneInput = window.intlTelInput(phoneInputField, {
-      initialCountry: "auto",
-      geoIpLookup: getIp,
-      utilsScript:
-        "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js",
-    });
-  }
-
-  async function sendVerificationCodeProcess(event) {
-    event.preventDefault();
-
-    info.style.display = "none";
-    error.style.display = "none";
-
-    if (phoneInput.isValidNumber()) {
-      const phoneNumber = phoneInput.getNumber();
-      const waId = phoneNumber.replace("+", "");
-
-      loadingSendVerificationCode.style.display = "";
-      phoneInputField.disabled = true;
-
-      try {
-        let response = await fetch(VNTOTXT_API + "/v1/request-subscription", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            waId,
-            tierId: 2,
-          }),
-        });
-
-        if (response.ok) {
-          response = await response.json();
-          const { success, data, message } = response;
-          if (success) {
-            divWaVerifyButton.style.display = "none";
-            verifyCodeForm.style.display = "";
-            subscriptionRequestIdInput.value = data.subscriptionRequestId;
-          } else {
-            phoneInputField.disabled = false;
-            error.style.display = "";
-            errorText.innerHTML = message;
-          }
-        } else {
-          phoneInputField.disabled = false;
-          error.style.display = "";
-          errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
-        }
-      } catch (e) {
-        phoneInputField.disabled = false;
-        error.style.display = "";
-        errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
-        loadingSendVerificationCode.style.display = "none";
-        console.error(e);
-      }
-
-      loadingSendVerificationCode.style.display = "none";
-    } else {
-      error.style.display = "";
-      errorText.innerHTML = `Invalid phone number.`;
-    }
-  }
-
-  async function verificationCodeProcess(event) {
-    event.preventDefault();
-
-    const verificationCode = document.querySelector(
-      "#verificationCodeInput",
-    ).value;
-    const subscriptionRequestId = subscriptionRequestIdInput.value;
-
-    info.style.display = "none";
-    error.style.display = "none";
-
-    loadingVerification.style.display = "";
-
-    try {
-      let response = await fetch(VNTOTXT_API + "/v1/verify-request", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          subscriptionRequestId,
-          pin: verificationCode,
-        }),
-      });
-
-      if (response.ok) {
-        response = await response.json();
-        const { success, data, message } = response;
-        if (success) {
-          phoneInputField.disabled = true;
-          // window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionId=${data.subscriptionId}`;
-          verifyCodeForm.style.display = "none";
-          checkoutHeading.style.display = "none";
-          verifyWaForm.style.display = "none";
-          paymentHeading.style.display = "";
-          paypalDiv.style.display = "";
-
-          subscriptionRequestIdInput.value = data.subscriptionRequestId;
-        } else {
-          error.style.display = "";
-          errorText.innerHTML = message;
-        }
-      } else {
-        error.style.display = "";
-        errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
-      }
-    } catch (e) {
-      error.style.display = "";
-      errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
-      loadingVerification.style.display = "none";
-      console.error(e);
-    }
-
-    loadingVerification.style.display = "none";
-  }
-
-  async function confirmPurchase(paypalSubscription) {
-    const subscriptionRequestId = subscriptionRequestIdInput.value;
-    // const subscriptionRequestId = 1;
-
-    try {
-      let response = await fetch(VNTOTXT_API + "/v1/confirm-purchase", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          subscriptionRequestId,
-          paypalSubscription,
-          lang,
-        }),
-      });
-
-      if (response.ok) {
-        response = await response.json();
-        const { success, data, message } = response;
-        if (success) {
-          window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?orderID=${paypalSubscription.orderID}&subscriptionID=${paypalSubscription.subscriptionID}`;
-        } else {
-          error.style.display = "";
-          errorText.innerHTML = message;
-        }
-      } else {
-        error.style.display = "";
-        errorText.innerHTML = `There was an error validating your subscription. Please try again.`;
-      }
-    } catch (e) {
-      error.style.display = "";
-      errorText.innerHTML = `There was an error validating your subscription. Please try again.`;
-      loadingVerification.style.display = "none";
-      console.error(e);
-    }
-  }
-
-  function getIp(callback) {
-    fetch("https://ipinfo.io/json?token=f59435832cc609", {
-      headers: { Accept: "application/json" },
-    })
-      .then((resp) => resp.json())
-      .catch((e) => {
-        console.warn("Fail to get ipinfo", e.message);
-        return {
-          country: "us",
-        };
-      })
-      .then((resp) => {
-        callback(resp.country);
-      });
-  }
 
   paypal
     .Buttons({
@@ -449,7 +214,7 @@ console.log(VNTOTXT_API);
       },
       onApprove: function (data, actions) {
         // alert(data.subscriptionID); // You can add optional success message for the subscriber here
-        confirmPurchase(data)
+        confirmPurchase(VNTOTXT_API, data)
           .then(() => console.log("Purchase confirmed"))
           .error(console.error);
       },
