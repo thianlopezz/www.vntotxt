@@ -11,22 +11,22 @@ const t = useTranslations(lang);
     style="display: none;"
 >
     <div class="card-body">
-        <h2 class="card-title mx-auto">{t('order.details.title')}</h2>
+        <h2 class="card-title mx-auto">{t("order.details.title")}</h2>
         <div class="overflow-x-auto mt-4">
             <table class="table">
                 <tbody>
                     <tr>
-                        <th>{t('order.details.order')}</th>
+                        <th>{t("order.details.order")}</th>
                         <td id="orderID"></td>
                     </tr>
                     <tr>
-                        <th>{t('order.details.subscription')}</th>
+                        <th>{t("order.details.subscription")}</th>
                         <td id="subscriptionID"></td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <p>{t('order.details.pd')}</p>
+        <p>{t("order.details.pd")}</p>
     </div>
 </div>
 
@@ -37,10 +37,18 @@ const t = useTranslations(lang);
         const subscriptionID = urlParams.get("subscriptionID");
 
         if (orderID || subscriptionID) {
-            document.getElementById("orderID").textContent = orderID;
-            document.getElementById("subscriptionID").textContent =
-                subscriptionID;
-            document.getElementById("order-details").style.display = "block";
+            const orderIdComponent = document.getElementById("orderID");
+            if (orderIdComponent) orderIdComponent.textContent = orderID;
+
+            const subscriptionIdComponent =
+                document.getElementById("subscriptionID");
+            if (subscriptionIdComponent)
+                subscriptionIdComponent.textContent = subscriptionID;
+
+            const orderDetailsComponent =
+                document.getElementById("order-details");
+            if (orderDetailsComponent)
+                orderDetailsComponent.style.display = "block";
         }
     });
 </script>
