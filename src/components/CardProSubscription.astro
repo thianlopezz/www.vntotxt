@@ -4,11 +4,18 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+interface Props {
+    showButton?: boolean;
+}
+
+const { showButton = false } = Astro.props;
 ---
 
 <CardSubscription
     title={t("plan.pro.title")}
     price="4.99"
+    checkoutLink={showButton ? `${lang == "es" ? "/es" : ""}/vntotxt-pro` : undefined}
     features={[
         {
             description: t("plan.feature.trial"),
