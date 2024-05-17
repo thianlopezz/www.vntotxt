@@ -1,0 +1,46 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div
+    id="order-details"
+    class="card w-96 bg-white mx-auto mt-4"
+    style="display: none;"
+>
+    <div class="card-body">
+        <h2 class="card-title mx-auto">{t('order.details.title')}</h2>
+        <div class="overflow-x-auto mt-4">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>{t('order.details.order')}</th>
+                        <td id="orderID"></td>
+                    </tr>
+                    <tr>
+                        <th>{t('order.details.subscription')}</th>
+                        <td id="subscriptionID"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>{t('order.details.pd')}</p>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        const orderID = urlParams.get("orderID");
+        const subscriptionID = urlParams.get("subscriptionID");
+
+        if (orderID || subscriptionID) {
+            document.getElementById("orderID").textContent = orderID;
+            document.getElementById("subscriptionID").textContent =
+                subscriptionID;
+            document.getElementById("order-details").style.display = "block";
+        }
+    });
+</script>

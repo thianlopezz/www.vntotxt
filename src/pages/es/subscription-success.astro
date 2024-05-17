@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import CardOrderDetails from "../../components/CardOrderDetails.astro";
 
 const socialMedia = [
   {
@@ -33,6 +34,9 @@ const t = useTranslations(lang);
       <p class="text-xl">
         {t("thankyou.mainDescription")}
       </p>
+
+      <CardOrderDetails />
+
       <a
         href="https://api.whatsapp.com/send?phone=593967960981"
         target="_blank"
