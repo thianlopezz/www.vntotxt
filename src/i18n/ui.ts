@@ -104,6 +104,11 @@ export const ui = {
       "Thank you for your purchase. You have successfully subscribed to our plan.",
     "thankyou.connect": "Let's connect",
     "thankyou.backhome": "Go back home",
+    // Order details
+    "order.details.title":"Order details",
+    "order.details.order":"Order #",
+    "order.details.subscription":"Subscription #",
+    "order.details.pd":"Screenshot this receipt to help you if you have any issue.",
     // feature phone
     "featurePhone.transcription": "Hope you've been doing well! I was wondering if you're free this weekend and up for some fun. I thought it might be nice to catch up, maybe grab a bite to eat at that new place we talked about last time, and then possibly catch a movie or stroll around downtown if the weather’s nice."
   },
@@ -206,6 +211,11 @@ export const ui = {
       "Gracias. Te has suscrito exitosamente a nuestro plan.",
     "thankyou.connect": "Conéctate con nosotros",
     "thankyou.backhome": "Regresar al inicio",
+    // Order details
+    "order.details.title":"Detalle de la orden",
+    "order.details.order":"Orden #",
+    "order.details.subscription":"Suscripción #",
+    "order.details.pd":"Haz una captura de pantalla de este recibo para ayudarte si tienes algún problema.",
     // feature phone
     "featurePhone.transcription": "¡Espero que estés bien! Me preguntaba si estarás libre este fin de semana y si te apetece hacer algo divertido. Pensé que podría ser genial ponernos al día, quizás comer algo en ese nuevo lugar del que hablamos la última vez, y luego podríamos ver una película o dar un paseo por el centro si el clima es bueno."
   },
