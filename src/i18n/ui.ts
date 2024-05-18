@@ -64,7 +64,7 @@ export const ui = {
     "plan.free.feature.transcriptions":
       "<strong>15 minutes</strong> of <strong>free</strong> transcriptions per month",
     "plan.pro.feature.transcriptions":
-      "<strong>100 minutes</strong> of transcriptions per month",
+      "<strong>180 minutes</strong> of transcriptions per month",
     "plan.premium.feature.transcriptions":
       "<strong>Unlimited</strong> transcriptions per month",
     "plan.feature.quota.same":
@@ -172,7 +172,7 @@ export const ui = {
     "plan.free.feature.transcriptions":
       "<strong>15 minutos</strong> de transcripciones <strong>gratis</strong> por mes",
     "plan.pro.feature.transcriptions":
-      "<strong>100 minutos</strong> de transcripciones por mes",
+      "<strong>180 minutos</strong> de transcripciones por mes",
     "plan.premium.feature.transcriptions":
       "<strong>Minutos ilimitados</strong> de transcripciones por mes",
     "plan.feature.quota.same":
