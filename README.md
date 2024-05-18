@@ -52,3 +52,13 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## 🧞 QA cypress
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                                       | Action                                                   |
+| :-------------------------------------------- | :------------------------------------------------------- |
+| `npm run cypress-{env}`                       | Open Cypress Console for env specified (qa, prod)        |
+| `npm run cypress-{env}-headless`              | Run all tests on terminal for env specified (qa, prod)   |
+| `npm run cypress-{env}-smoke-headless`        | Run smokes tests on terminal for env specified (qa, prod)|

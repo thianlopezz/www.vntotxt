@@ -7,7 +7,13 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "cypress-prod": "npx cypress open --config-file cypress/prod.config.ts",
+    "cypress-qa": "npx cypress open --config-file cypress/qa.config.ts",
+    "cypress-prod-headless": "npx cypress run --headless --config-file cypress/prod.config.ts ",
+    "cypress-qa-headless": "npx cypress run --headless --config-file cypress/qa.config.ts ",
+    "cypress-prod-smoke-headless": "npx cypress run --config-file cypress/prod.config.ts --spec 'cypress/e2e/vntotxtWeb/Smoke/*.cy.ts'",
+    "cypress-qa-smoke-headless": "npx cypress run --config-file cypress/qa.config.ts --spec 'cypress/e2e/vntotxtWeb/Smoke/*.cy.ts'"
   },
   "dependencies": {
     "@astrojs/check": "^0.5.10",
@@ -17,6 +23,7 @@
     "astro": "^4.5.16",
     "astro-seo": "^0.8.3",
     "boxicons": "^2.1.4",
+    "cypress": "^13.9.0",
     "sharp-ico": "^0.1.5",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.4"
