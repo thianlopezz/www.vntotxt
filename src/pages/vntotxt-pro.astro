@@ -6,8 +6,7 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
-const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
+
 const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
 ---
 
@@ -28,70 +27,7 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
       id="checkoutVerification"
       class="flex-col justify-center py-6 px-4 md:px-20 md:flex md:w-1/2 bg-secondary"
     >
-      <FormSubscription paypalPlanId={PAYPAL_PRO_PLAN_ID} />
+      <FormSubscription paypalPlanId={PAYPAL_PRO_PLAN_ID} tierId={2} />
     </div>
   </section>
 </Layout>
-
-<script
-  is:inline
-  src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"
-></script>
-
-<script src="../scripts/form-utils.js"></script>
-
-<script
-  type="module"
-  src={`https://www.paypal.com/sdk/js?client-id=${PAYPAL_CLIENT_ID}&vault=true&intent=subscription`}
-  data-sdk-integration-source="button-factory"></script>
-
-<script
-  type="module"
-  define:vars={{ VNTOTXT_API, PAYPAL_CLIENT_ID, PAYPAL_PRO_PLAN_ID, lang }}
->
-  window.lang = lang;
-
-  window.onload = function () {
-    // scroll to checkoutVerification
-    const checkoutVerification = document.querySelector(
-      "#checkoutVerification",
-    );
-    if (checkoutVerification) {
-      checkoutVerification.scrollIntoView({ behavior: "smooth" });
-    }
-
-    instanceDocComponents(PAYPAL_PRO_PLAN_ID);
-
-    verifyWaForm.addEventListener("submit", (event) =>
-      sendVerificationCodeProcess(VNTOTXT_API, event),
-    );
-    verifyCodeForm.addEventListener("submit", (event) =>
-      verificationCodeProcess(VNTOTXT_API, event),
-    );
-  };
-
-  paypal
-    .Buttons({
-      style: {
-        shape: "rect",
-        color: "black",
-        layout: "vertical",
-        label: "subscribe",
-      },
-      createSubscription: function (data, actions) {
-        return actions.subscription.create({
-          /* Creates the subscription */
-          // plan_id: "P-0PC67333FG471260VMY42XTY", // PROD
-          plan_id: PAYPAL_PRO_PLAN_ID, // TEST
-        });
-      },
-      onApprove: function (data, actions) {
-        // alert(data.subscriptionID); // You can add optional success message for the subscriber here
-        confirmPurchase(VNTOTXT_API, data)
-          .then(() => console.log("Purchase confirmed"))
-          .error(console.error);
-      },
-    })
-    // .render("#paypal-button-container-P-0PC67333FG471260VMY42XTY"); // Renders the PayPal button
-    .render("#paypal-button-container-" + PAYPAL_PRO_PLAN_ID); // Renders the PayPal button
-</script>
