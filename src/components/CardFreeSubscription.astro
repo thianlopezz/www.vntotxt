@@ -1,0 +1,43 @@
+---
+import CardSubscription from "./CardSubscription.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+interface Props {
+    showButton?: boolean;
+}
+
+const { showButton = false } = Astro.props;
+---
+
+<CardSubscription
+    title={t("plan.free.title")}
+    price="0"
+    checkoutLink={showButton ? `${lang == "es" ? "/es" : ""}/vntotxt-free` : undefined}
+    subscribeButtonId="subscribe-free-btn"
+    features={[
+        {
+            description: t("plan.free.feature.transcriptions"),
+            included: true,
+        },
+        {
+            description: t("plan.feature.quota.same"),
+            included: true,
+        },
+        { description: t("plan.feature.multilanguage"), included: true },
+        {
+            description: t("plan.feature.support.basic"),
+            included: true,
+        },
+        {
+            description: t("plan.feature.processing.standard"),
+            included: true,
+        },
+        {
+            description: t("plan.feature.webapp"),
+            included: false,
+        },
+    ]}
+/>

@@ -1,0 +1,123 @@
+---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
+---
+
+<div class="my-20 md:my-0 mx-auto w-full sm:w-4/5 md:max-w-xs">
+    <div class="alert alert-info mb-4 text-base-100" style="display: none;">
+        <i class="bx bx-info-circle"></i>
+        <span></span>
+    </div>
+    <div class="alert alert-error mb-4 text-base-100" style="display: none;">
+        <i class="bx bxs-error-circle"></i>
+        <span></span>
+    </div>
+    <h1 class="text-3xl font-ubuntu">{t("checkout.verification.title")}</h1>
+    <p class="mb-6">
+        {t("checkout.verification.description")}
+    </p>
+    <form id="verifyWaForm" class="w-full mx-auto md:max-w-xs">
+        <label class="form-control w-full md:max-w-xs">
+            <div class="label">
+                <span class="label-text"
+                    >{t("checkout.verification.wanumber")}</span
+                >
+                <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+                id="phone"
+                type="tel"
+                name="phone"
+                class="input input-bordered w-full md:max-w-xs"
+                required
+            />
+            <div class="label">
+                <span class="label-text-alt"
+                    >{t("checkout.verification.wanumber.helper")}</span
+                >
+                <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+        </label>
+        <div id="divWaVerifyButton" class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+                >{t("checkout.verification.send")}
+                <span
+                    style="display: none"
+                    id="loadingSendVerificationCode"
+                    class="loading loading-spinner"></span>
+            </button>
+        </div>
+    </form>
+    <!-- style="display: none" -->
+    <form style="display: none" id="verifyCodeForm" class="mx-auto">
+        <input
+            id="subscriptionRequestIdInput"
+            type="hidden"
+            name="subscriptionRequestId"
+        />
+        <label class="form-control w-full md:max-w-xs">
+            <div class="label">
+                <span class="label-text">{t("checkout.verification.code")}</span
+                >
+                <!-- <span class="label-text-alt">Top Right label</span> -->
+            </div>
+            <input
+                id="verificationCodeInput"
+                type="text"
+                name="verificationCode"
+                class="input input-borderedw-full md:max-w-xs"
+                required
+            />
+            <div class="label">
+                <span class="label-text-alt"
+                    >{t("checkout.verification.code.enter")}</span
+                >
+                <!-- <span class="label-text-alt">Bottom Right label</span> -->
+            </div>
+        </label>
+        <div class="flex w-full">
+            <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
+                >{t("checkout.verification.subscribe")}
+                <span
+                    style="display: none"
+                    id="loadingVerification"
+                    class="loading loading-spinner"></span>
+            </button>
+        </div>
+    </form>
+</div>
+
+<script
+    is:inline
+    src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"
+></script>
+
+<script src="../scripts/form-utils.js"></script>
+
+<script type="module" define:vars={{ VNTOTXT_API, lang }}>
+    window.lang = lang;
+
+    window.onload = function () {
+        // scroll to checkoutVerification
+        const checkoutVerification = document.querySelector(
+            "#checkoutVerification",
+        );
+        if (checkoutVerification) {
+            checkoutVerification.scrollIntoView({ behavior: "smooth" });
+        }
+
+        instanceDocComponents();
+
+        debugger;
+
+        verifyWaForm.addEventListener("submit", (event) =>
+            sendVerificationCodeProcess(VNTOTXT_API, 1, lang, event),
+        );
+        verifyCodeForm.addEventListener("submit", (event) =>
+            verificationCodeProcess(VNTOTXT_API, true, lang, event),
+        );
+    };
+</script>

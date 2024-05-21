@@ -10,6 +10,7 @@ interface Props {
   checkoutLink?: string;
   comingText?: string;
   subscribeText?: string;
+  subscribeButtonId?: string;
   features: Feature[];
 }
 
@@ -20,6 +21,7 @@ const {
   checkoutLink,
   comingText = "Coming soon",
   subscribeText = "Subscribe",
+  subscribeButtonId
 } = Astro.props;
 ---
 
@@ -57,6 +59,7 @@ const {
         <div class="card-actions justify-center">
           {checkoutLink ? (
             <a
+              id={subscribeButtonId}
               class="btn btn-primary btn-block text-base-100"
               href={checkoutLink}
             >
@@ -64,6 +67,7 @@ const {
             </a>
           ) : (
             <button
+              id={subscribeButtonId}
               class="btn btn-primary btn-block text-base-100"
               disabled="disabled"
             >

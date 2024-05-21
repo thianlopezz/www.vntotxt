@@ -35,9 +35,10 @@ window.instanceDocComponents = function (paypalPlanId) {
   );
 
   // const paypalDiv = document.querySelector("#paypal-button-container-P-0PC67333FG471260VMY42XTY");
-  paypalDiv = document.querySelector(
-    "#paypal-button-container-" + paypalPlanId,
-  );
+  if (paypalPlanId)
+    paypalDiv = document.querySelector(
+      "#paypal-button-container-" + paypalPlanId,
+    );
 
   info = document.querySelector(".alert-info");
   error = document.querySelector(".alert-error");
@@ -60,7 +61,7 @@ window.instanceDocComponents = function (paypalPlanId) {
   });
 }
 
-window.sendVerificationCodeProcess = async function (vntotxtApi, event) {
+window.sendVerificationCodeProcess = async function (vntotxtApi, tierId, lang, event) {
   event.preventDefault();
 
   info.style.display = "none";
@@ -81,7 +82,8 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, event) {
         },
         body: JSON.stringify({
           waId,
-          tierId: 2,
+          tierId,
+          lang
         }),
       });
 
@@ -117,7 +119,7 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, event) {
   }
 }
 
-window.verificationCodeProcess = async function (vntotxtApi, event) {
+window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, lang, event) {
   event.preventDefault();
 
   const verificationCode = document.querySelector(
@@ -139,6 +141,7 @@ window.verificationCodeProcess = async function (vntotxtApi, event) {
       body: JSON.stringify({
         subscriptionRequestId,
         pin: verificationCode,
+        lang
       }),
     });
 
@@ -149,13 +152,22 @@ window.verificationCodeProcess = async function (vntotxtApi, event) {
         phoneInputField.disabled = true;
         // window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionId=${data.subscriptionId}`;
         verifyCodeForm.style.display = "none";
-        checkoutHeading.style.display = "none";
+
+        if (checkoutHeading)
+          checkoutHeading.style.display = "none";
+
         verifyWaForm.style.display = "none";
-        paymentHeading.style.display = "";
+
+        if (paymentHeading)
+          paymentHeading.style.display = "";
+
         if (paypalDiv)
           paypalDiv.style.display = "";
 
         subscriptionRequestIdInput.value = data.subscriptionRequestId;
+        debugger;
+        if (redirectToSuccess)
+          window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionId=${data.subscriptionId}`;
       } else {
         error.style.display = "";
         errorText.innerHTML = message;
@@ -227,5 +239,3 @@ window.getIp = function (callback) {
       callback(resp.country);
     });
 }
-
-console.log('loaded')
