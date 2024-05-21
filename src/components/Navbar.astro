@@ -10,7 +10,7 @@ const t = useTranslations(lang);
 <div class="navbar bg-secondary">
   <div class="navbar-start">
     <div class="dropdown">
-      <div role="button" class="btn btn-ghost lg:hidden">
+      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
@@ -25,16 +25,26 @@ const t = useTranslations(lang);
         >
       </div>
       <ul
+        tabindex="0"
         class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
       >
         <li>
-          <a aria-label="how it works" href="#how-it-works"
-            >{t("nav.howItWorks")}</a>
+          <a
+            id="how-it-works-mobile-link"
+            aria-label="how it works"
+            href="#how-it-works">{t("nav.howItWorks")}</a
+          >
         </li>
         <li>
-          <a aria-label="features" href="#features">{t("nav.features")}</a>
+          <a id="features-mobile-link" aria-label="features" href="#features"
+            >{t("nav.features")}</a
+          >
         </li>
-        <li><a aria-label="pricing" href="#pricing">{t("nav.pricing")}</a></li>
+        <li>
+          <a id="pricing-mobile-link" aria-label="pricing" href="#pricing"
+            >{t("nav.pricing")}</a
+          >
+        </li>
       </ul>
     </div>
     <a href={`${lang == "es" ? "/es" : "/"}`} class="btn btn-ghost text-xl">
@@ -44,9 +54,11 @@ const t = useTranslations(lang);
   </div>
   <div class="navbar-end hidden lg:flex">
     <ul class="menu menu-horizontal px-1">
-      <li><a href="#how-it-works">{t("nav.howItWorks")}</a></li>
-      <li><a href="#features">{t("nav.features")}</a></li>
-      <li><a href="#pricing">{t("nav.pricing")}</a></li>
+      <li>
+        <a id="how-it-works-link" href="#how-it-works">{t("nav.howItWorks")}</a>
+      </li>
+      <li><a id="features-link" href="#features">{t("nav.features")}</a></li>
+      <li><a id="pricing-link" href="#pricing">{t("nav.pricing")}</a></li>
     </ul>
   </div>
 </div>
