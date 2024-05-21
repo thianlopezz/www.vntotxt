@@ -111,8 +111,6 @@ const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
 
         instanceDocComponents();
 
-        debugger;
-
         verifyWaForm.addEventListener("submit", (event) =>
             sendVerificationCodeProcess(VNTOTXT_API, 1, lang, event),
         );

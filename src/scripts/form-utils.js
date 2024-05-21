@@ -165,7 +165,7 @@ window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, 
           paypalDiv.style.display = "";
 
         subscriptionRequestIdInput.value = data.subscriptionRequestId;
-        debugger;
+
         if (redirectToSuccess)
           window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionId=${data.subscriptionId}`;
       } else {
