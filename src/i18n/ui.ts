@@ -9,9 +9,9 @@ export const ui = {
   en: {
     "page.title": "Convert your WhatsApp Voice Notes To Text",
     "page.description":
-      "Discover VnToTxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.",
+      "Discover Vntotxt: Transform WhatsApp voice notes into text effortlessly. Join us to enhance your communication and productivity with our innovative transcription service.",
     "page.twitter.description":
-      "Discover how VnToTxt can revolutionize your productivity by turning WhatsApp voice messages into text. Start now for enhanced communication.",
+      "Discover how Vntotxt can revolutionize your productivity by turning WhatsApp voice messages into text. Start now for enhanced communication.",
     "global.startTranscribing": "Start transcribing",
     "nav.howItWorks": "How it works",
     "nav.features": "Features",
@@ -115,9 +115,9 @@ export const ui = {
   es: {
     "page.title": "Convierte Notas de voz de WhatsApp a Texto",
     "page.description":
-      "Descubre VnToTxt: Transforma tus notas de voz de WhatsApp en texto sin ningún esfuerzo. Únete y mejora tu comunicación y productividad con nuestro innovador servicio de transcripción.",
+      "Descubre Vntotxt: Transforma tus notas de voz de WhatsApp en texto sin ningún esfuerzo. Únete y mejora tu comunicación y productividad con nuestro innovador servicio de transcripción.",
     "page.twitter.description":
-      "Descubre como VnToTxt puede revolucionar tu productividad convirtiendo notas de voz de WhatsApp en texto. Empiza ahora y mejora tu comunicación",
+      "Descubre como Vntotxt puede revolucionar tu productividad convirtiendo notas de voz de WhatsApp en texto. Empiza ahora y mejora tu comunicación",
     "global.startTranscribing": "Empieza a transcribir",
     "nav.howItWorks": "Cómo funciona",
     "nav.features": "Funcionalidades",
