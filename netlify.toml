@@ -6,3 +6,15 @@
   to = "/es"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/privacy-policy"
+  to = "/privacy-policy"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/vntotxt-pro"
+  to = "/vntotxt-pro"
+  status = 200
+  force = true
