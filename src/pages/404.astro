@@ -1,0 +1,56 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import CardOrderDetails from "../components/CardOrderDetails.astro";
+
+const socialMedia = [
+    {
+        name: "instagram",
+        link: "https://www.instagram.com/vntotxt/",
+        boxicon: "bx bxl-instagram",
+    },
+    {
+        name: "facebook",
+        link: "https://www.facebook.com/vntotxt",
+        boxicon: "bx bxl-facebook-circle",
+    },
+    {
+        name: "whatsapp",
+        link: "https://api.whatsapp.com/send?phone=17867444726",
+        boxicon: "bx bxl-whatsapp",
+    },
+];
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<Layout language="en" title="Not found">
+    <section class="flex items-center justify-center h-screen bg-green-100">
+        <div class="text-center">
+            <h1 class="text-9xl font-bold mb-4 font-ubuntu">404</h1>
+            <p class="text-xl">
+                Opps! The page you are looking for does not exist.
+            </p>
+
+            <a href="/" class="btn btn-primary mt-4">Go Back home</a>
+            <div class="mt-8">
+                <h2 class="text-2xl text-center">{t("thankyou.connect")}</h2>
+                <div class="flex justify-center mt-4">
+                    {
+                        socialMedia.map((item) => (
+                            <a
+                                aria-label={item.name}
+                                href={item.link}
+                                target="_blank"
+                                class="btn btn-circle btn-accent text-2xl mx-2"
+                            >
+                                <i class={item.boxicon} />
+                            </a>
+                        ))
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
