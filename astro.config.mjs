@@ -5,6 +5,7 @@ import partytown from "@astrojs/partytown";
 // https://astro.build/config
 export default defineConfig({
   site: "https://vntotxt.com",
+  trailingSlash: 'never',
   integrations: [
     tailwind({
       applyBaseStyles: false,
