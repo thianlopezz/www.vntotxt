@@ -26,6 +26,12 @@
   force = true
 
 [[redirects]]
+  from = "/es/vntotxt-pro"
+  to = "/es/vntotxt-pro"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/es/vntotxt-free"
   to = "/es/vntotxt-free"
   status = 200
