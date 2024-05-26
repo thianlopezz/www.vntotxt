@@ -14,7 +14,19 @@
   force = true
 
 [[redirects]]
+  from = "/vntotxt-free"
+  to = "/vntotxt-free"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/vntotxt-pro"
   to = "/vntotxt-pro"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/es/vntotxt-free"
+  to = "/es/vntotxt-free"
   status = 200
   force = true
