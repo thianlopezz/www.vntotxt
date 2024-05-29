@@ -1,8 +1,5 @@
 ---
-import { SEO } from "astro-seo";
-import { getRelativeLocaleUrlList } from "astro:i18n";
 import Navbar from "../components/Navbar.astro";
-import ImageBro from "../../public/voice-chat-bro.png";
 import "../styles/main.css";
 import "boxicons/css/boxicons.min.css";
 import Layout from "./Layout.astro";
@@ -11,12 +8,13 @@ import Footer from "../components/Footer.astro";
 interface Props {
   language: string;
   title?: string;
+  description?: string;
 }
 
-const { language, title } = Astro.props;
+const { language, title, description } = Astro.props;
 ---
 
-<Layout title={title} language={language}>
+<Layout title={title} language={language} description={description}>
   <Navbar />
   <slot />
   <Footer />
