@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/MarkdownPostLayout.astro
 title: "Como convertir tus notas de voz a mensajes de texto en WhatsApp"
-pubDate: 2024-05-28
+pubDate: '2024-05-28'
 description: "Convierte tus notas de voz de WhatsApp a texto."
 author: "Thian Lopez Z"
 image:
@@ -11,21 +11,30 @@ tags: ["astro", "blogging", "learning in public"]
 ---
 
 import { Image } from "astro:assets";
-import Logo from '../../../public/logo_variant.png';
+import Logo from "../../../public/logo_variant.png";
+import Spiderman from "../../../public/images/posts/spiderman_saving_contact.webp";
+import ForwardVoiceNote from "../../../public/images/posts/forward-audio-message.gif";
+import TextAudio from "../../../public/images/posts/text-audio.gif";
 
 <p className="text-xl mb-2 text-justify tracking-wide leading-relaxed">
-  {`En la era digital, las notas de voz se han convertido en una herramienta esencial para la comunicación rápida y eficiente, especialmente en plataformas como WhatsApp. Sin embargo, hay situaciones donde leer un texto es más conveniente que escuchar un audio. Aquí es donde entra en juego la necesidad de convertir tus notas de voz a mensajes de texto. En este post, te mostraremos cómo lograrlo de manera efectiva y presentaremos una herramienta innovadora que facilitará este proceso:`} 
-  <a className="text-primary underline" href="/">Vntotxt 🤖</a>.
+  {`En la era digital, las notas de voz se han convertido en una herramienta esencial para la comunicación rápida y eficiente, especialmente en plataformas como WhatsApp. Sin embargo, hay situaciones donde leer un texto es más conveniente que escuchar un audio. Aquí es donde entra en juego la necesidad de convertir tus notas de voz a mensajes de texto. En este post, te mostraremos cómo lograrlo de manera efectiva y presentaremos una herramienta innovadora que facilitará este proceso: `}
+  <a className="text-primary underline" href="/">{"Vntotxt 🤖"}</a>{"."}
 </p>
 
-<h2 className="text-4xl font-bold mt-12 mb-6">Beneficios de convertir notas de voz a texto</h2>
+<h2 className="text-4xl font-bold mt-12 mb-6">
+  Beneficios de convertir notas de voz a texto
+</h2>
 
-<h3 className="text-2xl font-bold mb-2">Facilidad de acceso a la información</h3>
+<h3 className="text-2xl font-bold mb-2">
+  Facilidad de acceso a la información
+</h3>
 <p className="text-xl mb-4 text-justify tracking-wide leading-relaxed">
   {`Convertir notas de voz a texto te permite acceder a la información de manera rápida y eficiente, especialmente en situaciones donde no puedes reproducir un audio, como en reuniones o lugares públicos.`}
 </p>
 
-<h3 className="text-2xl font-bold mb-2">Mejora de la comunicación en entornos ruidosos</h3>
+<h3 className="text-2xl font-bold mb-2">
+  Mejora de la comunicación en entornos ruidosos
+</h3>
 <p className="text-xl mb-4 text-justify tracking-wide leading-relaxed">
   {`En entornos ruidosos, escuchar un audio puede ser un desafío. Tener la transcripción del mensaje garantiza que la información se transmita claramente sin necesidad de auriculares o espacios silenciosos.`}
 </p>
@@ -35,7 +44,9 @@ import Logo from '../../../public/logo_variant.png';
   {`Leer un mensaje de texto es, en muchos casos, más rápido que escuchar una nota de voz larga. Esto ahorra tiempo y permite una comunicación más eficiente.`}
 </p>
 
-<h2 className="text-4xl font-bold mt-12 mb-6">Métodos para convertir notas de voz a texto en WhatsApp</h2>
+<h2 className="text-4xl font-bold mt-12 mb-6">
+  Métodos para convertir notas de voz a texto en WhatsApp
+</h2>
 
 <h3 className="text-2xl font-bold mb-2">Métodos manuales</h3>
 <p className="text-xl mb-4 text-justify tracking-wide leading-relaxed">
@@ -47,19 +58,35 @@ import Logo from '../../../public/logo_variant.png';
   {`Afortunadamente, existen herramientas automáticas que simplifican este proceso. Una de las más recomendadas es Vntotxt, una plataforma que convierte tus notas de voz a texto de manera rápida y precisa.`}
 </p>
 
-<h2 className="text-4xl font-bold mt-12 mb-6">¿Cómo usar Vntotxt para convertir notas de voz a texto?</h2>
+<h2 className="text-4xl font-bold mt-12 mb-6">
+  ¿Cómo usar Vntotxt para convertir notas de voz a texto?
+</h2>
 
-<h3 className="text-2xl font-bold mb-2">Paso 1: Guarda el contacto de Vntotxt Bot🤖</h3>
+<h3 className="text-2xl font-bold mb-2">
+  Paso 1: Guarda el contacto de Vntotxt Bot🤖
+</h3>
+<figure className="flex justify-center my-6">
+  <Image src={Spiderman} alt="Persona guardando contacto de WhatsApp" loading="eager" />
+</figure>
 <p className="text-xl mb-4 text-justify tracking-wide leading-relaxed">
-  {`Recuerda que con Vntotxt no es necesario descargar una aplicación para convertir tus notas de voz de WhatsApp a texto, sino a través de un Bot de WhatsApp al que puedes guardar en tus contactos`} <a className="link link-primary" href="https://api.whatsapp.com/send?phone=17867444726" target="_blank">🇺🇸 +1 786 744 4726</a>.
+  {`Recuerda que con Vntotxt no es necesario descargar una aplicación para convertir tus notas de voz de WhatsApp a texto, sino a través de un Bot de WhatsApp al que puedes guardar en tus contactos`}{" "}
+  <a className="link link-primary text-xl text-justify tracking-wide leading-relaxed" href="https://api.whatsapp.com/send?phone=17867444726" target="_blank">{"🇺🇸 +1 786 744 4726"}</a>{"."}
 </p>
 
-<h3 className="text-2xl font-bold mb-2">Paso 2: Reenvia a nuestro Bot🤖 la nota de voz</h3>
+<h3 className="text-2xl font-bold mb-2">
+  Paso 2: Reenvia a nuestro Bot🤖 la nota de voz
+</h3>
+<figure className="flex justify-center my-6">
+  <Image src={ForwardVoiceNote} alt="Reenviar nota de voz" loading="eager" />  
+</figure>
 <p className="text-xl mb-4 text-justify tracking-wide leading-relaxed">
   {`Una vez registrado, sube la nota de voz que deseas convertir. Vntotxt acepta diversos formatos de audio para mayor conveniencia.`}
 </p>
 
 <h3 className="text-2xl font-bold mb-2">Paso 3: Recibir el texto transcrito</h3>
+<figure className="flex justify-center my-6">
+  <Image src={TextAudio} alt="Esperar audio transcrito" loading="eager" />
+</figure>
 <p className="text-xl mb-4 text-justify tracking-wide leading-relaxed">
   {`Después de reenviar la nota de voz, Vntotxt Bot🤖 procesará el audio y generará una transcripción precisa del mensaje. En pocos momentos, tendrás el texto listo para leerlo.`}
 </p>
@@ -73,9 +100,13 @@ import Logo from '../../../public/logo_variant.png';
   <div className="hero-content flex-col lg:flex-row">
     <Image src={Logo} alt="Voice note to text" loading="eager" width="250" />
     <div>
-      <h2 className="text-4xl font-bold">Empieza a convertir tus notas de voz en texto gratis ahora</h2>
-      <p className="py-6">Prueba Vntotxt hoy mismo y experimenta la comodidad de convertir tus notas de voz en texto con facilidad y precisión. ¡No esperes más y optimiza tu forma de comunicarte!</p>
-      <a className="btn btn-primary btn-wide m-auto md:m-0" href="https://api.whatsapp.com/send?phone=17867444726" target="_blank">Empezar <span className="text-xl">😎</span></a>
+      <h2 className="text-4xl font-bold">
+        Empieza a convertir tus notas de voz en texto gratis ahora
+      </h2>
+      <p className="py-3">
+        {"Prueba Vntotxt hoy mismo y experimenta la comodidad de convertir tus notas de voz en texto con facilidad y precisión. ¡No esperes más y optimiza tu forma de comunicarte!"}
+      </p>
+      <a className="btn btn-primary btn-wide" href="https://api.whatsapp.com/send?phone=17867444726" target="_blank">Empezar <span className="text-xl">😎</span></a>
     </div>
   </div>
 </div>

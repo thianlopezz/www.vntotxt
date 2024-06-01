@@ -3,6 +3,17 @@ import NavigationLayout from "./NavigationLayout.astro";
 const { frontmatter } = Astro.props;
 
 import VoiceNoteToText from "../../public/images/posts/nota_de_voz_a_texto_whatsapp.png";
+
+const tags = [
+  {
+    name: "voice-note",
+    url: "/tags/voice-note",
+  },
+  {
+    name: "whatsapp",
+    url: "/tags/whatsapp",
+  },
+];
 ---
 
 <NavigationLayout
@@ -44,7 +55,7 @@ import VoiceNoteToText from "../../public/images/posts/nota_de_voz_a_texto_whats
         />
         <meta itemprop="publisher" content="Vntotxt" />
       </div>
-      <div class="bg-secondary px-80 py-16 border-t-2 border-white">
+      <div class="bg-secondary px-80 py-16 border-t-2 border-accent">
         <h1
           class="text-primary text-justify leading-tight text-5xl font-bold font-ubuntu"
         >
@@ -53,34 +64,39 @@ import VoiceNoteToText from "../../public/images/posts/nota_de_voz_a_texto_whats
       </div>
 
       <div class="bg-primary py-5 px-80 mb-4 flex justify-between text-white">
+        <!-- href="/contributors/thian-lopez/" -->
         <a
           class="flex items-center no-underline"
           itemprop="author"
           name={frontmatter.author}
-          href="/contributors/thian-lopez/"
+          href="#"
         >
-          <img
-            class="w-10 h-10 rounded-full block"
-            src="/contributors/img/jeff-delaney.webp"
-            alt={frontmatter.author + " avatar"}
-          />
+          <div class="avatar placeholder">
+            <div class="bg-accent text-neutral-content rounded-full w-12">
+              <span class="text-2xl font-bold font-ubuntu">T</span>
+            </div>
+          </div>
           <span class="flex flex-col ml-2">
             <span class="no-underline">{frontmatter.author}</span>
             <span class="text-xs text-gray4"
               >Posted <time itemprop="dateModified">{frontmatter.pubDate}</time>
-            </span>
-          </span></a
-        >
-
+            </span></span
+          >
+        </a>
         <span>
-          <a href="/tags/svelte"><span class="tag tag-svelte">#svelte</span></a>
-
-          <a href="/tags/react"><span class="tag tag-react">#react</span></a>
+          <!-- <a href={tag.url}> -->
+          {
+            tags.map((tag) => (
+                <a href="#">
+                <span class="tag tag-svelte">#{tag.name}</span>
+              </a>
+            ))
+          }
         </span>
       </div>
+      <div class="px-80 pt-10">
+        <slot />
+      </div>
     </header>
-    <div class="px-80 pt-10">
-      <slot />
-    </div>
   </article>
 </NavigationLayout>
