@@ -36,3 +36,9 @@
   to = "/es/vntotxt-free"
   status = 200
   force = true
+
+[[redirects]]
+  from = "/posts/como-convertir-tus-notas-de-voz-a-texto-whatsapp"
+  to = "/posts/como-convertir-tus-notas-de-voz-a-texto-whatsapp"
+  status = 200
+  force = true
