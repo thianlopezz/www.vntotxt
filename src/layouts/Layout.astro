@@ -13,9 +13,10 @@ interface Props {
   language: string;
   title?: string;
   description?: string;
+  image?: string;
 }
 
-const { language, title, description } = Astro.props;
+const { language, title, description, image } = Astro.props;
 
 const localeUrls = getRelativeLocaleUrlList();
 ---
@@ -23,7 +24,7 @@ const localeUrls = getRelativeLocaleUrlList();
 <!doctype html>
 <html lang={lang}>
   <head>
-    <HeadSeo title={title} description={description} />
+    <HeadSeo title={title} description={description} image={image} />
     <meta charset="UTF-8" />
     <!-- <meta name="description" content="Astro description" /> -->
     <meta name="viewport" content="width=device-width" />

@@ -6,7 +6,7 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const { title = t("page.title"), description = t("page.description") } =
+const { title = t("page.title"), description = t("page.description"), image = ImageBro.src } =
   Astro.props;
 
 let siteUrl = Astro.request.url;
@@ -23,7 +23,7 @@ siteUrl[siteUrl.length - 1] === "/"
       url: siteUrl,
       title,
       type: "website",
-      image: Astro.site + ImageBro.src,
+      image: Astro.site + image,
     },
     optional: {
       description,
@@ -39,7 +39,7 @@ siteUrl[siteUrl.length - 1] === "/"
     meta: [
       {
         name: "twitter:image",
-        content: siteUrl + ImageBro.src,
+        content: siteUrl + image,
       },
       { name: "twitter:title", content: title },
       {
