@@ -56,15 +56,15 @@ const tags = [
         />
         <meta itemprop="publisher" content="Vntotxt" />
       </div>
-      <div class="bg-secondary px-80 py-16 border-t-2 border-accent">
+      <div class="bg-secondary px-4 lg:px-60 xl:px-80 py-16 border-t-2 border-accent">
         <h1
-          class="text-primary text-justify leading-tight text-5xl font-bold font-ubuntu"
+          class="text-primary text-center lg:text-justify leading-tight text-3xl md:text-5xl font-bold font-ubuntu"
         >
           {frontmatter.title}
         </h1>
       </div>
 
-      <div class="bg-primary py-5 px-80 mb-4 flex justify-between text-white">
+      <div class="bg-primary py-5 px-4 lg:px-60 xl:px-80 mb-4 flex justify-between text-white">
         <!-- href="/contributors/thian-lopez/" -->
         <a
           class="flex items-center no-underline"
@@ -95,7 +95,7 @@ const tags = [
           }
         </span>
       </div>
-      <div class="px-80 pt-10">
+      <div class="px-4 lg:px-60 xl:px-80 pt-10">
         <slot />
       </div>
     </header>
