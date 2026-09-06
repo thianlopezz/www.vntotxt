@@ -161,16 +161,16 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
             },
             createSubscription: function (data, actions) {
                 return actions.subscription.create({
-                    /* Creates the subscription */
-                    // plan_id: "P-0PC67333FG471260VMY42XTY", // PROD
-                    plan_id: PAYPAL_PRO_PLAN_ID, // TEST
+                    plan_id: PAYPAL_PRO_PLAN_ID,
+                    // Lets the backend correlate PayPal webhooks with this request
+                    custom_id: String(subscriptionRequestIdInput.value),
                 });
             },
             onApprove: function (data, actions) {
                 // alert(data.subscriptionID); // You can add optional success message for the subscriber here
-                confirmPurchase(VNTOTXT_API, data)
+                return confirmPurchase(VNTOTXT_API, data)
                     .then(() => console.log("Purchase confirmed"))
-                    .error(console.error);
+                    .catch(console.error);
             },
         })
         // .render("#paypal-button-container-P-0PC67333FG471260VMY42XTY"); // Renders the PayPal button
