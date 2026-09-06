@@ -1,46 +1,84 @@
 ---
-import CardSubscription from "./CardSubscription.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import CardProSubscription from "./CardProSubscription.astro";
-import CardFreeSubscription from "./CardFreeSubscription.astro";
+import PlanCard from "./PlanCard.astro";
+import Icon from "./Icon.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const BOT_LINK = "https://api.whatsapp.com/send?phone=17867444726";
+const SUPPORT_LINK = "https://api.whatsapp.com/send?phone=593990901765";
+const prefix = lang == "es" ? "/es" : "";
 ---
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center">
-  <div class="w-full min-w-0 flex flex-col items-center">
-    <CardFreeSubscription showButton />
+<div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+  <PlanCard
+    id="plan-free"
+    name={t("plan.name.free")}
+    price="0"
+    minutes={15}
+    quotaMessage={t("thread.quota.free")}
+    quotaStyle="same"
+    ctaText={t("plan.free.cta")}
+    ctaHref={BOT_LINK}
+    ctaId="subscribe-free-btn"
+    ctaStyle="outline"
+    ctaExternal
+    features={[
+      { description: t("plan.free.feature.transcriptions"), included: true },
+      { description: t("plan.feature.quota.same"), included: true },
+      { description: t("plan.feature.multilanguage"), included: true },
+      { description: t("plan.feature.support.basic"), included: true },
+      { description: t("plan.feature.processing.standard"), included: true },
+      { description: t("plan.feature.webapp"), included: false },
+    ]}
+  />
+  <PlanCard
+    id="plan-pro"
+    name={t("plan.name.pro")}
+    price="4.99"
+    minutes={180}
+    quotaMessage={t("thread.quota.pro")}
+    quotaStyle="separate"
+    ctaText={t("plan.pro.cta")}
+    ctaHref={`${prefix}/vntotxt-pro`}
+    ctaId="subscribe-pro-btn"
+    note={t("plan.pro.trial")}
+    features={[
+      { description: t("plan.feature.trial"), included: true },
+      { description: t("plan.pro.feature.transcriptions"), included: true },
+      { description: t("plan.feature.quota.separated"), included: true },
+      { description: t("plan.feature.multilanguage"), included: true },
+      { description: t("plan.feature.support.standard"), included: true },
+      { description: t("plan.feature.processing.enhanced"), included: true },
+      { description: t("plan.feature.webapp"), included: true },
+    ]}
+  />
+</div>
+
+<div
+  id="plan-premium"
+  class="mt-6 flex flex-col gap-4 rounded-box bg-base-100 p-6 sm:flex-row sm:items-center sm:justify-between"
+>
+  <div>
+    <p class="text-xl font-semibold">
+      {t("plan.name.premium")}
+      <span class="ml-2 rounded-full bg-neutral px-3 py-0.5 text-sm font-normal text-gray-600"
+        >{t("plan.premium.comingSoon")}</span
+      >
+    </p>
+    <p class="mt-1 text-gray-800">
+      {t("plan.unlimited")} · <span set:html={t("plan.feature.processing.priority")} /> ·
+      <span set:html={t("plan.feature.support.premium")} />
+    </p>
   </div>
-  <div class="w-full min-w-0 flex flex-col items-center">
-    <CardProSubscription showButton />
-  </div>
-  <div class="w-full min-w-0 flex flex-col items-center">
-    <CardSubscription
-      title={t("plan.premium.title")}
-      features={[
-        {
-          description: t("plan.premium.feature.transcriptions"),
-          included: true,
-        },
-        {
-          description: t("plan.feature.quota.separated"),
-          included: true,
-        },
-        { description: t("plan.feature.multilanguage"), included: true },
-        {
-          description: t("plan.feature.support.premium"),
-          included: true,
-        },
-        {
-          description: t("plan.feature.processing.priority"),
-          included: true,
-        },
-        {
-          description: t("plan.feature.webapp"),
-          included: true,
-        },
-      ]}
-    />
-  </div>
+  <a
+    href={SUPPORT_LINK}
+    target="_blank"
+    rel="noopener"
+    class="btn btn-ghost text-primary"
+  >
+    {t("plan.premium.ask")}
+    <Icon name="whatsapp" class="h-5 w-5" />
+  </a>
 </div>

@@ -2,6 +2,7 @@
 import Image from "astro/components/Image.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import Logo from "../../public/logo_transparent_540.png";
+import Icon from "./Icon.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,45 +11,33 @@ const t = useTranslations(lang);
 <div class="navbar bg-secondary">
   <div class="navbar-start">
     <div class="dropdown">
-      <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          ><path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h8m-8 6h16"></path></svg
-        >
-      </div>
+      <button
+        type="button"
+        class="btn btn-ghost lg:hidden"
+        aria-label={t("nav.menu")}
+        aria-haspopup="true"
+      >
+        <Icon name="menu" class="h-6 w-6" />
+      </button>
       <ul
         tabindex="0"
-        class="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+        class="menu menu-md dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-56"
       >
         <li>
-          <a
-            id="how-it-works-mobile-link"
-            aria-label="how it works"
-            href="#how-it-works">{t("nav.howItWorks")}</a
+          <a id="how-it-works-mobile-link" href="#how-it-works"
+            >{t("nav.howItWorks")}</a
           >
         </li>
         <li>
-          <a id="features-mobile-link" aria-label="features" href="#features"
-            >{t("nav.features")}</a
-          >
+          <a id="features-mobile-link" href="#features">{t("nav.features")}</a>
         </li>
         <li>
-          <a id="pricing-mobile-link" aria-label="pricing" href="#pricing"
-            >{t("nav.pricing")}</a
-          >
+          <a id="pricing-mobile-link" href="#pricing">{t("nav.pricing")}</a>
         </li>
       </ul>
     </div>
     <a href={`${lang == "es" ? "/es" : "/"}`} class="btn btn-ghost text-xl">
-      <Image src={Logo} alt="VnToText Logo" class="w-10" loading="eager" />
+      <Image src={Logo} alt="Vntotxt logo" class="w-10" loading="eager" />
       vntotxt
     </a>
   </div>

@@ -31,6 +31,22 @@
     font-style: normal;
     font-display: block;
   }
+
+  /* Browser surfaces carry the palette too. */
+  :root {
+    accent-color: #1c5f5f;
+  }
+  ::selection {
+    background: #c2fa6b;
+    color: #0e1504;
+  }
+  :focus-visible {
+    outline: 2px solid #1c5f5f;
+    outline-offset: 2px;
+  }
+  a {
+    text-underline-offset: 0.15em;
+  }
 }
 
 @keyframes popup {
@@ -61,4 +77,23 @@
 
 .animate-fadeInUp {
   animation: fadeInUp 0.8s ease-out both;
+}
+
+/*
+ * Scroll-entrance reveals. Content is visible by default; only when the
+ * document has JavaScript (html.js) and the visitor has not asked for reduced
+ * motion do elements start hidden and pop in once they intersect.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    opacity: 0;
+  }
+  html.js [data-reveal="pop"].is-visible {
+    animation: popup 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: var(--reveal-delay, 0s);
+  }
+  html.js [data-reveal="up"].is-visible {
+    animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--reveal-delay, 0s);
+  }
 }

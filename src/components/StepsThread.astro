@@ -1,0 +1,200 @@
+---
+/**
+ * "How it works" told as the WhatsApp conversation it actually is.
+ * Left column: the three steps with their illustrations.
+ * Right column: one continuous chat screen where each step produces the
+ * message it would in real life. On phones the two interleave.
+ */
+import { Image } from "astro:assets";
+import SaveContactBro from "../../public/save-contact-bro.svg";
+import ForwardMessageBro from "../../public/forward-message-bro.svg";
+import TranscribedAudioBro from "../../public/transcribed-audio-bro.svg";
+import Logo from "../../public/logo_transparent_540.png";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import ContactCardBubble from "./ContactCardBubble.astro";
+import VoiceNoteBubble from "./VoiceNoteBubble.astro";
+import TextBubble from "./TextBubble.astro";
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const steps = [
+  {
+    id: "hiw-step1",
+    image: SaveContactBro,
+    alt: t("home.howItWorks.step-1.altImage"),
+    title: t("home.howItWorks.step-1.title"),
+    body: t("home.howItWorks.step-1.body"),
+  },
+  {
+    id: "hiw-step2",
+    image: ForwardMessageBro,
+    alt: t("home.howItWorks.step-2.altImage"),
+    title: t("home.howItWorks.step-2.title"),
+    body: t("home.howItWorks.step-2.body"),
+  },
+  {
+    id: "hiw-step3",
+    image: TranscribedAudioBro,
+    alt: t("home.howItWorks.step-3.altImage"),
+    title: t("home.howItWorks.step-3.title"),
+    body: t("home.howItWorks.step-3.body"),
+  },
+];
+---
+
+<div class="thread">
+  <!-- Chat header (spans the screen column) -->
+  <div class="thread-header navbar rounded-t-box bg-primary text-primary-content px-4">
+    <div class="h-10 w-10 shrink-0 overflow-hidden rounded-full bg-secondary">
+      <Image src={Logo} alt="" loading="lazy" />
+    </div>
+    <div class="ml-3 flex min-w-0 flex-col">
+      <span class="font-medium leading-tight">{t("thread.botName")}</span>
+      <span class="text-xs opacity-80">{t("thread.example")}</span>
+    </div>
+  </div>
+
+  {
+    steps.map((step, i) => (
+      <>
+        <div class="step" id={step.id} style={`--row: ${i + 2}`}>
+          <Image
+            src={step.image}
+            alt={step.alt}
+            class="step-illustration"
+            loading="lazy"
+          />
+          <div>
+            <div class="mb-2 flex items-center gap-3">
+              <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-2xl font-bold text-neutral-content">
+                {i + 1}
+              </span>
+              <h3 class="text-2xl font-bold">{step.title}</h3>
+            </div>
+            <p class="text-lg text-gray-800">{step.body}</p>
+          </div>
+        </div>
+        <div class="bubble-cell" style={`--row: ${i + 2}`}>
+          <p class="pill">
+            {t("home.howItWorks.step")} {i + 1}
+          </p>
+          <div data-reveal="pop" style={`--reveal-delay: ${i * 0.35}s`}>
+            {i === 0 && <ContactCardBubble />}
+            {i === 1 && <VoiceNoteBubble />}
+            {i === 2 && <TextBubble quota />}
+          </div>
+        </div>
+      </>
+    ))
+  }
+  <!-- Continuous mint "screen" behind the bubbles on desktop -->
+  <div class="screen" aria-hidden="true"></div>
+</div>
+
+<style>
+  .thread {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+  }
+  .thread-header {
+    display: none;
+  }
+  .step {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .step-illustration {
+    width: 6rem;
+    height: auto;
+    flex: none;
+  }
+  .bubble-cell {
+    background: #e0f1df; /* mint-bubble */
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .bubble-cell:last-of-type {
+    margin-bottom: 0;
+  }
+  .pill {
+    width: fit-content;
+    margin: 0 auto 0.75rem;
+    padding: 0.125rem 0.75rem;
+    border-radius: 9999px;
+    background: #fff;
+    color: #4b5563;
+    font-size: 0.75rem;
+    line-height: 1.25rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  }
+  .screen {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .thread {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      grid-template-rows: auto repeat(3, auto);
+      column-gap: 2.5rem;
+      row-gap: 0;
+    }
+    .thread-header {
+      display: flex;
+      grid-column: 2;
+      grid-row: 1;
+      position: relative;
+      z-index: 1;
+    }
+    .screen {
+      display: block;
+      grid-column: 2;
+      grid-row: 1 / -1;
+      background: #e0f1df;
+      border-radius: 1rem;
+    }
+    .step {
+      grid-column: 1;
+      grid-row: var(--row);
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #d1d5db;
+    }
+    .step:nth-of-type(3) {
+      border-bottom: 0;
+    }
+    .step-illustration {
+      width: 6rem;
+    }
+    .bubble-cell {
+      grid-column: 2;
+      grid-row: var(--row);
+      position: relative;
+      z-index: 1;
+      background: transparent;
+      border-radius: 0;
+      padding: 1.5rem 2rem;
+      margin: 0;
+      align-self: center;
+    }
+    .bubble-cell:last-of-type {
+      padding-bottom: 2.5rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .step {
+      flex-direction: row;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 2rem 0;
+    }
+    .step-illustration {
+      width: 9rem;
+    }
+  }
+</style>

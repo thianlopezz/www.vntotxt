@@ -1,35 +1,36 @@
 ---
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Icon from "./Icon.astro";
 
 interface Props {
-  _class?: string;
+  class?: string;
+  /** Show the remaining-minutes line the bot appends on the Free plan. */
+  quota?: boolean;
+  /** Use the shorter example transcript (fits the hero phone). */
+  short?: boolean;
 }
 
-const { _class } = Astro.props;
+const { class: className = "", quota = false, short = false } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<div class=`flex justify-start ${_class}`>
-    <div
-        class="flex flex-col gap-2 w-11/12 leading-1.5 p-4 border-gray-200 bg-lime-50 rounded-e-xl rounded-es-xl"
-    >
-        <div class="flex items-center space-x-2 rtl:space-x-reverse">
-            <p>
-                {t('featurePhone.transcription')}
-            </p>
-        </div>
-        <div class="flex justify-between">
-            <span class="text-xs text-gray-400"></span>
-            <span class="text-xs text-gray-400"
-                >{
-                    new Date().toLocaleTimeString("en-US", {
-                        hour: "2-digit",
-                        minute: "2-digit",
-                    })
-                }</span
-            >
-        </div>
+<div class={`flex justify-start ${className}`}>
+  <div class="flex flex-col gap-2 w-11/12 p-4 bg-lime-50 rounded-e-xl rounded-es-xl">
+    <p class="text-base leading-relaxed">
+      {short ? t("featurePhone.transcription.short") : t("featurePhone.transcription")}
+    </p>
+    {
+      quota && (
+        <p class="flex items-center gap-2 text-sm text-primary">
+          <Icon name="time" class="h-4 w-4 shrink-0" />
+          <span>{t("thread.quota.free")}</span>
+        </p>
+      )
+    }
+    <div class="flex justify-end text-xs text-gray-600">
+      <span>{t("thread.time")}</span>
     </div>
+  </div>
 </div>

@@ -1,4 +1,11 @@
 ---
+/**
+ * Plan summary card used on the checkout pages (/vntotxt-free, /vntotxt-pro).
+ * The home page uses PlanCard instead.
+ */
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Icon from "./Icon.astro";
+
 interface Feature {
   description: string;
   included: boolean;
@@ -14,14 +21,17 @@ interface Props {
   features: Feature[];
 }
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const {
   title,
   price,
   features,
   checkoutLink,
-  comingText = "Coming soon",
-  subscribeText = "Subscribe",
-  subscribeButtonId
+  comingText = t("plan.premium.comingSoon"),
+  subscribeText = t("plan.pro.cta"),
+  subscribeButtonId,
 } = Astro.props;
 ---
 
@@ -30,50 +40,33 @@ const {
     <h3 class="card-title text-4xl font-bold mb-1">{title}</h3>
     {
       price ? (
-        <h4 class="card-title text-4xl font-bold mb-1">
+        <p class="text-4xl font-bold mb-1">
           ${price}
-          <small class="text-lg">/month</small>
-        </h4>
+          <small class="text-lg">{t("plan.perMonth")}</small>
+        </p>
       ) : (
-        <h4 class="text-2xl font-bold mb-1 text-gray-600">{comingText}</h4>
+        <p class="text-2xl font-bold mb-1 text-gray-600">{comingText}</p>
       )
     }
-    <table class="table">
-      <tbody>
-        {
-          features.map((item) => (
-            <tr>
-              <td set:html={item.description} />
-              <th>
-                <span class="text-3xl">
-                  <i class={item.included ? "bx bx-check" : "bx bx-x"} />
-                </span>
-              </th>
-            </tr>
-          ))
-        }
-      </tbody>
-    </table>
+    <ul class="my-2 space-y-2">
+      {
+        features.map((item) => (
+          <li class={`flex items-start gap-2 ${item.included ? "" : "text-gray-600"}`}>
+            <Icon
+              name={item.included ? "check-circle" : "x"}
+              class={`mt-0.5 h-5 w-5 shrink-0 ${item.included ? "text-primary" : ""}`}
+            />
+            <span set:html={item.description} />
+          </li>
+        ))
+      }
+    </ul>
     {
       checkoutLink && (
         <div class="card-actions justify-center">
-          {checkoutLink ? (
-            <a
-              id={subscribeButtonId}
-              class="btn btn-primary btn-block text-base-100"
-              href={checkoutLink}
-            >
-              {subscribeText}
-            </a>
-          ) : (
-            <button
-              id={subscribeButtonId}
-              class="btn btn-primary btn-block text-base-100"
-              disabled="disabled"
-            >
-              {subscribeText}
-            </button>
-          )}
+          <a id={subscribeButtonId} class="btn btn-primary btn-block" href={checkoutLink}>
+            {subscribeText}
+          </a>
         </div>
       )
     }

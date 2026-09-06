@@ -6,7 +6,6 @@
     "colorMeta": {
       "deep-pine-teal": { "role": "primary", "displayName": "Deep Pine Teal", "canonical": "oklch(44.48% 0.0653 195.06)", "tonalRamp": ["#001214", "#002a2b", "#004a4a", "#2b6c6c", "#50908f", "#75b5b4", "#9bdcdb", "#bbfdfc"] },
       "deep-pine-teal-pressed": { "role": "primary", "displayName": "Deep Pine Teal Pressed", "canonical": "color-mix(in oklab, #1C5F5F 90%, black)", "tonalRamp": ["#001214", "#002a2b", "#004a4a", "#2b6c6c", "#50908f", "#75b5b4", "#9bdcdb", "#bbfdfc"] },
-      "teal-mist": { "role": "primary", "displayName": "Teal Mist", "canonical": "oklch(88.90% 0.0131 195.06)", "tonalRamp": ["#001214", "#002a2b", "#004a4a", "#2b6c6c", "#50908f", "#75b5b4", "#9bdcdb", "#bbfdfc"] },
       "mint-bubble": { "role": "secondary", "displayName": "Mint Bubble", "canonical": "oklch(94.06% 0.0299 143.78)", "tonalRamp": ["#040e04", "#192518", "#364436", "#576556", "#798878", "#9dad9c", "#c3d3c2", "#e3f4e2"] },
       "lime-pop": { "role": "secondary", "displayName": "Lime Pop", "canonical": "oklch(91.84% 0.1813 127.55)", "tonalRamp": ["#001100", "#102a00", "#2d4a00", "#4d6c10", "#6f903b", "#92b660", "#b8dd86", "#d8fea6"] },
       "lime-ink": { "role": "secondary", "displayName": "Lime Ink", "canonical": "oklch(18.37% 0.0363 127.55)", "tonalRamp": ["#001100", "#102a00", "#2d4a00", "#4d6c10", "#6f903b", "#92b660", "#b8dd86", "#d8fea6"] },
@@ -59,9 +58,9 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Every WhatsApp call-to-action and form submit. Deep Pine Teal fill, Teal Mist text, darkens on hover, scales down on press.",
+      "description": "Every WhatsApp call-to-action and form submit. Deep Pine Teal fill, white text, darkens on hover, scales down on press.",
       "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started! <span class=\"ds-btn-emoji\">😎</span></a>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; min-height: 3rem; padding: 0 1rem; width: 16rem; border-radius: 0.5rem; border: 1px solid #1C5F5F; background: #1C5F5F; color: #d1dddd; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1em; text-decoration: none; cursor: pointer; box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); transition: color .2s, background-color .2s, border-color .2s, transform .2s; transition-timing-function: cubic-bezier(0,0,.2,1); } .ds-btn-primary:hover { background: #175252; border-color: #175252; } .ds-btn-primary:focus-visible { outline: 2px solid #1C5F5F; outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.95); } .ds-btn-emoji { font-size: 1.25rem; }"
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; min-height: 3rem; padding: 0 1rem; width: 16rem; border-radius: 0.5rem; border: 1px solid #1C5F5F; background: #1C5F5F; color: #ffffff; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1em; text-decoration: none; cursor: pointer; box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); transition: color .2s, background-color .2s, border-color .2s, transform .2s; transition-timing-function: cubic-bezier(0,0,.2,1); } .ds-btn-primary:hover { background: #175252; border-color: #175252; } .ds-btn-primary:focus-visible { outline: 2px solid #1C5F5F; outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.95); } .ds-btn-emoji { font-size: 1.25rem; }"
     },
     {
       "name": "Block Button",
@@ -88,12 +87,20 @@
       "css": ".ds-btn-circle { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; padding: 0; margin: 0 0.5rem; border-radius: 9999px; border: 1px solid #C2FA6B; background: #C2FA6B; color: #0e1504; cursor: pointer; box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); transition: background-color .2s, border-color .2s, transform .2s; } .ds-btn-circle:hover { background: #afe160; border-color: #afe160; } .ds-btn-circle:focus-visible { outline: 2px solid #C2FA6B; outline-offset: 2px; } .ds-btn-circle:active { transform: scale(0.95); }"
     },
     {
-      "name": "Outline Badge",
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-primary-outline",
+      "description": "The secondary action beside a primary one, used for 'Start free on WhatsApp'. Teal border and text, fills teal on hover.",
+      "html": "<a class=\"ds-btn-outline\" href=\"#\">Start free on WhatsApp</a>",
+      "css": ".ds-btn-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; min-height: 3rem; padding: 0 1rem; border-radius: 0.5rem; border: 1px solid #1C5F5F; background: transparent; color: #1C5F5F; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1em; text-decoration: none; cursor: pointer; transition: color .2s, background-color .2s, transform .2s; } .ds-btn-outline:hover { background: #1C5F5F; color: #ffffff; } .ds-btn-outline:focus-visible { outline: 2px solid #1C5F5F; outline-offset: 2px; } .ds-btn-outline:active { transform: scale(0.95); }"
+    },
+    {
+      "name": "Chat Divider Pill",
       "kind": "chip",
-      "refersTo": "badge-outline-primary",
-      "description": "The single subtitle pill under each section headline.",
-      "html": "<span class=\"ds-badge\">As simple as</span>",
-      "css": ".ds-badge { display: inline-flex; align-items: center; justify-content: center; height: 1.5rem; padding: 0 0.688rem; border-radius: 1.9rem; border: 1px solid rgb(28 95 95 / .5); background: transparent; color: #1C5F5F; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 1rem; line-height: 1.5rem; width: fit-content; }"
+      "refersTo": "chat-divider-pill",
+      "description": "The WhatsApp-style centered pill that announces each step inside the how-it-works chat screen.",
+      "html": "<p class=\"ds-pill\">Step 1</p>",
+      "css": ".ds-pill { width: fit-content; margin: 0 auto; padding: 0.125rem 0.75rem; border-radius: 9999px; background: #ffffff; color: #4b5563; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.75rem; line-height: 1.25rem; box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); }"
     },
     {
       "name": "Step Card",
@@ -146,8 +153,8 @@
       "Ubuntu Bold for h1/h2 only; everything else is the system sans stack.",
       "Round everything: 1rem boxes, 0.5rem buttons and inputs, pill badges, full circles for avatars and social buttons.",
       "Cards lift with a soft shadow; nothing else casts one.",
-      "Entrance motion on scroll: fade-up for sections, spring pop for step cards and bubbles.",
-      "Illustrated people instead of photography; boxicons for glyphs."
+      "One entrance motion: chat bubbles pop in when they scroll into view. Sections are visible without JavaScript and respect reduced-motion.",
+      "Illustrated people instead of photography; Boxicons glyphs inlined as SVG so they never fall back to squares."
     ],
     "rules": [
       { "name": "The Mint Band Rule", "body": "Mint Bubble belongs to full-width bands and chrome. It is never a card, button, or badge fill.", "section": "colors" },
@@ -161,14 +168,16 @@
     ],
     "dos": [
       "Do alternate Mint Bubble and Cloud Grey bands section by section, with Paper White cards on top.",
-      "Do use Deep Pine Teal for every action: CTA buttons, the highlighted headline phrase, badges and social glyphs.",
+      "Do use Deep Pine Teal for every action: CTA buttons, the highlighted headline phrase, quota lines, chat headers and social glyphs.",
       "Do set h1 and section h2 in Ubuntu Bold and leave card titles, body and controls in the system sans.",
-      "Do keep cards at 24rem, 1rem radius, 2rem padding, Card lift shadow, three-up on desktop and stacked with 1.5rem gaps on phones.",
-      "Do mark steps and features with 3rem lime circle avatars containing a numeral or a boxicon.",
-      "Do end a hero headline or primary CTA with a single emoji.",
-      "Do animate entrances only: fade-up (0.8s ease-out) for sections, spring pop (0.5s) for cards and bubbles, triggered once at 10% visibility.",
-      "Do ship every page in English and Spanish and check the longer Spanish copy in every button and heading.",
-      "Do point every primary CTA at the WhatsApp bot link."
+      "Do let cards fill their grid column up to 24rem (never a fixed width), with 1rem radius, 2rem padding, Card lift shadow, and 1.5rem gaps.",
+      "Do mark steps and features with 3rem lime circle avatars containing a numeral or an inline SVG icon.",
+      "Do end a hero headline or primary CTA with a single emoji, wrapped in `aria-hidden`.",
+      "Do tell product behaviour in chat form: a step is the message it produces, a plan is the quota message the bot sends.",
+      "Do animate only chat bubbles, with `data-reveal=\"pop\"`, hidden only under `html.js` and `prefers-reduced-motion: no-preference`, triggered once at 10% visibility.",
+      "Do ship every page in English and Spanish from one shared component, keep both string tables key-for-key identical, and check the longer Spanish copy in every button and heading.",
+      "Do point every primary CTA at the WhatsApp bot link, label it \"Opens WhatsApp\", and keep the support number separate and labelled.",
+      "Do state \"Message the bot and you're on the Free plan automatically\" wherever plans are shown; paying is an upgrade, never a gate."
     ],
     "donts": [
       "Don't fill a text button, section or card with Lime Pop. Lime is a dot.",
@@ -176,10 +185,13 @@
       "Don't add shadows to buttons, inputs, badges, bubbles or bands. Only cards and the mobile menu lift.",
       "Don't apply Ubuntu to body copy, labels or buttons.",
       "Don't use sharp corners anywhere, or a radius smaller than 0.5rem on a control.",
-      "Don't use the registered `night` daisyUI theme; the body is pinned to `data-theme=\"default\"` and the site is light only.",
+      "Don't register a second daisyUI theme; the body is pinned to `data-theme=\"default\"` and the site is light only.",
       "Don't introduce photography, gradients, or glassmorphism; the world is flat illustration on flat colour.",
       "Don't use Voice Orange outside the microphone avatar.",
-      "Don't loop or auto-play motion; every animation runs once on entrance."
+      "Don't loop or auto-play motion, fade whole sections in, or hide content that has no JavaScript to reveal it.",
+      "Don't put a kicker, badge or eyebrow above or below a section heading; the heading stands alone.",
+      "Don't use icon fonts on the home page; every glyph is an inline SVG through `Icon.astro`.",
+      "Don't put a table of checkmarks in front of the visitor; lead with minutes per month and fold the rest into a disclosure."
     ]
   }
 }

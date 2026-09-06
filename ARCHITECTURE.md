@@ -18,14 +18,14 @@ with `npm run build` and serves `dist/` (`netlify.toml`).
 
 | Path | What belongs here | What does not |
 |---|---|---|
-| `src/pages/` | One `.astro` file per English route (`index`, `vntotxt-free`, `vntotxt-pro`, `subscription-success`, `privacy-policy`, `404`) plus the generated endpoints `favicon.ico.ts`, `manifest.json.ts`, `robots.txt.ts`. | Markup shared by two pages; that goes in `src/components/`. |
-| `src/pages/es/` | The Spanish sibling of each page. Same file name, same structure, `language="es"`. | A page that has no English sibling. |
+| `src/pages/` | One `.astro` file per English route (`index`, `vntotxt-free`, `vntotxt-pro`, `subscription-success`, `privacy-policy`, `404`) plus the generated endpoints `favicon.ico.ts`, `manifest.json.ts`, `robots.txt.ts`. `index.astro` only renders `components/HomePage.astro`. | Markup shared by two pages; that goes in `src/components/`. |
+| `src/pages/es/` | The Spanish sibling of each page. Same file name, same structure, `language="es"`. `es/index.astro` renders the same `HomePage` component. | A page that has no English sibling. |
 | `src/pages/posts/` | Blog posts as `.mdx` with frontmatter (`layout`, `title`, `pubDate`, `description`), rendered by `MarkdownPostLayout`. Only Spanish posts exist today. | Anything that is not a post. |
 | `src/layouts/` | `Layout.astro` (the `<html>` shell: SEO head, fonts, analytics, sitemap link), `NavigationLayout.astro` (Layout + Navbar + Footer), `MarkdownPostLayout.astro` (article shell for posts). | Page content. |
-| `src/components/` | Reusable `.astro` components: cards, forms, phone mock-up, bubbles, navbar, footer. `common/` holds the head-only pieces (`HeadSeo`, `HeadAssets`, `Analytics`). | Client-side logic (see `src/scripts/`). |
+| `src/components/` | Reusable `.astro` components: `HomePage` (the whole landing page for both locales), `StepsThread` (how-it-works as a chat), `PlanCard`/`SubscriptionCardList` (pricing), `CardSubscription` (checkout-page plan summary), forms, `FeaturePhone`, the bubbles, `Icon` (inline SVG from `icon-paths.ts`), navbar, footer. `common/` holds the head-only pieces (`HeadSeo`, `HeadAssets`, `Analytics`). | Client-side logic (see `src/scripts/`). |
 | `src/i18n/` | `ui.ts`: the `en`/`es` string table keyed by dotted ids. `utils.ts`: `getLangFromUrl` and `useTranslations`. | Anything else; there is no routing logic here, routing is by directory. |
 | `src/scripts/` | `form-utils.js`, the checkout flow: WhatsApp verification, PayPal confirmation, geo-IP lookup. Loaded by the form components via `<script src>`. Plain JS, attaches functions to `window`. | Astro components. |
-| `src/styles/main.css` | Tailwind directives, the Ubuntu `@font-face` rules, and two keyframe animations. | Component styles; use Tailwind/daisyUI classes inline. |
+| `src/styles/main.css` | Tailwind directives, the Ubuntu `@font-face` rules, selection/focus/accent colours, two keyframe animations, and the `[data-reveal]` scroll-entrance rules (active only under `html.js` and when motion is allowed). | Component styles; use Tailwind/daisyUI classes inline. |
 | `src/env.d.ts` | Types for the three `PUBLIC_*` env vars. Add a line here when you add a variable. | Runtime code. |
 | `public/` | Static assets copied verbatim: logos, illustration SVGs, `fonts/`, `images/posts/`. Astro's `<Image>` also imports from here for optimisation. | Generated files. |
 | `cypress/` | Smoke specs (`e2e/vntotxtWeb/Smoke/`) and two configs; `prod.config.ts` points at `https://vntotxt.com/`, `qa.config.ts` is empty. | Unit tests; there are none. |
@@ -49,7 +49,10 @@ with `npm run build` and serves `dist/` (`netlify.toml`).
   for the `<head>` meta.
 - **`sharp` / `sharp-ico`** generate `favicon.ico` at build time from
   `public/logo.png`.
-- **boxicons** for icons (CSS import in `Layout.astro`, `<i class="bx ...">`).
+- **boxicons**: the home page inlines its glyphs as SVG through
+  `components/Icon.astro` (path data copied into `icon-paths.ts`); the
+  checkout, thank-you and 404 pages still use the icon font (CSS import in
+  `Layout.astro`, `<i class="bx ...">`).
 - **TypeScript** with `astro/tsconfigs/strict`; `astro check` is the type
   gate. There is no ESLint or Prettier config; formatting is Prettier's
   default as the Astro VS Code extension applies it.
@@ -108,7 +111,7 @@ placeholders.
 
 - Pages compose layouts and components; components never import pages.
 - All user-visible text comes from `src/i18n/ui.ts`. Both `en` and `es`
-  tables have 77 keys and must stay key-for-key identical (`useTranslations`
+  tables have 105 keys and must stay key-for-key identical (`useTranslations`
   falls back to English for a missing Spanish key, silently).
 - Locale is expressed twice: the directory (`src/pages/es/`) decides which
   strings render, and the `language` prop on `Layout` is passed explicitly.
@@ -147,7 +150,8 @@ placeholders.
   hard-coded English copy instead of i18n keys; `404.astro` also imports
   `CardOrderDetails` without using it.
 - Duplicate pages: `src/pages/X.astro` and `src/pages/es/X.astro` are
-  near-identical copies (300 lines each for the home page). Any change must be
+  near-identical copies for every route except the home page, which both
+  render from `components/HomePage.astro`. Changes to the other pages must be
   made twice.
 - The `posts` layout links to `/tags/...` routes that do not exist, and its
   frontmatter `image`/`tags` values are the Astro template defaults.

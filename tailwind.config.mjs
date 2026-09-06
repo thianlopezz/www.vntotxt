@@ -5,25 +5,23 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        // sans: [...defaultTheme.fontFamily.sans],
-        ubuntu: ['Ubuntu', ...defaultTheme.fontFamily.sans],
+        ubuntu: ["Ubuntu", ...defaultTheme.fontFamily.sans],
       },
       scale: {
-          '-100': '-1',
+        "-100": "-1",
       },
       animation: {
-        popup: 'popup 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both',
-        'fade-in-up': 'fadeInUp 0.8s ease-out both'
-      }
+        popup: "popup 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both",
+        "fade-in-up": "fadeInUp 0.8s ease-out both",
+      },
     },
   },
   daisyui: {
-    // Add your daisy ui themes here
     themes: [
-      "night",
       {
         default: {
           primary: "#1C5F5F",
+          "primary-content": "#ffffff",
           secondary: "#E0F1DF",
           accent: "#C2FA6B",
           neutral: "#F0F1F0",
