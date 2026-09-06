@@ -1,6 +1,9 @@
 [build]
   publish = "dist"
 
+[build.environment]
+  NODE_VERSION = "24"
+
 [[redirects]]
   from = "/es"
   to = "/es"
