@@ -5,7 +5,8 @@ what exists and why; this file does not repeat it.
 
 ## Setup
 
-You need Node 22 or newer and npm. No database, no services.
+You need Node 24 or newer and npm (the pinned major is in `.nvmrc`). No
+database, no services.
 
 ```bash
 npm ci
@@ -13,7 +14,7 @@ cp .env.example .env     # only needed to exercise the checkout forms locally
 npm run dev              # http://localhost:4321
 ```
 
-Inside an Astillero agent container this is already done: Node 22 is on
+Inside an Astillero agent container this is already done: Node 24 is on
 `PATH`, `npm ci` has run (with `CYPRESS_INSTALL_BINARY=0`, so there is no
 Cypress binary), and the three `PUBLIC_*` variables hold placeholders. Do not
 run Docker there.

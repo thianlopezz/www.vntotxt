@@ -128,6 +128,7 @@ export const ui = {
     "checkout.verification.code": "Verification code",
     "checkout.verification.code.enter":
       "Enter the verification code sent to your WhatsApp",
+    "checkout.verification.changeNumber": "Change number",
     "checkout.verification.verify": "Verify",
     "checkout.verification.subscribe": "Verify and subscribe",
     "checkout.paypal.description": "Please proceed with the PayPal payment",
@@ -272,6 +273,7 @@ export const ui = {
     "checkout.verification.code": "Código de verificación",
     "checkout.verification.code.enter":
       "Ingresa el código de verificación enviado a tu WhatsApp",
+    "checkout.verification.changeNumber": "Cambiar número",
     "checkout.verification.verify": "Verificar",
     "checkout.verification.subscribe": "Verificar y suscribirse",
     "checkout.paypal.description":

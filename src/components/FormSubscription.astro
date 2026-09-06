@@ -98,6 +98,14 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
                 <!-- <span class="label-text-alt">Bottom Right label</span> -->
             </div>
         </label>
+        <div class="flex w-full justify-end">
+            <button
+                id="changeNumberBtn"
+                type="button"
+                class="btn btn-link btn-sm px-0"
+                >{t("checkout.verification.changeNumber")}</button
+            >
+        </div>
         <div class="flex w-full">
             <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
                 >{t("checkout.verification.verify")}
@@ -149,6 +157,7 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
         verifyCodeForm.addEventListener("submit", (event) =>
             verificationCodeProcess(VNTOTXT_API, false, lang, event),
         );
+        changeNumberBtn.addEventListener("click", changeNumber);
     };
 
     paypal

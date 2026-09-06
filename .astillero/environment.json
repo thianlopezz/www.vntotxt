@@ -2,7 +2,7 @@
   "version": 1,
   "container": {
     "dockerfile": [
-      "FROM node:22-bookworm"
+      "FROM node:24-bookworm"
     ],
     "workdir": "/workspace/www.vntotxt",
     "env": {

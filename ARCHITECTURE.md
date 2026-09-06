@@ -59,11 +59,11 @@ with `npm run build` and serves `dist/` (`netlify.toml`).
 - **Cypress 13** for smoke tests against a deployed URL. It is a regular
   dependency, so `npm ci` would download the ~200 MB binary; the agent
   container sets `CYPRESS_INSTALL_BINARY=0` to skip that.
-- **Node**: there is no `.nvmrc` or `engines` field. The agent container runs
-  Node 22 (`node:22-bookworm`) and the build passes there.
-
-> TODO(human): confirm which Node version Netlify builds with, and pin it in a
-> `.nvmrc` so local, Netlify and the agent container agree.
+- **Node 24** (Active LTS), pinned in four places that must stay in sync:
+  `.nvmrc`, `engines.node` in `package.json`, `NODE_VERSION` in
+  `netlify.toml`, and the `node:24-bookworm` image in
+  `.astillero/environment.json`. Newer majors also work locally; the
+  `engines` range is `>=24`.
 
 ## Key flows
 
@@ -111,7 +111,7 @@ placeholders.
 
 - Pages compose layouts and components; components never import pages.
 - All user-visible text comes from `src/i18n/ui.ts`. Both `en` and `es`
-  tables have 105 keys and must stay key-for-key identical (`useTranslations`
+  tables have 106 keys and must stay key-for-key identical (`useTranslations`
   falls back to English for a missing Spanish key, silently).
 - Locale is expressed twice: the directory (`src/pages/es/`) decides which
   strings render, and the `language` prop on `Layout` is passed explicitly.
