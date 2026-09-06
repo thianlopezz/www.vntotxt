@@ -78,6 +78,14 @@ const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
                 <!-- <span class="label-text-alt">Bottom Right label</span> -->
             </div>
         </label>
+        <div class="flex w-full justify-end">
+            <button
+                id="changeNumberBtn"
+                type="button"
+                class="btn btn-link btn-sm px-0"
+                >{t("checkout.verification.changeNumber")}</button
+            >
+        </div>
         <div class="flex w-full">
             <button type="submit" class="btn btn-primary mt-2 btn-block mx-auto"
                 >{t("checkout.verification.subscribe")}
@@ -117,5 +125,6 @@ const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
         verifyCodeForm.addEventListener("submit", (event) =>
             verificationCodeProcess(VNTOTXT_API, true, lang, event),
         );
+        changeNumberBtn.addEventListener("click", changeNumber);
     };
 </script>
