@@ -1,29 +1,26 @@
 ---
+import Icon from "./Icon.astro";
+import type { IconName } from "./icon-paths";
+
 interface Props {
   title: string;
-  descripton: string;
-  boxicon?: string;
+  description: string;
+  icon?: IconName;
 }
 
-const { title, descripton, boxicon } = Astro.props;
+const { title, description, icon } = Astro.props;
 ---
 
-<div class="flex items-center">
+<div class="flex items-start gap-4">
+  {
+    icon && (
+      <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-accent text-neutral-content">
+        <Icon name={icon} class="h-7 w-7" />
+      </div>
+    )
+  }
   <div>
-    {
-      boxicon && (
-        <div class="avatar placeholder mb-3">
-          <div class="bg-accent text-neutral-content rounded-full w-12">
-            <span class="text-3xl">
-              <i class={boxicon} />
-            </span>
-          </div>
-        </div>
-      )
-    }
     <h3 class="text-xl font-bold mb-1">{title}</h3>
-    <p>
-      {descripton}
-    </p>
+    <p class="text-gray-800">{description}</p>
   </div>
 </div>

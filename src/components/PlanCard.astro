@@ -1,0 +1,146 @@
+---
+/**
+ * A plan led by the only number that matters (minutes a month), shown the
+ * way the bot really reports it: as a quota message. Everything else lives
+ * behind a disclosure.
+ */
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Icon from "./Icon.astro";
+
+interface Feature {
+  description: string;
+  included: boolean;
+}
+
+interface Props {
+  id?: string;
+  name: string;
+  price: string; // e.g. "0" or "4.99"
+  minutes?: number; // undefined = unlimited
+  quotaMessage: string;
+  /** Free: quota is appended to the transcription; Pro: separate message. */
+  quotaStyle: "same" | "separate";
+  features: Feature[];
+  ctaText: string;
+  ctaHref: string;
+  ctaId?: string;
+  ctaStyle?: "primary" | "outline";
+  ctaExternal?: boolean;
+  note?: string;
+}
+
+const {
+  id,
+  name,
+  price,
+  minutes,
+  quotaMessage,
+  quotaStyle,
+  features,
+  ctaText,
+  ctaHref,
+  ctaId,
+  ctaStyle = "primary",
+  ctaExternal = false,
+  note,
+} = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const included = features.filter((f) => f.included);
+const excluded = features.filter((f) => !f.included);
+const [priceInt, priceDec] = price.split(".");
+---
+
+<article id={id} class="card h-full w-full bg-base-100 shadow-lg">
+  <div class="card-body gap-5">
+    <header class="flex items-baseline justify-between gap-4">
+      <h3 class="text-xl font-semibold">{name}</h3>
+      <p class="text-right">
+        <span class="text-4xl font-bold leading-none">${priceInt}</span>{
+          priceDec && <span class="text-xl font-bold">.{priceDec}</span>
+        }<span class="text-base text-gray-600">{t("plan.perMonth")}</span>
+      </p>
+    </header>
+
+    <div>
+      <p class="text-5xl font-bold leading-none text-primary">
+        {minutes ?? "∞"}
+      </p>
+      <p class="mt-1 text-lg">
+        {minutes ? t("plan.minutesPerMonth") : t("plan.unlimited")}
+      </p>
+    </div>
+
+    <div>
+      <p class="mb-2 text-sm text-gray-600">{t("plan.quotaMessage")}</p>
+      <div
+        class={`rounded-e-xl rounded-es-xl p-3 text-sm ${quotaStyle === "same" ? "bg-lime-50" : "bg-lime-50 border border-lime-200"}`}
+      >
+        {
+          quotaStyle === "same" && (
+            <p class="mb-2 text-gray-600">
+              …{t("featurePhone.transcription").slice(-60)}
+            </p>
+          )
+        }
+        <p class="flex items-center gap-2 font-medium text-primary">
+          <Icon name="time" class="h-4 w-4 shrink-0" />
+          <span>{quotaMessage}</span>
+        </p>
+      </div>
+    </div>
+
+    <details class="group">
+      <summary
+        class="flex cursor-pointer list-none items-center justify-between gap-2 py-2 text-base font-semibold text-primary [&::-webkit-details-marker]:hidden"
+      >
+        {t("plan.compare")}
+        <Icon
+          name="chevron-down"
+          class="h-5 w-5 transition-transform group-open:rotate-180"
+        />
+      </summary>
+      <ul class="mt-1 space-y-2">
+        {
+          included.map((f) => (
+            <li class="flex items-start gap-2">
+              <Icon name="check-circle" class="mt-0.5 h-5 w-5 shrink-0 text-primary" />
+              <span set:html={f.description} />
+            </li>
+          ))
+        }
+      </ul>
+      {
+        excluded.length > 0 && (
+          <>
+            <p class="mt-3 text-sm text-gray-600">{t("plan.notIncluded")}</p>
+            <ul class="mt-1 space-y-2">
+              {excluded.map((f) => (
+                <li class="flex items-start gap-2 text-gray-600">
+                  <Icon name="x" class="mt-0.5 h-5 w-5 shrink-0" />
+                  <span set:html={f.description} />
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+    </details>
+
+    <div class="card-actions mt-auto flex-col items-stretch gap-2">
+      <a
+        id={ctaId}
+        class={`btn btn-block ${ctaStyle === "outline" ? "btn-outline btn-primary" : "btn-primary"}`}
+        href={ctaHref}
+        target={ctaExternal ? "_blank" : undefined}
+        rel={ctaExternal ? "noopener" : undefined}
+      >
+        {ctaText}
+        {ctaExternal && <Icon name="whatsapp" class="h-5 w-5" />}
+      </a>
+      {note && <p class="text-center text-sm text-gray-600">{note}</p>}
+    </div>
+  </div>
+</article>

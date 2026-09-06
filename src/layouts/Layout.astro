@@ -27,7 +27,7 @@ const localeUrls = getRelativeLocaleUrlList();
     <HeadSeo title={title} description={description} image={image} />
     <meta charset="UTF-8" />
     <!-- <meta name="description" content="Astro description" /> -->
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
     <meta name="generator" content={Astro.generator} />
     <!-- <title>{title}</title> -->
@@ -35,6 +35,10 @@ const localeUrls = getRelativeLocaleUrlList();
       http-equiv="refresh"
       content={"0;url=/" + language == "en" ? "/" : language + "/"}
     />
+    <!-- Marks the document as scripted so entrance animations may hide content until it scrolls in. -->
+    <script is:inline>
+      document.documentElement.classList.add("js");
+    </script>
     <HeadAssets />
     <Analytics id="G-MNQ9N548LW" partytown={true} />
     <link rel="sitemap" href="/sitemap-index.xml" />

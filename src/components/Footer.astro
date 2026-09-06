@@ -1,58 +1,73 @@
 ---
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Icon from "./Icon.astro";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
-const socialMedia = [
-  {
-    name: "instagram",
-    link: "https://www.instagram.com/vntotxt/",
-    boxicon: "bx bxl-instagram",
-  },
-  {
-    name: "facebook",
-    link: "https://www.facebook.com/vntotxt",
-    boxicon: "bx bxl-facebook-circle",
-  },
-  {
-    name: "whatsapp",
-    link: "https://api.whatsapp.com/send?phone=17867444726",
-    boxicon: "bx bxl-whatsapp",
-  },
-];
+const BOT_LINK = "https://api.whatsapp.com/send?phone=17867444726";
+const SUPPORT_LINK = "https://api.whatsapp.com/send?phone=593990901765";
+const year = new Date().getFullYear();
 ---
 
-<footer
-  class="footer footer-center p-10 bg-secondary text-base-content rounded"
->
-  <nav class="grid grid-flow-col gap-4">
-    <a href="/privacy-policy" class="link link-hover">{t("footer.privacy")}</a>
+<footer class="footer footer-center gap-8 px-6 py-12 bg-secondary text-base-content">
+  <nav class="grid gap-3 sm:grid-flow-col sm:gap-8" aria-label="WhatsApp">
     <a
-      href="https://api.whatsapp.com/send?phone=593990901765"
+      href={BOT_LINK}
       target="_blank"
-      class="link link-hover">{t("footer.contact")}</a
+      rel="noopener"
+      class="btn btn-ghost h-auto min-h-12 py-2 flex-nowrap normal-case text-base"
     >
-    <a class="link link-hover" href={`/${lang == "en" ? "es" : ""}`}
-      >{t("footer.language")}</a
+      <Icon name="whatsapp" class="h-6 w-6 text-primary shrink-0" />
+      <span class="text-left leading-tight">
+        <span class="block font-semibold">{t("footer.bot")}</span>
+        <span class="block text-sm font-normal">+1 786 744 4726</span>
+      </span>
+    </a>
+    <a
+      href={SUPPORT_LINK}
+      target="_blank"
+      rel="noopener"
+      class="btn btn-ghost h-auto min-h-12 py-2 flex-nowrap normal-case text-base"
     >
+      <Icon name="whatsapp" class="h-6 w-6 text-primary shrink-0" />
+      <span class="text-left leading-tight">
+        <span class="block font-semibold">{t("footer.support")}</span>
+        <span class="block text-sm font-normal">+593 99 090 1765</span>
+      </span>
+    </a>
   </nav>
-  <nav>
-    <div class="grid grid-flow-col gap-4">
-      {
-        socialMedia.map((item) => (
-          <a
-            aria-label={item.name}
-            href={item.link}
-            class="text-4xl mx-2 text-primary"
-          >
-            <i class={item.boxicon} />
-          </a>
-        ))
-      }
-    </div>
+  <nav class="grid grid-flow-col gap-2" aria-label="Social">
+    <a
+      aria-label="Instagram"
+      href="https://www.instagram.com/vntotxt/"
+      target="_blank"
+      rel="noopener"
+      class="btn btn-ghost btn-circle text-primary"
+    >
+      <Icon name="instagram" class="h-8 w-8" />
+    </a>
+    <a
+      aria-label="Facebook"
+      href="https://www.facebook.com/vntotxt"
+      target="_blank"
+      rel="noopener"
+      class="btn btn-ghost btn-circle text-primary"
+    >
+      <Icon name="facebook" class="h-8 w-8" />
+    </a>
+  </nav>
+  <nav class="grid grid-flow-col gap-2">
+    <a href="/privacy-policy" class="btn btn-ghost btn-sm min-h-11 normal-case font-normal"
+      >{t("footer.privacy")}</a
+    >
+    <a
+      class="btn btn-ghost btn-sm min-h-11 normal-case font-normal"
+      href={`/${lang == "en" ? "es" : ""}`}
+      hreflang={lang == "en" ? "es" : "en"}>{t("footer.language")}</a
+    >
   </nav>
   <aside>
-    <p>Copyright © 2024 - {t("footer.rights")}</p>
+    <p class="text-sm">© {year} Vntotxt · {t("footer.rights")}</p>
   </aside>
 </footer>

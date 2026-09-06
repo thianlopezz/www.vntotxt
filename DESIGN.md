@@ -4,7 +4,6 @@ description: The WhatsApp voice-note-to-text bot's marketing site, styled like a
 colors:
   deep-pine-teal: "#1C5F5F"
   deep-pine-teal-pressed: "#175252"
-  teal-mist: "#d1dddd"
   mint-bubble: "#E0F1DF"
   lime-pop: "#C2FA6B"
   lime-ink: "#0e1504"
@@ -70,7 +69,6 @@ rounded:
   btn: "0.5rem"
   bubble: "0.75rem"
   box: "1rem"
-  badge: "1.9rem"
   full: "9999px"
 spacing:
   xs: "0.5rem"
@@ -83,19 +81,26 @@ spacing:
 components:
   button-primary:
     backgroundColor: "{colors.deep-pine-teal}"
-    textColor: "{colors.teal-mist}"
+    textColor: "{colors.paper-white}"
     typography: "{typography.label}"
     rounded: "{rounded.btn}"
     padding: "0 1rem"
     height: "3rem"
   button-primary-hover:
     backgroundColor: "{colors.deep-pine-teal-pressed}"
-    textColor: "{colors.teal-mist}"
+    textColor: "{colors.paper-white}"
   button-primary-wide:
     backgroundColor: "{colors.deep-pine-teal}"
-    textColor: "{colors.teal-mist}"
+    textColor: "{colors.paper-white}"
     rounded: "{rounded.btn}"
     width: "16rem"
+    height: "3rem"
+  button-primary-outline:
+    backgroundColor: "transparent"
+    textColor: "{colors.deep-pine-teal}"
+    typography: "{typography.label}"
+    rounded: "{rounded.btn}"
+    padding: "0 1rem"
     height: "3rem"
   button-primary-block:
     backgroundColor: "{colors.deep-pine-teal}"
@@ -115,13 +120,12 @@ components:
     textColor: "{colors.lime-ink}"
     rounded: "{rounded.full}"
     size: "3rem"
-  badge-outline-primary:
-    backgroundColor: "transparent"
-    textColor: "{colors.deep-pine-teal}"
-    typography: "{typography.body}"
-    rounded: "{rounded.badge}"
-    padding: "0 0.688rem"
-    height: "1.5rem"
+  chat-divider-pill:
+    backgroundColor: "{colors.paper-white}"
+    textColor: "{colors.slate-muted}"
+    typography: "{typography.caption}"
+    rounded: "{rounded.full}"
+    padding: "0.125rem 0.75rem"
   card:
     backgroundColor: "{colors.paper-white}"
     textColor: "{colors.ink}"
@@ -159,6 +163,11 @@ components:
     textColor: "{colors.ink}"
     rounded: "{rounded.bubble}"
     padding: "{spacing.md}"
+  chat-screen:
+    backgroundColor: "{colors.mint-bubble}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.box}"
+    padding: "1.5rem 2rem"
   alert-info:
     backgroundColor: "{colors.info-blue}"
     textColor: "{colors.paper-white}"
@@ -179,7 +188,7 @@ components:
 
 Vntotxt lives inside WhatsApp, and the site is built to feel like the conversation you are about to have with it. Every page is a stack of soft green bands, the way a chat thread stacks bubbles: mint for the chrome and hero, off-white for the working sections, pure white cards floating on top. The colour story is borrowed straight from the logo, a lime speech-mark inside a mint circle, and from WhatsApp's own greens, so a visitor who arrives from the app never feels they have left it. The product is a bot that turns audio into text, and the centrepiece of the home page is a literal phone mockup where a forwarded voice note bubble is answered by a transcribed text bubble.
 
-The tone is friendly, approachable and playful. Headlines are big, bold Ubuntu with one phrase picked out in deep pine teal and a single emoji at the end. Illustrated people (the Storyset "bro" and "pana" figures in the how-it-works and features sections) carry the human warmth. Motion is bouncy rather than slick: sections fade up as they enter, step cards and chat bubbles pop in with a little overshoot. Nothing is severe, nothing is corporate, and nothing shouts. The system is deliberately small: one daisyUI theme, one display face, a handful of components, and Tailwind greys for copy.
+The tone is friendly, approachable and playful. Headlines are big, bold Ubuntu with one phrase picked out in deep pine teal and a single emoji at the end. Illustrated people (the Storyset "bro" and "pana" figures in the how-it-works and features sections) carry the human warmth. The chat vocabulary does not stop at the hero: "How it works" is told as one continuous conversation with the bot (a contact card, a forwarded voice note, the transcription), and each pricing plan leads with the quota message the bot really sends. Motion is bouncy rather than slick and there is exactly one authored moment: chat bubbles pop in with a little overshoot when they scroll into view; everything else is visible from first paint. Nothing is severe, nothing is corporate, and nothing shouts. The system is deliberately small: one daisyUI theme, one display face, a handful of components, and Tailwind greys for copy.
 
 Density is relaxed. Sections claim the full viewport on desktop, cards are generous (2rem padding), and three-column rows collapse into a single stacked column on phones without changing the card itself. The site is fully bilingual (English and Spanish), so every layout must tolerate copy that runs roughly a third longer.
 
@@ -188,21 +197,20 @@ Density is relaxed. Sections claim the full viewport on desktop, cards are gener
 - One accent word per headline, always in deep pine teal; one emoji at the end.
 - Lime appears only as small circular markers, never as a surface.
 - Ubuntu Bold for h1/h2 only; everything else is the system sans stack.
-- Round everything: 1rem boxes, 0.5rem buttons and inputs, pill badges, full circles for avatars and social buttons.
+- Round everything: 1rem boxes, 0.5rem buttons and inputs, pill chat dividers, full circles for avatars and social buttons.
 - Cards lift with a soft shadow; nothing else casts one.
-- Entrance motion on scroll: fade-up for sections, spring pop for step cards and bubbles.
-- Illustrated people instead of photography; boxicons for glyphs.
+- One entrance motion: chat bubbles pop in when they scroll into view. Sections are visible without JavaScript and respect reduced-motion.
+- Illustrated people instead of photography; Boxicons glyphs inlined as SVG so they never fall back to squares.
 
 ## Colors
 
 A soft green palette anchored by one deep teal, with a lime highlight and Tailwind greys for reading copy.
 
 ### Primary
-- **Deep Pine Teal** (`deep-pine-teal`): the single voice of action and emphasis. Fills every call-to-action button, colours the highlighted phrase in each headline, the outline badges under section titles, the footer social icons, the mockup phone's chat header, and the thank-you page footer. Pressed and hovered buttons darken to **Deep Pine Teal Pressed** (`deep-pine-teal-pressed`), which is daisyUI's 10% black mix.
-- **Teal Mist** (`teal-mist`): daisyUI's derived primary-content colour. It is the default text on primary buttons (hero and features CTAs). The pricing and checkout buttons override it to Paper White for a crisper read.
+- **Deep Pine Teal** (`deep-pine-teal`): the single voice of action and emphasis. Fills every call-to-action button, colours the highlighted phrase in each headline, the footer social icons, the chat-screen headers, the quota line inside bubbles, and the thank-you page footer. Pressed and hovered buttons darken to **Deep Pine Teal Pressed** (`deep-pine-teal-pressed`), which is daisyUI's 10% black mix. Text on teal is always Paper White (`primary-content` is pinned to `#ffffff` in the theme).
 
 ### Secondary
-- **Mint Bubble** (`mint-bubble`): the chrome colour. Navbar, footer, the hero band, the features band, the checkout column on the plan pages, and the blog post figure background. It is the colour of the "screen" behind the conversation.
+- **Mint Bubble** (`mint-bubble`): the chrome colour. Navbar, footer, the hero band, the features band, the checkout column on the plan pages, the blog post figure background, and the chat screen behind the how-it-works thread. It is the colour of the "screen" behind the conversation.
 - **Lime Pop** (`lime-pop`): the accent, used as tiny circles only: numbered step avatars, feature icon avatars, the circular social buttons on the thank-you and 404 pages, and the mockup phone's frame border. Text on lime is **Lime Ink** (`lime-ink`), daisyUI's derived accent-content.
 
 ### Neutral
@@ -222,7 +230,7 @@ A soft green palette anchored by one deep teal, with a lime highlight and Tailwi
 - **Info Blue** / **Success Green** / **Warning Amber** / **Error Red**: daisyUI semantic states. Only Info Blue and Error Red are used today, as the checkout alerts, both with white text.
 
 ### Named Rules
-**The Mint Band Rule.** Mint Bubble belongs to full-width bands and chrome. It is never a card, button, or badge fill.
+**The Mint Band Rule.** Mint Bubble belongs to full-width bands, chrome, and chat screens. It is never a card, button, or badge fill.
 
 **The Lime Is A Dot Rule.** Lime Pop appears only on small circular markers (avatars, social buttons, the phone frame). Never as a section background, button fill for a text CTA, or text colour.
 
@@ -240,8 +248,8 @@ A soft green palette anchored by one deep teal, with a lime highlight and Tailwi
 - **Display** (Bold 700, 3rem on phones, 3.75rem from 640px, line-height 1): the hero h1 only. Its teal accent span grows to 4.5rem from 768px, so the highlighted phrase is the largest thing on the page. Centered on phones, left-aligned on desktop.
 - **Headline** (Bold 700, 2.25rem, line-height 2.5rem): section h2 titles ("How it works", "Features", "Pricing"), centered. The features headline carries a teal accent span at the same size.
 - **Checkout Heading** (Regular 400, 1.875rem, line-height 2.25rem): the h1 on the verification and payment forms. Ubuntu, but notably not bold; the form should feel calm.
-- **Title** (Bold 700, 1.5rem, line-height 2rem, system sans): card titles in step cards. Pricing card titles and prices step up to 2.25rem with a 1.125rem "/month" suffix. Feature descriptions use a 1.25rem bold title.
-- **Lede** (Regular 400, 1.25rem, line-height 1.75rem): the hero paragraph and thank-you page description, in Charcoal Copy. Justified on desktop in the hero.
+- **Title** (Bold 700, 1.5rem, line-height 2rem, system sans): step titles in "How it works". Plan cards use a 1.25rem semibold name, a 2.25rem bold price with a 1rem "/month" suffix, and a 3rem bold teal minutes figure. Feature items use a 1.25rem bold title.
+- **Lede** (Regular 400, 1.25rem, line-height 1.75rem): the hero paragraph and thank-you page description, in Charcoal Copy. Left-aligned on desktop, centered on phones, never justified.
 - **Body** (Regular 400, 1rem, line-height 1.5rem): card body text, feature descriptions, form copy, footer copyright.
 - **Label** (Semibold 600, 0.875rem, line-height 1em): button text, nav links, form labels (labels drop to 400).
 - **Caption** (Regular 400, 0.75rem, line-height 1rem): bubble timestamps and helper text under inputs.
@@ -256,11 +264,11 @@ A soft green palette anchored by one deep teal, with a lime highlight and Tailwi
 
 ## Layout
 
-The page is a vertical stack of full-width bands. On desktop (768px and up) the hero, features and checkout sections each claim the full viewport height (`md:h-screen`) and split into two halves: text on one side, illustration or phone mockup on the other. The how-it-works and pricing sections use a centered `container` with 2.5rem of vertical padding and 1.25rem to 2.5rem side gutters.
+The page is a vertical stack of full-width bands. On desktop (768px and up) the hero fills at least the viewport height and splits into two halves, headline left and phone mockup right, both vertically centered. The how-it-works, features and pricing sections use a centered `container` with 4rem of vertical padding and 1.25rem to 2.5rem side gutters.
 
-The hero adds a wide 9rem side gutter from 1024px so the headline and phone sit inside a comfortable reading column. Content columns are fixed fractions rather than a grid: 1/2 and 1/2 for hero and checkout, 5/12 and 7/12 for features, and three 1/3 columns for cards.
+The hero adds a wide 9rem side gutter from 1024px so the headline and phone sit inside a comfortable reading column. Content columns are fractions: 1/2 and 1/2 for hero and checkout, 5/12 and 7/12 for features and for the how-it-works thread (steps left, chat screen right).
 
-Cards are a fixed 24rem wide and stretch to equal height inside their row. Three-up rows stack vertically below 768px with 1.5rem between cards. The features grid is two columns from 768px, one below, with a 2.5rem gap.
+"How it works" is one CSS grid with a header row and three step rows: the left column holds the illustrated step, the right column holds the bubble that step produces, and a mint screen spans every row behind the bubbles. Below 768px the grid collapses to one column and each bubble sits in its own mint panel under its step. Plan cards fill a two-column grid from 768px (one below) with a 1.5rem gap and take the full column width up to 24rem; the Premium strip spans the full width beneath them. The features grid is two columns from 640px, one below, with a 2rem gap.
 
 Spacing steps that actually recur: 0.5rem (navbar padding, card content gap, button icon gap), 0.75rem (card column gutters, table cell padding), 1rem (bubble and input padding, footer link gap), 1.5rem (stacked card gap), 2rem (card body padding), 2.5rem (section padding, feature grid gap, footer padding).
 
@@ -270,12 +278,12 @@ Navigation is a 4rem mint bar: logo and wordmark left, three anchor links right 
 
 ## Elevation & Depth
 
-Depth comes first from tonal bands and second from one soft shadow. Mint, cloud grey and white are stacked like layers of a chat screen, so most of the hierarchy is colour, not shadow. White cards are the only lifted surface: they float on mint or cloud grey with Tailwind's large shadow. Buttons carry daisyUI's hairline shadow, which reads as flat. Inputs, badges, bubbles and the navbar are flat.
+Depth comes first from tonal bands and second from one soft shadow. Mint, cloud grey and white are stacked like layers of a chat screen, so most of the hierarchy is colour, not shadow. White cards are the only lifted surface: they float on mint or cloud grey with Tailwind's large shadow. Buttons carry daisyUI's hairline shadow, which reads as flat. Inputs, bubbles, chat screens and the navbar are flat.
 
 ### Shadow Vocabulary
-- **Card lift** (`box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1)`): step cards and pricing cards. Structural: it marks "this is a card".
+- **Card lift** (`box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1)`): plan cards. Structural: it marks "this is a card".
 - **Menu lift** (`box-shadow: 0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1)`): the mobile dropdown menu.
-- **Button hairline** (`box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05)`): daisyUI default on all buttons; ghost buttons remove it.
+- **Button hairline** (`box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05)`): daisyUI default on filled buttons and on the chat divider pills; ghost buttons remove it.
 
 ### Named Rules
 **The Cards Only Rule.** Only white cards and the mobile menu cast a shadow. Do not add lift to buttons, inputs, badges, bubbles, or bands.
@@ -284,75 +292,78 @@ Depth comes first from tonal bands and second from one soft shadow. Mint, cloud 
 
 ## Shapes
 
-Everything is rounded and nothing is sharp. Containers use a generous 1rem radius (cards, alerts, tables, the dropdown menu). Interactive controls use 0.5rem (buttons, inputs). Badges are pills (1.9rem). Avatars, the logo, the phone-header avatar and the social buttons are full circles.
+Everything is rounded and nothing is sharp. Containers use a generous 1rem radius (cards, alerts, chat screens, the Premium strip, the dropdown menu). Interactive controls use 0.5rem (buttons, inputs). Chat divider pills and the "Coming soon" tag are full pills. Avatars, the logo, step numbers and the social buttons are full circles.
 
-Chat bubbles use a 0.75rem radius with one corner squared to point at the sender: the outgoing voice-note bubble squares its top-right corner, the incoming transcription bubble squares its top-left.
+Chat bubbles use a 0.75rem radius with one corner squared to point at the sender: the outgoing voice-note bubble squares its top-right corner, incoming bubbles (contact card, transcription, quota message) square their top-left.
 
 The phone mockup is daisyUI's `mockup-phone`: a black body with a 50px outer radius, 4px lime frame, and a 40px inner display radius.
 
-Borders are rare: inputs have a 1px 20% Ink border, the outline badge a 1px 50% current-colour border. Cards have no border.
+Borders are rare: inputs have a 1px 20% Ink border, the outline button a 1px teal border, and the contact-card bubble a 1px lime-200 divider between its actions. Cards have no border.
 
 ## Components
 
-Buttons, cards, badges, inputs, alerts and navigation come straight from daisyUI 4 with the `default` theme. They feel tactile and confident: full 3rem height, semibold text, a slight scale-down on press.
+Buttons, cards, inputs, alerts and navigation come straight from daisyUI 4 with the `default` theme. They feel tactile and confident: full 3rem height, semibold text, a slight scale-down on press. Every glyph is an inline SVG from the `Icon` component (Boxicons path data), never an icon font on the home page.
 
 ### Buttons
 - **Shape:** 0.5rem radius, 3rem tall, 1rem side padding, 0.5rem gap, semibold 0.875rem text, 1px border in the fill colour.
-- **Primary:** Deep Pine Teal fill with Teal Mist text. Used for every WhatsApp call-to-action ("Get started!", "Start forwarding", "Start transcribing") and form submits. Widths: `btn-wide` (16rem) in the hero, `btn-block` (100%) in pricing cards and forms, natural width elsewhere.
+- **Primary:** Deep Pine Teal fill with Paper White text. Used for every WhatsApp call-to-action ("Get started!", "Start forwarding", "Start transcribing"), the Pro "Subscribe", and form submits. Widths: `btn-wide` (16rem) in the hero, `btn-block` (100%) in plan cards and forms, natural width elsewhere. External WhatsApp CTAs carry a small "Opens WhatsApp" caption beneath them.
+- **Outline:** transparent fill, 1px teal border, teal text; fills teal on hover. The secondary action, used for "Start free on WhatsApp".
 - **Hover:** fill darkens to Deep Pine Teal Pressed over 0.2s. **Focus-visible:** 2px solid teal outline, 2px offset. **Active:** scales to 0.95.
-- **Ghost:** transparent, current-colour text, no shadow. Used for the logo wordmark link, the hamburger, and the mockup phone's kebab menu.
-- **Accent circle:** Lime Pop fill, Lime Ink glyph, 3rem circle, 1.5rem boxicon. Social links on the thank-you and 404 pages.
+- **Ghost:** transparent, current-colour text, no shadow. Used for the logo wordmark link, the hamburger, footer links and the Premium "Ask us on WhatsApp".
+- **Accent circle:** Lime Pop fill, Lime Ink glyph, 3rem circle. Social links on the thank-you and 404 pages.
 - **Loading:** a daisyUI `loading-spinner` appears inside the submit button while verification runs; the button is disabled during submission.
-
-### Badges
-- **Style:** outline pill, transparent fill, Deep Pine Teal text, 1px border at 50% opacity, 1.5rem tall, 1rem text.
-- **Use:** a single subtitle badge under each section headline ("As simple as", "Our fees").
 
 ### Cards
 - **Corner Style:** 1rem.
-- **Background:** Paper White. The order-details card on the thank-you page is white without shadow.
+- **Background:** Paper White. The order-details card on the thank-you page and the Premium strip are white without shadow.
 - **Shadow Strategy:** Card lift (see Elevation).
 - **Border:** none.
-- **Internal Padding:** 2rem, with 0.5rem between children.
-- **Step card:** an illustration at two-thirds width centered in a figure, then a lime step-number avatar (3rem circle, 1.875rem numeral), a 1.5rem bold title, Charcoal Copy body, and a centered actions row.
-- **Pricing card:** 2.25rem bold title and price (with a 1.125rem "/month"), a feature table with a 1.875rem boxicon check or cross in the trailing cell, and a full-width primary button with white text. Plans without a checkout link show a Slate Muted "Coming soon" instead of a price.
-- **Entrance:** step cards start invisible and pop in (scale 0.5 to 1.1 to 1 over 0.5s) when 10% visible, staggered by 0.75s per card.
+- **Internal Padding:** 2rem, with 1.25rem between blocks.
+- **Plan card:** plan name (1.25rem semibold) and price (2.25rem bold, 1rem "/month") on one line; the minutes-per-month figure at 3rem bold teal as the lead; a "The message the bot sends you:" label over a mini incoming bubble showing the real quota message (Free: appended to a transcription; Pro: its own bubble with a lime-200 border); a "What's included" `<details>` disclosure with teal check-circle rows and grey x rows under "Not included:"; then the button pinned to the bottom with an optional caption ("30-day free trial, cancel any time").
+- **Premium strip:** a full-width white 1rem-radius panel: name, a cloud-grey "Coming soon" pill, a one-line feature summary, and a ghost "Ask us on WhatsApp" link to the support number.
 
 ### Inputs / Fields
 - **Style:** Paper White, 0.5rem radius, 3rem tall, 1rem side padding, 1px 20% Ink border. Wrapped in a `form-control` label with a 0.875rem label above and a 0.75rem helper below.
 - **Focus:** 2px outline at 20% Ink, 2px offset; border unchanged.
 - **Phone field:** enhanced by intl-tel-input with its stock flag dropdown.
-- **Alerts:** info and error alerts sit above the form, 1rem radius, semantic fill with white text and a leading boxicon. Hidden until the script shows them.
+- **Alerts:** info and error alerts sit above the form, 1rem radius, semantic fill with white text and a leading glyph. Hidden until the script shows them.
 
 ### Navigation
 - **Style:** 4rem mint bar, 0.5rem padding. Logo at 2.5rem plus lowercase "vntotxt" wordmark at 1.25rem in a ghost button.
-- **Links:** daisyUI horizontal menu, Ink text, cloud-grey pill on hover and active, 0.5rem radius.
-- **Mobile:** hamburger ghost button opens a 13rem white dropdown with 1rem radius and Menu lift.
+- **Links:** daisyUI horizontal menu, Ink text, cloud-grey pill on hover and active, 0.5rem radius. Visible text is the accessible name; no extra aria-labels.
+- **Mobile:** a real `<button>` hamburger (labelled "Menu") opens a 14rem white dropdown with 1rem radius and Menu lift; the dropdown closes after a link is chosen.
 - **Breadcrumbs:** on plan pages, a 0.875rem daisyUI breadcrumb ("Home / Vntotxt PRO").
-- **Footer:** centered mint footer, 2.5rem padding, three hover-underline links, three 2.25rem teal social icons, and the copyright line at 0.875rem. The thank-you page swaps in a teal footer with Teal Mist text.
+- **Footer:** centered mint footer, 3rem vertical padding, two labelled WhatsApp links ("Chat with the bot" +1 786…, "Support & contact" +593 99…) as ghost buttons, two 3rem circular teal social buttons (Instagram, Facebook), Privacy and language links as 2.75rem-tall ghost buttons, and a dynamic-year copyright at 0.875rem. The thank-you page swaps in a teal footer with white text.
 
-### Chat Phone (signature)
-The hero's phone mockup is the product demo. Inside a black daisyUI phone frame with a lime border sits a teal chat header (2.5rem circular logo avatar, "Vntotxt Bot" in white medium 1.25rem, a ghost kebab button), then two bubbles with 1.25rem side padding:
-- **Outgoing voice note:** Bubble Outgoing fill, 0.75rem radius squared top-right, 11/12 width, right-aligned. A "Forwarded" row in Slate Meta with a mirrored share glyph, then a Voice Orange microphone avatar, a Slate play glyph, an SVG waveform (played bars in grey-blue, unplayed in light grey, a blue playhead dot) and a caption row with duration and time.
-- **Incoming transcription:** Bubble Incoming fill, 0.75rem radius squared top-left, left-aligned, body text plus a caption timestamp.
-- **Motion:** both bubbles are invisible until the phone scrolls into view, then pop in 0.75s apart.
+### Chat Thread (signature)
+The chat is the product's language, and it appears twice.
+
+- **Hero phone:** inside a black daisyUI phone frame with a lime border sits a teal chat header (2.5rem circular logo avatar, "Vntotxt Bot" with an "Example conversation" subtitle in white, a decorative kebab glyph), then a forwarded voice-note bubble and a short transcription bubble with the Free quota line. The artboard grows with its content (minimum 568px).
+- **How it works screen:** a mint 1rem-radius screen with the same teal header, holding three exchanges. Each step is announced by a **chat divider pill** ("Step 1", white, 0.75rem Slate Muted text, hairline shadow, centered) and followed by the message that step produces: a **contact-card bubble** (logo avatar, "Vntotxt Bot", the number, and two 3rem-tall actions, "Add to contacts" which downloads a vCard and "Open chat" which opens WhatsApp), the **forwarded voice-note bubble**, and the **transcription bubble** with the quota line.
+- **Bubbles:** outgoing uses Bubble Outgoing with the top-right corner squared and a "Forwarded" row (mirrored share glyph, Slate Meta); incoming uses Bubble Incoming with the top-left corner squared. The voice note shows a Voice Orange microphone avatar, a slate play glyph, an SVG waveform (played bars grey-blue, unplayed light grey, blue playhead) and a caption row with duration and a fixed example time. The quota line is teal with a clock glyph. Timestamps are static example values, never the build time.
+- **Motion:** bubbles carry `data-reveal="pop"` and stay hidden only when the document has JavaScript and the visitor allows motion; they pop in (scale 0.5 to 1.1 to 1 over 0.5s) once 10% visible, staggered 0.35s apart in the thread and 0.75s apart in the phone.
+
+### Feature Items
+A 3rem lime circle with a 1.75rem inline icon beside a 1.25rem bold title and Charcoal Copy body, laid out as a two-column grid beside the Storyset illustration. The section CTA sits under the grid, left-aligned on desktop.
 
 ### Illustrations & Icons
 - Storyset-style flat illustrations of people (`*-bro.svg`, `*-pana.svg`) for each step and the features section. No photography.
-- Boxicons (`bx`, `bxs`, `bxl`) for every glyph: features (world, face, search, user-voice), pricing checks, social logos, alert icons.
+- Boxicons path data inlined through `Icon.astro` (`src/components/icon-paths.ts`): world, face, search, user-voice, check-circle, x, whatsapp, instagram, facebook, microphone, play, share, time, user-plus, menu, chevron-down, dots-vertical, info, error. The checkout and thank-you pages still load the Boxicons font for their legacy `bx` classes.
 
 ## Do's and Don'ts
 
 ### Do:
 - **Do** alternate Mint Bubble and Cloud Grey bands section by section, with Paper White cards on top.
-- **Do** use Deep Pine Teal for every action: CTA buttons, the highlighted headline phrase, badges and social glyphs.
+- **Do** use Deep Pine Teal for every action: CTA buttons, the highlighted headline phrase, quota lines, chat headers and social glyphs.
 - **Do** set h1 and section h2 in Ubuntu Bold and leave card titles, body and controls in the system sans.
-- **Do** keep cards at 24rem, 1rem radius, 2rem padding, Card lift shadow, three-up on desktop and stacked with 1.5rem gaps on phones.
-- **Do** mark steps and features with 3rem lime circle avatars containing a numeral or a boxicon.
-- **Do** end a hero headline or primary CTA with a single emoji.
-- **Do** animate entrances only: fade-up (0.8s ease-out) for sections, spring pop (0.5s) for cards and bubbles, triggered once at 10% visibility.
-- **Do** ship every page in English and Spanish and check the longer Spanish copy in every button and heading.
-- **Do** point every primary CTA at the WhatsApp bot link.
+- **Do** let cards fill their grid column up to 24rem (never a fixed width), with 1rem radius, 2rem padding, Card lift shadow, and 1.5rem gaps.
+- **Do** mark steps and features with 3rem lime circle avatars containing a numeral or an inline SVG icon.
+- **Do** end a hero headline or primary CTA with a single emoji, wrapped in `aria-hidden`.
+- **Do** tell product behaviour in chat form: a step is the message it produces, a plan is the quota message the bot sends.
+- **Do** animate only chat bubbles, with `data-reveal="pop"`, hidden only under `html.js` and `prefers-reduced-motion: no-preference`, triggered once at 10% visibility.
+- **Do** ship every page in English and Spanish from one shared component, keep both string tables key-for-key identical, and check the longer Spanish copy in every button and heading.
+- **Do** point every primary CTA at the WhatsApp bot link, label it "Opens WhatsApp", and keep the support number separate and labelled.
+- **Do** state "Message the bot and you're on the Free plan automatically" wherever plans are shown; paying is an upgrade, never a gate.
 
 ### Don't:
 - **Don't** fill a text button, section or card with Lime Pop. Lime is a dot.
@@ -360,7 +371,10 @@ The hero's phone mockup is the product demo. Inside a black daisyUI phone frame 
 - **Don't** add shadows to buttons, inputs, badges, bubbles or bands. Only cards and the mobile menu lift.
 - **Don't** apply Ubuntu to body copy, labels or buttons.
 - **Don't** use sharp corners anywhere, or a radius smaller than 0.5rem on a control.
-- **Don't** use the registered `night` daisyUI theme; the body is pinned to `data-theme="default"` and the site is light only.
+- **Don't** register a second daisyUI theme; the body is pinned to `data-theme="default"` and the site is light only.
 - **Don't** introduce photography, gradients, or glassmorphism; the world is flat illustration on flat colour.
 - **Don't** use Voice Orange outside the microphone avatar.
-- **Don't** loop or auto-play motion; every animation runs once on entrance.
+- **Don't** loop or auto-play motion, fade whole sections in, or hide content that has no JavaScript to reveal it.
+- **Don't** put a kicker, badge or eyebrow above or below a section heading; the heading stands alone.
+- **Don't** use icon fonts on the home page; every glyph is an inline SVG through `Icon.astro`.
+- **Don't** put a table of checkmarks in front of the visitor; lead with minutes per month and fold the rest into a disclosure.

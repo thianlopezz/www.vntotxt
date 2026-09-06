@@ -1,281 +1,70 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import Icon from "./Icon.astro";
 
 interface Props {
-  _class?: string;
+  class?: string;
 }
 
-const { _class } = Astro.props;
+const { class: className = "" } = Astro.props;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+// Waveform bars: [x, y, height]. Played bars sit before the playhead at x=66.
+const bars: [number, number, number][] = [
+  [0, 17, 6], [7, 15.5, 9], [14, 6.5, 27], [21, 6.5, 27], [28, 3, 34],
+  [35, 3, 34], [42, 5.5, 29], [49, 10, 20], [56, 13.5, 13], [63, 16, 8],
+  [70, 12.5, 15], [77, 3, 34], [84, 3, 34], [91, 0.5, 39], [98, 0.5, 39],
+  [105, 2, 36], [112, 6.5, 27], [119, 9, 22], [126, 11.5, 17], [133, 2, 36],
+  [140, 2, 36], [147, 7, 26], [154, 9, 22], [161, 9, 22], [168, 13.5, 13],
+  [175, 16, 8], [182, 17.5, 5],
+];
 ---
 
-<div class={`flex justify-end ${_class}`}>
-    <div
-        class="flex flex-col gap-2 w-11/12 leading-1.5 p-4 border-gray-200 bg-lime-100 rounded-tl-xl rounded-br-xl rounded-bl-xl"
-    >
-        <div class="flex items-center space-x-2 rtl:space-x-reverse">
-            <span class="text-sm text-gray-500 transform -scale-x-100"
-                ><i class="bx bxs-share"></i></span
-            >
-            <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
-                >Forwarded</span
-            >
-        </div>
-        <div class="flex space-x-2 rtl:space-x-reverse">
-            <div>
-                <div class="avatar placeholder">
-                    <div class="w-10 rounded-full bg-orange-500">
-                        <span class="text-2xl text-white">
-                            <i class="bx bxs-microphone"></i>
-                        </span>
-                    </div>
-                </div>
-            </div>
-            <span class="text-slate-500">
-                <i class="bx bx-play text-4xl"></i>
-            </span>
-            <!-- md:w-[185px] -->
-            <div>
-                <svg
-                    aria-hidden="true"
-                    class="w-full md:h-[40px]"
-                    viewBox="0 0 185 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <rect
-                        y="17"
-                        width="3"
-                        height="6"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="7"
-                        y="15.5"
-                        width="3"
-                        height="9"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="21"
-                        y="6.5"
-                        width="3"
-                        height="27"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="14"
-                        y="6.5"
-                        width="3"
-                        height="27"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="28"
-                        y="3"
-                        width="3"
-                        height="34"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="35"
-                        y="3"
-                        width="3"
-                        height="34"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="42"
-                        y="5.5"
-                        width="3"
-                        height="29"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="49"
-                        y="10"
-                        width="3"
-                        height="20"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="56"
-                        y="13.5"
-                        width="3"
-                        height="13"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="63"
-                        y="16"
-                        width="3"
-                        height="8"
-                        rx="1.5"
-                        fill="#9FA1ABC"
-                        class="dark:fill-zinc-300"></rect>
-                    <rect
-                        x="70"
-                        y="12.5"
-                        width="3"
-                        height="15"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="77"
-                        y="3"
-                        width="3"
-                        height="34"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="84"
-                        y="3"
-                        width="3"
-                        height="34"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="91"
-                        y="0.5"
-                        width="3"
-                        height="39"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="98"
-                        y="0.5"
-                        width="3"
-                        height="39"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="105"
-                        y="2"
-                        width="3"
-                        height="36"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="112"
-                        y="6.5"
-                        width="3"
-                        height="27"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="119"
-                        y="9"
-                        width="3"
-                        height="22"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="126"
-                        y="11.5"
-                        width="3"
-                        height="17"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="133"
-                        y="2"
-                        width="3"
-                        height="36"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="140"
-                        y="2"
-                        width="3"
-                        height="36"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="147"
-                        y="7"
-                        width="3"
-                        height="26"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="154"
-                        y="9"
-                        width="3"
-                        height="22"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="161"
-                        y="9"
-                        width="3"
-                        height="22"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="168"
-                        y="13.5"
-                        width="3"
-                        height="13"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="175"
-                        y="16"
-                        width="3"
-                        height="8"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="182"
-                        y="17.5"
-                        width="3"
-                        height="5"
-                        rx="1.5"
-                        fill="#E5E7EB"
-                        class="dark:fill-gray-500"></rect>
-                    <rect
-                        x="66"
-                        y="16"
-                        width="8"
-                        height="8"
-                        rx="4"
-                        fill="#1C64F2"></rect>
-                </svg>
-                <div class="flex justify-between">
-                    <span class="text-xs text-gray-400">0:42</span>
-                    <span class="text-xs text-gray-400"
-                        >{
-                            new Date().toLocaleTimeString("en-US", {
-                                hour: "2-digit",
-                                minute: "2-digit",
-                            })
-                        }</span
-                    >
-                </div>
-            </div>
-        </div>
+<div class={`flex justify-end ${className}`}>
+  <div
+    class="flex flex-col gap-2 w-11/12 p-4 bg-lime-100 rounded-tl-xl rounded-br-xl rounded-bl-xl"
+  >
+    <div class="flex items-center gap-2 text-sm text-gray-600">
+      <Icon name="share" class="h-4 w-4 -scale-x-100" />
+      <span>{t("thread.forwarded")}</span>
     </div>
+    <div class="flex items-center gap-2" role="img" aria-label={t("thread.voiceNote")}>
+      <div
+        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange-500 text-white"
+      >
+        <Icon name="microphone" class="h-6 w-6" />
+      </div>
+      <Icon name="play" class="h-9 w-9 shrink-0 text-slate-600" />
+      <div class="min-w-0 flex-1">
+        <svg
+          aria-hidden="true"
+          class="w-full h-10"
+          viewBox="0 0 185 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+        >
+          {
+            bars.map(([x, y, h]) => (
+              <rect
+                x={x}
+                y={y}
+                width="3"
+                height={h}
+                rx="1.5"
+                fill={x < 66 ? "#9fa1ab" : "#e5e7eb"}
+              />
+            ))
+          }
+          <rect x="66" y="16" width="8" height="8" rx="4" fill="#1c64f2"></rect>
+        </svg>
+        <div class="flex justify-between text-xs text-gray-600">
+          <span>0:42</span>
+          <span>{t("thread.time")}</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
