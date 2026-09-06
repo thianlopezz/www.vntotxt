@@ -8,6 +8,9 @@ window.paymentHeading = null;
 
 window.subscriptionRequestIdInput = null;
 
+window.changeNumberBtn = null;
+window.verificationCodeInput = null;
+
 window.phoneInputField = null;
 window.phoneInput = null;
 
@@ -33,6 +36,9 @@ window.instanceDocComponents = function (paypalPlanId) {
   subscriptionRequestIdInput = document.querySelector(
     "#subscriptionRequestIdInput",
   );
+
+  changeNumberBtn = document.querySelector("#changeNumberBtn");
+  verificationCodeInput = document.querySelector("#verificationCodeInput");
 
   // const paypalDiv = document.querySelector("#paypal-button-container-P-0PC67333FG471260VMY42XTY");
   if (paypalPlanId)
@@ -75,6 +81,7 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, tierId, lang, e
     loadingSendVerificationCode.style.display = "";
     phoneInputField.disabled = true;
     if (submitButton) submitButton.disabled = true;
+    if (changeNumberBtn) changeNumberBtn.disabled = true;
 
     try {
       let response = await fetch(vntotxtApi + "/v1/request-subscription", {
@@ -114,11 +121,21 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, tierId, lang, e
     } finally {
       loadingSendVerificationCode.style.display = "none";
       if (submitButton) submitButton.disabled = false;
+      if (changeNumberBtn) changeNumberBtn.disabled = false;
     }
   } else {
     error.style.display = "";
     errorText.innerHTML = `Invalid phone number.`;
   }
+}
+
+window.changeNumber = function () {
+  divWaVerifyButton.style.display = "";
+  verifyCodeForm.style.display = "none";
+  phoneInputField.disabled = false;
+  verificationCodeInput.value = "";
+  info.style.display = "none";
+  error.style.display = "none";
 }
 
 window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, lang, event) {
