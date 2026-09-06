@@ -70,9 +70,11 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, tierId, lang, e
   if (phoneInput.isValidNumber()) {
     const phoneNumber = phoneInput.getNumber();
     const waId = phoneNumber.replace("+", "");
+    const submitButton = getSubmitButton(event);
 
     loadingSendVerificationCode.style.display = "";
     phoneInputField.disabled = true;
+    if (submitButton) submitButton.disabled = true;
 
     try {
       let response = await fetch(vntotxtApi + "/v1/request-subscription", {
@@ -108,11 +110,11 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, tierId, lang, e
       phoneInputField.disabled = false;
       error.style.display = "";
       errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
-      loadingSendVerificationCode.style.display = "none";
       console.error(e);
+    } finally {
+      loadingSendVerificationCode.style.display = "none";
+      if (submitButton) submitButton.disabled = false;
     }
-
-    loadingSendVerificationCode.style.display = "none";
   } else {
     error.style.display = "";
     errorText.innerHTML = `Invalid phone number.`;
@@ -127,10 +129,13 @@ window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, 
   ).value;
   const subscriptionRequestId = subscriptionRequestIdInput.value;
 
+  const submitButton = getSubmitButton(event);
+
   info.style.display = "none";
   error.style.display = "none";
 
   loadingVerification.style.display = "";
+  if (submitButton) submitButton.disabled = true;
 
   try {
     let response = await fetch(vntotxtApi + "/v1/verify-request", {
@@ -164,10 +169,12 @@ window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, 
         if (paypalDiv)
           paypalDiv.style.display = "";
 
-        subscriptionRequestIdInput.value = data.subscriptionRequestId;
+        // Keep the id from request-subscription unless the API echoes a new one
+        if (data && data.subscriptionRequestId)
+          subscriptionRequestIdInput.value = data.subscriptionRequestId;
 
         if (redirectToSuccess)
-          window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionId=${data.subscriptionId}`;
+          window.location.href = `${lang == "es" ? "/es" : ""}/subscription-success/?subscriptionID=${data.subscriptionId}`;
       } else {
         error.style.display = "";
         errorText.innerHTML = message;
@@ -179,11 +186,11 @@ window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, 
   } catch (e) {
     error.style.display = "";
     errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
-    loadingVerification.style.display = "none";
     console.error(e);
+  } finally {
+    loadingVerification.style.display = "none";
+    if (submitButton) submitButton.disabled = false;
   }
-
-  loadingVerification.style.display = "none";
 }
 
 window.confirmPurchase = async function (vntotxtApi, paypalSubscription) {
@@ -222,6 +229,11 @@ window.confirmPurchase = async function (vntotxtApi, paypalSubscription) {
     loadingVerification.style.display = "none";
     console.error(e);
   }
+}
+
+window.getSubmitButton = function (event) {
+  const form = event && event.target;
+  return form && form.querySelector ? form.querySelector('button[type="submit"]') : null;
 }
 
 window.getIp = function (callback) {
