@@ -12,7 +12,7 @@ interface Props {
 const { image, altImage = "", number, title, body } = Astro.props;
 ---
 
-<div class="card w-96 bg-base-100 shadow-lg h-full">
+<div class="card w-full max-w-sm bg-base-100 shadow-lg h-full">
   {
     image && (
       <figure>
