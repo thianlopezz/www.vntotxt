@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-05T20:45:00.000Z",
+  "title": "Design System: Vntotxt",
+  "extensions": {
+    "colorMeta": {
+      "deep-pine-teal": { "role": "primary", "displayName": "Deep Pine Teal", "canonical": "oklch(44.48% 0.0653 195.06)", "tonalRamp": ["#001214", "#002a2b", "#004a4a", "#2b6c6c", "#50908f", "#75b5b4", "#9bdcdb", "#bbfdfc"] },
+      "deep-pine-teal-pressed": { "role": "primary", "displayName": "Deep Pine Teal Pressed", "canonical": "color-mix(in oklab, #1C5F5F 90%, black)", "tonalRamp": ["#001214", "#002a2b", "#004a4a", "#2b6c6c", "#50908f", "#75b5b4", "#9bdcdb", "#bbfdfc"] },
+      "teal-mist": { "role": "primary", "displayName": "Teal Mist", "canonical": "oklch(88.90% 0.0131 195.06)", "tonalRamp": ["#001214", "#002a2b", "#004a4a", "#2b6c6c", "#50908f", "#75b5b4", "#9bdcdb", "#bbfdfc"] },
+      "mint-bubble": { "role": "secondary", "displayName": "Mint Bubble", "canonical": "oklch(94.06% 0.0299 143.78)", "tonalRamp": ["#040e04", "#192518", "#364436", "#576556", "#798878", "#9dad9c", "#c3d3c2", "#e3f4e2"] },
+      "lime-pop": { "role": "secondary", "displayName": "Lime Pop", "canonical": "oklch(91.84% 0.1813 127.55)", "tonalRamp": ["#001100", "#102a00", "#2d4a00", "#4d6c10", "#6f903b", "#92b660", "#b8dd86", "#d8fea6"] },
+      "lime-ink": { "role": "secondary", "displayName": "Lime Ink", "canonical": "oklch(18.37% 0.0363 127.55)", "tonalRamp": ["#001100", "#102a00", "#2d4a00", "#4d6c10", "#6f903b", "#92b660", "#b8dd86", "#d8fea6"] },
+      "cloud-grey": { "role": "neutral", "displayName": "Cloud Grey", "canonical": "oklch(95.71% 0.0017 145.56)", "tonalRamp": ["#0b0b0b", "#212221", "#3f403f", "#606160", "#828382", "#a7a8a7", "#cdcecd", "#eeefee"] },
+      "paper-white": { "role": "neutral", "displayName": "Paper White", "canonical": "#ffffff", "tonalRamp": ["#0b0b0b", "#212221", "#3f403f", "#606160", "#828382", "#a7a8a7", "#cdcecd", "#ffffff"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "oklch(20% 0 0)", "tonalRamp": ["#0b0b0b", "#212221", "#3f403f", "#606160", "#828382", "#a7a8a7", "#cdcecd", "#eeefee"] },
+      "charcoal-copy": { "role": "neutral", "displayName": "Charcoal Copy", "canonical": "#1f2937", "tonalRamp": ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#f3f4f6"] },
+      "slate-muted": { "role": "neutral", "displayName": "Slate Muted", "canonical": "#4b5563", "tonalRamp": ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#f3f4f6"] },
+      "slate-meta": { "role": "neutral", "displayName": "Slate Meta", "canonical": "#6b7280", "tonalRamp": ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#f3f4f6"] },
+      "slate-timestamp": { "role": "neutral", "displayName": "Slate Timestamp", "canonical": "#9ca3af", "tonalRamp": ["#111827", "#1f2937", "#374151", "#4b5563", "#6b7280", "#9ca3af", "#d1d5db", "#f3f4f6"] },
+      "bubble-outgoing": { "role": "tertiary", "displayName": "Bubble Outgoing", "canonical": "#ecfccb", "tonalRamp": ["#1a2e05", "#365314", "#3f6212", "#4d7c0f", "#65a30d", "#a3e635", "#d9f99d", "#ecfccb"] },
+      "bubble-incoming": { "role": "tertiary", "displayName": "Bubble Incoming", "canonical": "#f7fee7", "tonalRamp": ["#1a2e05", "#365314", "#3f6212", "#4d7c0f", "#65a30d", "#a3e635", "#d9f99d", "#f7fee7"] },
+      "success-wash": { "role": "tertiary", "displayName": "Success Wash", "canonical": "#dcfce7", "tonalRamp": ["#052e16", "#14532d", "#166534", "#15803d", "#22c55e", "#4ade80", "#bbf7d0", "#dcfce7"] },
+      "voice-orange": { "role": "tertiary", "displayName": "Voice Orange", "canonical": "#f97316", "tonalRamp": ["#431407", "#7c2d12", "#9a3412", "#c2410c", "#f97316", "#fb923c", "#fed7aa", "#fff7ed"] },
+      "info-blue": { "role": "state", "displayName": "Info Blue", "canonical": "oklch(63.87% 0.1497 254.69)", "tonalRamp": ["#00003b", "#001c58", "#013e7d", "#2a61a3", "#4e85ca", "#72abf2", "#97d1ff", "#b7f3ff"] },
+      "success-green": { "role": "state", "displayName": "Success Green", "canonical": "oklch(81.21% 0.2038 136.54)", "tonalRamp": ["#001300", "#002c00", "#1c4d00", "#3e6f23", "#609348", "#84b96c", "#a9e091", "#c9ffb1"] },
+      "warning-amber": { "role": "state", "displayName": "Warning Amber", "canonical": "oklch(81.42% 0.1309 81.36)", "tonalRamp": ["#220000", "#3d1500", "#5f3500", "#825700", "#a77a15", "#ce9f45", "#f6c66d", "#ffe78e"] },
+      "error-red": { "role": "state", "displayName": "Error Red", "canonical": "oklch(60.10% 0.2133 27.63)", "tonalRamp": ["#2d0000", "#4c0000", "#721d18", "#994139", "#c1645a", "#e9897d", "#ffafa2", "#ffcfc2"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero h1 only. 3rem on phones, 3.75rem from 640px; the teal accent span grows to 4.5rem from 768px." },
+      "headline": { "displayName": "Headline", "purpose": "Section h2 titles, centered, Ubuntu Bold." },
+      "checkout-heading": { "displayName": "Checkout Heading", "purpose": "The h1 on verification and payment forms. Ubuntu Regular, deliberately not bold." },
+      "title": { "displayName": "Title", "purpose": "Card titles in step cards. Pricing titles and prices step up to 2.25rem." },
+      "lede": { "displayName": "Lede", "purpose": "Hero paragraph and thank-you description in Charcoal Copy." },
+      "body": { "displayName": "Body", "purpose": "Card body, feature descriptions, form copy, footer." },
+      "label": { "displayName": "Label", "purpose": "Button text and nav links. Form labels use the same size at weight 400." },
+      "caption": { "displayName": "Caption", "purpose": "Bubble timestamps, audio duration, helper text under inputs." }
+    },
+    "shadows": [
+      { "name": "card-lift", "value": "0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1)", "purpose": "Step cards and pricing cards floating on mint or cloud grey bands." },
+      { "name": "menu-lift", "value": "0 1px 3px 0 rgb(0 0 0 / .1), 0 1px 2px -1px rgb(0 0 0 / .1)", "purpose": "The mobile navigation dropdown." },
+      { "name": "button-hairline", "value": "0 1px 2px 0 rgb(0 0 0 / .05)", "purpose": "daisyUI default on filled buttons; ghost buttons remove it." }
+    ],
+    "motion": [
+      { "name": "fade-in-up", "value": "fadeInUp 0.8s ease-out both", "purpose": "Section entrance: opacity 0 to 1 while translating up 20px. Triggered once at 10% visibility." },
+      { "name": "popup", "value": "popup 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both", "purpose": "Spring entrance for step cards and chat bubbles: scale 0.5 to 1.1 to 1. Staggered 0.75s apart." },
+      { "name": "button-transition", "value": "0.2s cubic-bezier(0, 0, 0.2, 1)", "purpose": "Colour, background, border, opacity, shadow and transform on buttons and badges." },
+      { "name": "button-pop", "value": "button-pop 0.25s ease-out", "purpose": "daisyUI mount animation on buttons; active state scales to 0.95." },
+      { "name": "smooth-scroll", "value": "scrollIntoView({ behavior: 'smooth' })", "purpose": "Anchor navigation between home page sections." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Every WhatsApp call-to-action and form submit. Deep Pine Teal fill, Teal Mist text, darkens on hover, scales down on press.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Get started! <span class=\"ds-btn-emoji\">😎</span></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; min-height: 3rem; padding: 0 1rem; width: 16rem; border-radius: 0.5rem; border: 1px solid #1C5F5F; background: #1C5F5F; color: #d1dddd; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1em; text-decoration: none; cursor: pointer; box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); transition: color .2s, background-color .2s, border-color .2s, transform .2s; transition-timing-function: cubic-bezier(0,0,.2,1); } .ds-btn-primary:hover { background: #175252; border-color: #175252; } .ds-btn-primary:focus-visible { outline: 2px solid #1C5F5F; outline-offset: 2px; } .ds-btn-primary:active { transform: scale(0.95); } .ds-btn-emoji { font-size: 1.25rem; }"
+    },
+    {
+      "name": "Block Button",
+      "kind": "button",
+      "refersTo": "button-primary-block",
+      "description": "Full-width primary button inside pricing cards and checkout forms; text overridden to pure white.",
+      "html": "<button class=\"ds-btn-block\" type=\"button\">Subscribe</button>",
+      "css": ".ds-btn-block { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; width: 100%; height: 3rem; padding: 0 1rem; border-radius: 0.5rem; border: 1px solid #1C5F5F; background: #1C5F5F; color: #ffffff; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1em; cursor: pointer; box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); transition: background-color .2s, border-color .2s, transform .2s; } .ds-btn-block:hover { background: #175252; border-color: #175252; } .ds-btn-block:focus-visible { outline: 2px solid #1C5F5F; outline-offset: 2px; } .ds-btn-block:active { transform: scale(0.95); } .ds-btn-block:disabled { pointer-events: none; background: #e8e8e8; border-color: #e8e8e8; color: rgb(22 22 22 / .2); }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent button for the logo wordmark, the hamburger and the phone kebab menu.",
+      "html": "<button class=\"ds-btn-ghost\" type=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 6h16M4 12h8m-8 6h16\"/></svg></button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; height: 3rem; min-height: 3rem; padding: 0 1rem; border-radius: 0.5rem; border: 1px solid transparent; background: transparent; color: #161616; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 0.875rem; font-weight: 600; line-height: 1em; cursor: pointer; transition: background-color .2s, transform .2s; } .ds-btn-ghost:hover { background: rgb(22 22 22 / .2); border-color: transparent; } .ds-btn-ghost:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; } .ds-btn-ghost:active { transform: scale(0.95); }"
+    },
+    {
+      "name": "Accent Circle Button",
+      "kind": "button",
+      "refersTo": "button-accent-circle",
+      "description": "Lime social-link circles on the thank-you and 404 pages.",
+      "html": "<a class=\"ds-btn-circle\" href=\"#\" aria-label=\"whatsapp\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2m.01 1.67c4.55 0 8.24 3.7 8.24 8.24 0 4.55-3.7 8.24-8.24 8.24-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.24-8.24M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.67 4.25 3.73.59.27 1.05.42 1.41.53.59.19 1.13.16 1.56.1.48-.07 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.1-.23-.16-.48-.27-.25-.14-1.47-.74-1.69-.82-.23-.08-.37-.12-.56.12-.16.25-.64.81-.78.97-.15.17-.29.19-.53.07-.26-.13-1.06-.39-2-1.23-.74-.66-1.23-1.47-1.38-1.72-.12-.24-.01-.39.11-.5.11-.11.27-.29.37-.44.13-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.84-.2-.48-.4-.42-.56-.43-.14 0-.3-.01-.47-.01\"/></svg></a>",
+      "css": ".ds-btn-circle { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; padding: 0; margin: 0 0.5rem; border-radius: 9999px; border: 1px solid #C2FA6B; background: #C2FA6B; color: #0e1504; cursor: pointer; box-shadow: 0 1px 2px 0 rgb(0 0 0 / .05); transition: background-color .2s, border-color .2s, transform .2s; } .ds-btn-circle:hover { background: #afe160; border-color: #afe160; } .ds-btn-circle:focus-visible { outline: 2px solid #C2FA6B; outline-offset: 2px; } .ds-btn-circle:active { transform: scale(0.95); }"
+    },
+    {
+      "name": "Outline Badge",
+      "kind": "chip",
+      "refersTo": "badge-outline-primary",
+      "description": "The single subtitle pill under each section headline.",
+      "html": "<span class=\"ds-badge\">As simple as</span>",
+      "css": ".ds-badge { display: inline-flex; align-items: center; justify-content: center; height: 1.5rem; padding: 0 0.688rem; border-radius: 1.9rem; border: 1px solid rgb(28 95 95 / .5); background: transparent; color: #1C5F5F; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 1rem; line-height: 1.5rem; width: fit-content; }"
+    },
+    {
+      "name": "Step Card",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "White how-it-works card with a lime step number, bold title, and Charcoal Copy body, floating with Card lift.",
+      "html": "<div class=\"ds-card\"><div class=\"ds-card-body\"><div class=\"ds-step-avatar\">1</div><h3 class=\"ds-card-title\">Save our WhatsApp Bot contact</h3><p class=\"ds-card-copy\">Keep us close in your WhatsApp contacts.</p><div class=\"ds-card-actions\"><a class=\"ds-link\" href=\"#\">🇺🇸 +1 786 744 4726</a></div></div></div>",
+      "css": ".ds-card { display: flex; flex-direction: column; width: 24rem; max-width: 100%; border-radius: 1rem; background: #ffffff; color: #161616; box-shadow: 0 10px 15px -3px rgb(0 0 0 / .1), 0 4px 6px -4px rgb(0 0 0 / .1); font-family: ui-sans-serif, system-ui, sans-serif; } .ds-card-body { display: flex; flex-direction: column; gap: 0.5rem; padding: 2rem; font-size: 1rem; line-height: 1.5rem; } .ds-step-avatar { display: flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; margin-bottom: 0.5rem; border-radius: 9999px; background: #C2FA6B; color: #141414; font-size: 1.875rem; line-height: 1; } .ds-card-title { margin: 0 0 0.25rem; font-size: 1.5rem; line-height: 2rem; font-weight: 700; } .ds-card-copy { margin: 0 0 0.5rem; font-size: 1.125rem; line-height: 1.75rem; color: #1f2937; } .ds-card-actions { display: flex; justify-content: center; } .ds-link { color: #1C5F5F; text-decoration: underline; cursor: pointer; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-bordered",
+      "description": "Bordered form field with label above and helper below, as used for the WhatsApp number and verification code.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field-label\">WhatsApp number</span><input class=\"ds-input\" type=\"tel\" placeholder=\"+1 786 744 4726\"><span class=\"ds-field-helper\">We'll send a verification code to this number.</span></label>",
+      "css": ".ds-field { display: flex; flex-direction: column; width: 100%; max-width: 20rem; font-family: ui-sans-serif, system-ui, sans-serif; color: #161616; } .ds-field-label { padding: 0.5rem 0.25rem; font-size: 0.875rem; line-height: 1.25rem; } .ds-field-helper { padding: 0.5rem 0.25rem; font-size: 0.75rem; line-height: 1rem; } .ds-input { height: 3rem; padding: 0 1rem; border-radius: 0.5rem; border: 1px solid rgb(22 22 22 / .2); background: #ffffff; color: #161616; font-size: 1rem; line-height: 1.5rem; } .ds-input::placeholder { color: rgb(22 22 22 / .4); } .ds-input:focus { outline: 2px solid rgb(22 22 22 / .2); outline-offset: 2px; border-color: rgb(22 22 22 / .2); box-shadow: none; }"
+    },
+    {
+      "name": "Navbar",
+      "kind": "nav",
+      "refersTo": "navbar",
+      "description": "Mint 4rem bar: logo and lowercase wordmark left, three anchor links right with cloud-grey hover pills.",
+      "html": "<nav class=\"ds-navbar\"><a class=\"ds-nav-brand\" href=\"#\"><svg width=\"40\" height=\"40\" viewBox=\"0 0 1080 1080\"><circle cx=\"540\" cy=\"540\" r=\"450\" fill=\"#9ACDA3\" stroke=\"#363636\" stroke-width=\"30\"/><path d=\"M658.7 540H421.3c-6.6 0-12-5.4-12-12V324.7c0-44 36-80 80-80h101.4c44 0 80 36 80 80V528c0 6.6-5.4 12-12 12z\" fill=\"#C2D562\" stroke=\"#353535\" stroke-width=\"30\"/><path d=\"M681.6 592.8c0 78.2-63.4 141.6-141.6 141.6S398.4 671 398.4 592.8h283.2z\" fill=\"#C2D562\"/><path d=\"M710.1 598.3c6.8 0 12.2 5.8 11.7 12.5-6.4 94.8-85.4 169.7-181.8 169.7s-175.4-74.9-181.8-169.7c-.5-6.8 4.9-12.5 11.7-12.5h340.2z\" fill=\"none\" stroke=\"#363636\" stroke-width=\"30\"/><path d=\"M531.4 923h17.3c6.6 0 12-5.4 12-12V798.1c0-6.6-5.4-12-12-12h-17.3c-6.6 0-12 5.4-12 12V911c0 6.6 5.4 12 12 12z\" fill=\"#353535\"/></svg>vntotxt</a><ul class=\"ds-nav-menu\"><li><a href=\"#\">How it works</a></li><li><a href=\"#\">Features</a></li><li><a href=\"#\">Pricing</a></li></ul></nav>",
+      "css": ".ds-navbar { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 4rem; padding: 0.5rem; background: #E0F1DF; color: #161616; font-family: ui-sans-serif, system-ui, sans-serif; } .ds-nav-brand { display: inline-flex; align-items: center; gap: 0.5rem; height: 3rem; padding: 0 1rem; border-radius: 0.5rem; color: inherit; font-size: 1.25rem; font-weight: 600; text-decoration: none; transition: background-color .2s; } .ds-nav-brand:hover { background: rgb(22 22 22 / .2); } .ds-nav-menu { display: flex; gap: 0.25rem; list-style: none; margin: 0; padding: 0 0.25rem; } .ds-nav-menu a { display: block; padding: 0.5rem 1rem; border-radius: 0.5rem; color: inherit; font-size: 0.875rem; line-height: 1.25rem; text-decoration: none; transition: background-color .2s; } .ds-nav-menu a:hover { background: rgb(22 22 22 / .1); } .ds-nav-menu a:active { background: #F0F1F0; color: #141414; } .ds-nav-menu a:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }"
+    },
+    {
+      "name": "Chat Bubbles",
+      "kind": "custom",
+      "refersTo": "chat-bubble-outgoing",
+      "description": "The signature demo: a forwarded voice-note bubble answered by the bot's transcription bubble, as rendered inside the hero phone.",
+      "html": "<div class=\"ds-chat\"><div class=\"ds-bubble-row ds-bubble-row-out\"><div class=\"ds-bubble ds-bubble-out\"><div class=\"ds-bubble-meta\"><svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" fill=\"currentColor\" style=\"transform:scaleX(-1)\"><path d=\"M14 5v4c-7 0-10 5-11 10 3-5 7-6 11-6v4l7-6z\"/></svg><span>Forwarded</span></div><div class=\"ds-voice\"><div class=\"ds-voice-avatar\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M12 14a3 3 0 0 0 3-3V5a3 3 0 0 0-6 0v6a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z\"/></svg></div><svg class=\"ds-voice-play\" width=\"36\" height=\"36\" viewBox=\"0 0 24 24\" fill=\"currentColor\"><path d=\"M7 6v12l10-6z\"/></svg><div class=\"ds-voice-wave\"><svg viewBox=\"0 0 185 40\" width=\"100%\" height=\"40\" fill=\"none\"><rect y=\"17\" width=\"3\" height=\"6\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"7\" y=\"15.5\" width=\"3\" height=\"9\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"14\" y=\"6.5\" width=\"3\" height=\"27\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"21\" y=\"6.5\" width=\"3\" height=\"27\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"28\" y=\"3\" width=\"3\" height=\"34\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"35\" y=\"3\" width=\"3\" height=\"34\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"42\" y=\"5.5\" width=\"3\" height=\"29\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"49\" y=\"10\" width=\"3\" height=\"20\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"56\" y=\"13.5\" width=\"3\" height=\"13\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"63\" y=\"16\" width=\"3\" height=\"8\" rx=\"1.5\" fill=\"#9FA1AB\"/><rect x=\"70\" y=\"12.5\" width=\"3\" height=\"15\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"77\" y=\"3\" width=\"3\" height=\"34\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"84\" y=\"3\" width=\"3\" height=\"34\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"91\" y=\"0.5\" width=\"3\" height=\"39\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"98\" y=\"0.5\" width=\"3\" height=\"39\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"105\" y=\"2\" width=\"3\" height=\"36\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"112\" y=\"6.5\" width=\"3\" height=\"27\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"119\" y=\"9\" width=\"3\" height=\"22\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"126\" y=\"11.5\" width=\"3\" height=\"17\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"133\" y=\"2\" width=\"3\" height=\"36\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"140\" y=\"2\" width=\"3\" height=\"36\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"147\" y=\"7\" width=\"3\" height=\"26\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"154\" y=\"9\" width=\"3\" height=\"22\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"161\" y=\"9\" width=\"3\" height=\"22\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"168\" y=\"13.5\" width=\"3\" height=\"13\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"175\" y=\"16\" width=\"3\" height=\"8\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"182\" y=\"17.5\" width=\"3\" height=\"5\" rx=\"1.5\" fill=\"#E5E7EB\"/><rect x=\"66\" y=\"16\" width=\"8\" height=\"8\" rx=\"4\" fill=\"#1C64F2\"/></svg><div class=\"ds-bubble-caption\"><span>0:42</span><span>10:24 AM</span></div></div></div></div></div><div class=\"ds-bubble-row\"><div class=\"ds-bubble ds-bubble-in\"><p class=\"ds-bubble-text\">Hi! Here is your transcription: \"Can you send me the address for tonight? I'll be there around eight.\"</p><div class=\"ds-bubble-caption\"><span></span><span>10:24 AM</span></div></div></div></div>",
+      "css": ".ds-chat { display: flex; flex-direction: column; gap: 1rem; width: 100%; max-width: 22rem; padding: 0 1.25rem; font-family: ui-sans-serif, system-ui, sans-serif; color: #161616; } .ds-bubble-row { display: flex; justify-content: flex-start; } .ds-bubble-row-out { justify-content: flex-end; } .ds-bubble { display: flex; flex-direction: column; gap: 0.5rem; width: 91.6667%; padding: 1rem; } .ds-bubble-out { background: #ecfccb; border-radius: 0.75rem 0 0.75rem 0.75rem; } .ds-bubble-in { background: #f7fee7; border-radius: 0 0.75rem 0.75rem 0.75rem; } .ds-bubble-meta { display: flex; align-items: center; gap: 0.5rem; font-size: 0.875rem; line-height: 1.25rem; color: #6b7280; } .ds-voice { display: flex; align-items: center; gap: 0.5rem; } .ds-voice-avatar { display: flex; align-items: center; justify-content: center; flex: none; width: 2.5rem; height: 2.5rem; border-radius: 9999px; background: #f97316; color: #ffffff; } .ds-voice-play { flex: none; color: #64748b; } .ds-voice-wave { flex: 1; min-width: 0; } .ds-bubble-caption { display: flex; justify-content: space-between; font-size: 0.75rem; line-height: 1rem; color: #9ca3af; } .ds-bubble-text { margin: 0; font-size: 1rem; line-height: 1.5rem; }"
+    },
+    {
+      "name": "Info Alert",
+      "kind": "custom",
+      "refersTo": "alert-info",
+      "description": "Checkout status alert: semantic fill, white text, leading glyph. The error variant swaps Info Blue for Error Red.",
+      "html": "<div class=\"ds-alert ds-alert-info\" role=\"status\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 8h.01M11 12h1v4h1\"/></svg><span>We sent a verification code to your WhatsApp.</span></div>",
+      "css": ".ds-alert { display: grid; grid-auto-flow: column; grid-template-columns: auto minmax(auto, 1fr); align-items: center; justify-items: start; gap: 1rem; width: 100%; max-width: 20rem; padding: 1rem; border-radius: 1rem; border: 1px solid transparent; font-family: ui-sans-serif, system-ui, sans-serif; font-size: 1rem; line-height: 1.5rem; text-align: start; } .ds-alert-info { background: #458DE4; border-color: rgb(69 141 228 / .2); color: #ffffff; } .ds-alert-error { background: #E4332E; border-color: rgb(228 51 46 / .2); color: #ffffff; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Friendly Chat Screen",
+    "overview": "Vntotxt lives inside WhatsApp, and the site is built to feel like the conversation you are about to have with it. Every page is a stack of soft green bands, the way a chat thread stacks bubbles: mint for the chrome and hero, off-white for the working sections, pure white cards floating on top. The colour story is borrowed straight from the logo, a lime speech-mark inside a mint circle, and from WhatsApp's own greens, so a visitor who arrives from the app never feels they have left it. The product is a bot that turns audio into text, and the centrepiece of the home page is a literal phone mockup where a forwarded voice note bubble is answered by a transcribed text bubble.\n\nThe tone is friendly, approachable and playful. Headlines are big, bold Ubuntu with one phrase picked out in deep pine teal and a single emoji at the end. Illustrated people (the Storyset \"bro\" and \"pana\" figures in the how-it-works and features sections) carry the human warmth. Motion is bouncy rather than slick: sections fade up as they enter, step cards and chat bubbles pop in with a little overshoot. Nothing is severe, nothing is corporate, and nothing shouts. The system is deliberately small: one daisyUI theme, one display face, a handful of components, and Tailwind greys for copy.\n\nDensity is relaxed. Sections claim the full viewport on desktop, cards are generous (2rem padding), and three-column rows collapse into a single stacked column on phones without changing the card itself. The site is fully bilingual (English and Spanish), so every layout must tolerate copy that runs roughly a third longer.",
+    "keyCharacteristics": [
+      "Chat-thread rhythm: alternating mint and off-white full-width bands with white cards on top.",
+      "One accent word per headline, always in deep pine teal; one emoji at the end.",
+      "Lime appears only as small circular markers, never as a surface.",
+      "Ubuntu Bold for h1/h2 only; everything else is the system sans stack.",
+      "Round everything: 1rem boxes, 0.5rem buttons and inputs, pill badges, full circles for avatars and social buttons.",
+      "Cards lift with a soft shadow; nothing else casts one.",
+      "Entrance motion on scroll: fade-up for sections, spring pop for step cards and bubbles.",
+      "Illustrated people instead of photography; boxicons for glyphs."
+    ],
+    "rules": [
+      { "name": "The Mint Band Rule", "body": "Mint Bubble belongs to full-width bands and chrome. It is never a card, button, or badge fill.", "section": "colors" },
+      { "name": "The Lime Is A Dot Rule", "body": "Lime Pop appears only on small circular markers (avatars, social buttons, the phone frame). Never as a section background, button fill for a text CTA, or text colour.", "section": "colors" },
+      { "name": "The Teal Word Rule", "body": "Each headline picks out exactly one phrase in Deep Pine Teal. Two would dilute it; zero reads as unstyled.", "section": "colors" },
+      { "name": "The Ubuntu Headline Rule", "body": "Ubuntu is applied only to h1, section h2 and the checkout heading. Card titles, body, labels and buttons stay in the system stack.", "section": "typography" },
+      { "name": "The Emoji Full Stop Rule", "body": "Big headlines and primary CTAs may end with exactly one emoji (🔈, 📝, 😎). Emoji never appear mid-sentence or in body copy.", "section": "typography" },
+      { "name": "The Long Spanish Rule", "body": "Every heading and button must survive the Spanish translation, which runs up to a third longer. Test both locales before shipping a layout.", "section": "typography" },
+      { "name": "The Cards Only Rule", "body": "Only white cards and the mobile menu cast a shadow. Do not add lift to buttons, inputs, badges, bubbles, or bands.", "section": "elevation" },
+      { "name": "The Tonal First Rule", "body": "If a section needs separation, change the band colour (mint vs cloud grey) before reaching for a shadow or a border.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do alternate Mint Bubble and Cloud Grey bands section by section, with Paper White cards on top.",
+      "Do use Deep Pine Teal for every action: CTA buttons, the highlighted headline phrase, badges and social glyphs.",
+      "Do set h1 and section h2 in Ubuntu Bold and leave card titles, body and controls in the system sans.",
+      "Do keep cards at 24rem, 1rem radius, 2rem padding, Card lift shadow, three-up on desktop and stacked with 1.5rem gaps on phones.",
+      "Do mark steps and features with 3rem lime circle avatars containing a numeral or a boxicon.",
+      "Do end a hero headline or primary CTA with a single emoji.",
+      "Do animate entrances only: fade-up (0.8s ease-out) for sections, spring pop (0.5s) for cards and bubbles, triggered once at 10% visibility.",
+      "Do ship every page in English and Spanish and check the longer Spanish copy in every button and heading.",
+      "Do point every primary CTA at the WhatsApp bot link."
+    ],
+    "donts": [
+      "Don't fill a text button, section or card with Lime Pop. Lime is a dot.",
+      "Don't put Mint Bubble on a card, button, or badge. Mint is a band.",
+      "Don't add shadows to buttons, inputs, badges, bubbles or bands. Only cards and the mobile menu lift.",
+      "Don't apply Ubuntu to body copy, labels or buttons.",
+      "Don't use sharp corners anywhere, or a radius smaller than 0.5rem on a control.",
+      "Don't use the registered `night` daisyUI theme; the body is pinned to `data-theme=\"default\"` and the site is light only.",
+      "Don't introduce photography, gradients, or glassmorphism; the world is flat illustration on flat colour.",
+      "Don't use Voice Orange outside the microphone avatar.",
+      "Don't loop or auto-play motion; every animation runs once on entrance."
+    ]
+  }
+}
