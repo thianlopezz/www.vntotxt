@@ -106,11 +106,8 @@ export const ui = {
     "plan.feature.support.premium": "<strong>Premium</strong> customer support",
     "plan.feature.processing.standard":
       "<strong>Standard</strong> processing speed",
-    "plan.feature.processing.enhanced":
-      "<strong>Enhanced</strong> processing speed",
     "plan.feature.processing.priority":
       "<strong>Priority</strong> processing speed",
-    "plan.feature.webapp": "Web app to browse your transcriptions",
     // Footer
     "footer.bot": "Chat with the bot",
     "footer.support": "Support & contact",
@@ -256,11 +253,8 @@ export const ui = {
     "plan.feature.support.premium": "Soporte <strong>premium</strong>",
     "plan.feature.processing.standard":
       "Velocidad de procesamiento <strong>estándar</strong>",
-    "plan.feature.processing.enhanced":
-      "Velocidad de procesamiento <strong>mejorada</strong>",
     "plan.feature.processing.priority":
       "Velocidad de procesamiento <strong>prioritaria</strong>",
-    "plan.feature.webapp": "Aplicación web para ver tus transcripciones",
     // Footer
     "footer.bot": "Chatea con el bot",
     "footer.support": "Soporte y contacto",
