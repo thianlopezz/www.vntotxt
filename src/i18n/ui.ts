@@ -132,6 +132,11 @@ export const ui = {
     "checkout.verification.verify": "Verify",
     "checkout.verification.subscribe": "Verify and subscribe",
     "checkout.paypal.description": "Please proceed with the PayPal payment",
+    "checkout.verification.error.phoneValidation":
+      "There was an error validating the phone number. Please try again.",
+    "checkout.verification.error.invalidPhone": "Invalid phone number.",
+    "checkout.verification.error.subscriptionValidation":
+      "There was an error validating your subscription. Please try again.",
     // Thank you
     "thankyou.mainTitle": "Subscription Successful!",
     "thankyou.mainDescription":
@@ -278,6 +283,11 @@ export const ui = {
     "checkout.verification.subscribe": "Verificar y suscribirse",
     "checkout.paypal.description":
       "Por favor continúa con el pago a través de PayPal",
+    "checkout.verification.error.phoneValidation":
+      "Hubo un error al validar el número de teléfono. Por favor, inténtalo de nuevo.",
+    "checkout.verification.error.invalidPhone": "Número de teléfono inválido.",
+    "checkout.verification.error.subscriptionValidation":
+      "Hubo un error al validar tu suscripción. Por favor, inténtalo de nuevo.",
     // Thank you
     "thankyou.mainTitle": "¡Suscripción exitosa!",
     "thankyou.mainDescription":

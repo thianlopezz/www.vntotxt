@@ -3,6 +3,10 @@ import { getLangFromUrl, useTranslations } from "../i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+
+const phoneValidationError = t("checkout.verification.error.phoneValidation");
+const invalidPhoneNumber = t("checkout.verification.error.invalidPhone");
+
 const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
 ---
 
@@ -105,8 +109,16 @@ const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
 
 <script src="../scripts/form-utils.js"></script>
 
-<script type="module" define:vars={{ VNTOTXT_API, lang }}>
+<script
+    type="module"
+    define:vars={{ VNTOTXT_API, lang, phoneValidationError, invalidPhoneNumber }}
+>
     window.lang = lang;
+
+    window.i18nMessages = {
+        phoneValidationError,
+        invalidPhoneNumber,
+    };
 
     window.onload = function () {
         // scroll to checkoutVerification

@@ -11,6 +11,12 @@ interface Props {
 
 const { paypalPlanId, tierId } = Astro.props;
 
+const phoneValidationError = t("checkout.verification.error.phoneValidation");
+const invalidPhoneNumber = t("checkout.verification.error.invalidPhone");
+const subscriptionValidationError = t(
+    "checkout.verification.error.subscriptionValidation",
+);
+
 const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
 const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
 const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
@@ -136,9 +142,24 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
 
 <script
     type="module"
-    define:vars={{ VNTOTXT_API, PAYPAL_CLIENT_ID, PAYPAL_PRO_PLAN_ID, tierId, lang }}
+    define:vars={{
+        VNTOTXT_API,
+        PAYPAL_CLIENT_ID,
+        PAYPAL_PRO_PLAN_ID,
+        tierId,
+        lang,
+        phoneValidationError,
+        invalidPhoneNumber,
+        subscriptionValidationError,
+    }}
 >
     window.lang = lang;
+
+    window.i18nMessages = {
+        phoneValidationError,
+        invalidPhoneNumber,
+        subscriptionValidationError,
+    };
 
     window.onload = function () {
         // scroll to checkoutVerification

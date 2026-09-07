@@ -111,12 +111,12 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, tierId, lang, e
       } else {
         phoneInputField.disabled = false;
         error.style.display = "";
-        errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+        errorText.innerHTML = window.i18nMessages.phoneValidationError;
       }
     } catch (e) {
       phoneInputField.disabled = false;
       error.style.display = "";
-      errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+      errorText.innerHTML = window.i18nMessages.phoneValidationError;
       console.error(e);
     } finally {
       loadingSendVerificationCode.style.display = "none";
@@ -125,7 +125,7 @@ window.sendVerificationCodeProcess = async function (vntotxtApi, tierId, lang, e
     }
   } else {
     error.style.display = "";
-    errorText.innerHTML = `Invalid phone number.`;
+    errorText.innerHTML = window.i18nMessages.invalidPhoneNumber;
   }
 }
 
@@ -198,11 +198,11 @@ window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, 
       }
     } else {
       error.style.display = "";
-      errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+      errorText.innerHTML = window.i18nMessages.phoneValidationError;
     }
   } catch (e) {
     error.style.display = "";
-    errorText.innerHTML = `There was an error validating the phone number. Please try again.`;
+    errorText.innerHTML = window.i18nMessages.phoneValidationError;
     console.error(e);
   } finally {
     loadingVerification.style.display = "none";
@@ -238,11 +238,11 @@ window.confirmPurchase = async function (vntotxtApi, paypalSubscription) {
       }
     } else {
       error.style.display = "";
-      errorText.innerHTML = `There was an error validating your subscription. Please try again.`;
+      errorText.innerHTML = window.i18nMessages.subscriptionValidationError;
     }
   } catch (e) {
     error.style.display = "";
-    errorText.innerHTML = `There was an error validating your subscription. Please try again.`;
+    errorText.innerHTML = window.i18nMessages.subscriptionValidationError;
     loadingVerification.style.display = "none";
     console.error(e);
   }
