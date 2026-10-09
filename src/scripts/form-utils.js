@@ -186,6 +186,9 @@ window.verificationCodeProcess = async function (vntotxtApi, redirectToSuccess, 
         if (paypalDiv)
           paypalDiv.style.display = "";
 
+        if (paypalDiv && window.renderPaypalButtons)
+          window.renderPaypalButtons();
+
         // Keep the id from request-subscription unless the API echoes a new one
         if (data && data.subscriptionRequestId)
           subscriptionRequestIdInput.value = data.subscriptionRequestId;
