@@ -16,6 +16,8 @@ const invalidPhoneNumber = t("checkout.verification.error.invalidPhone");
 const subscriptionValidationError = t(
     "checkout.verification.error.subscriptionValidation",
 );
+const paypalLoadError = t("checkout.paypal.error.load");
+const paypalPaymentError = t("checkout.paypal.error.payment");
 
 const VNTOTXT_API = import.meta.env.PUBLIC_VNTOTXT_API;
 const PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
@@ -151,6 +153,8 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
         phoneValidationError,
         invalidPhoneNumber,
         subscriptionValidationError,
+        paypalLoadError,
+        paypalPaymentError,
     }}
 >
     window.lang = lang;
@@ -159,6 +163,8 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
         phoneValidationError,
         invalidPhoneNumber,
         subscriptionValidationError,
+        paypalLoadError,
+        paypalPaymentError,
     };
 
     window.onload = function () {
@@ -181,28 +187,55 @@ const PAYPAL_PRO_PLAN_ID = import.meta.env.PUBLIC_PAYPAL_PRO_PLAN_ID;
         changeNumberBtn.addEventListener("click", changeNumber);
     };
 
-    paypal
-        .Buttons({
-            style: {
-                shape: "rect",
-                color: "black",
-                layout: "vertical",
-                label: "subscribe",
-            },
-            createSubscription: function (data, actions) {
-                return actions.subscription.create({
-                    plan_id: PAYPAL_PRO_PLAN_ID,
-                    // Lets the backend correlate PayPal webhooks with this request
-                    custom_id: String(subscriptionRequestIdInput.value),
-                });
-            },
-            onApprove: function (data, actions) {
-                // alert(data.subscriptionID); // You can add optional success message for the subscriber here
-                return confirmPurchase(VNTOTXT_API, data)
-                    .then(() => console.log("Purchase confirmed"))
-                    .catch(console.error);
-            },
-        })
-        // .render("#paypal-button-container-P-0PC67333FG471260VMY42XTY"); // Renders the PayPal button
-        .render("#paypal-button-container-" + PAYPAL_PRO_PLAN_ID); // Renders the PayPal button
+    let paypalButtonsRendered = false;
+
+    // Called once the checkout is visible, instead of drawing the buttons into
+    // the hidden container at page load, so a PayPal SDK that failed to load
+    // shows a message rather than an empty checkout.
+    window.renderPaypalButtons = function () {
+        if (paypalButtonsRendered) return;
+
+        if (!window.paypal) {
+            error.style.display = "";
+            errorText.innerHTML = paypalLoadError;
+            return;
+        }
+
+        paypalButtonsRendered = true;
+
+        paypal
+            .Buttons({
+                style: {
+                    shape: "rect",
+                    color: "black",
+                    layout: "vertical",
+                    label: "subscribe",
+                },
+                createSubscription: function (data, actions) {
+                    return actions.subscription.create({
+                        plan_id: PAYPAL_PRO_PLAN_ID,
+                        // Lets the backend correlate PayPal webhooks with this request
+                        custom_id: String(subscriptionRequestIdInput.value),
+                    });
+                },
+                onApprove: function (data, actions) {
+                    // alert(data.subscriptionID); // You can add optional success message for the subscriber here
+                    return confirmPurchase(VNTOTXT_API, data)
+                        .then(() => console.log("Purchase confirmed"))
+                        .catch(console.error);
+                },
+                onError: function (err) {
+                    console.error(err);
+                    error.style.display = "";
+                    errorText.innerHTML = paypalPaymentError;
+                },
+            })
+            .render("#paypal-button-container-" + PAYPAL_PRO_PLAN_ID)
+            .catch(function (err) {
+                console.error(err);
+                paypalButtonsRendered = false;
+                error.style.display = "";
+                errorText.innerHTML = paypalLoadError;
+            });
+    };
 </script>
