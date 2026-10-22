@@ -65,11 +65,12 @@ with `npm run build` and serves `dist/` (`netlify.toml`).
 - **Cypress 16** for smoke tests against a deployed URL. It is a regular
   dependency, so `npm ci` would download the ~200 MB binary; the agent
   container sets `CYPRESS_INSTALL_BINARY=0` to skip that.
-- **Node 24** (Active LTS), pinned in four places that must stay in sync:
-  `.nvmrc`, `engines.node` in `package.json`, `NODE_VERSION` in
-  `netlify.toml`, and the `node:24-bookworm` image in
-  `.astillero/environment.json`. Newer majors also work locally; the
-  `engines` range is `>=24`.
+- **Node 24** (Active LTS), pinned to 24.22.1 (the October 2026 security
+  release) in three places that must stay in sync: `.nvmrc`, `NODE_VERSION`
+  in `netlify.toml`, and the `node:24.22.1-bookworm` image in
+  `.astillero/environment.json`. Bump all three for each Node security
+  release. Newer majors also work locally; the `engines` range in
+  `package.json` is `>=24`.
 
 ## Key flows
 
