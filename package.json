@@ -19,22 +19,25 @@
     "cypress-qa-smoke-headless": "npx cypress run --config-file cypress/qa.config.ts --spec 'cypress/e2e/vntotxtWeb/Smoke/*.cy.ts'"
   },
   "dependencies": {
-    "@astrojs/check": "^0.5.10",
-    "@astrojs/mdx": "^3.0.1",
-    "@astrojs/partytown": "^2.0.4",
-    "@astrojs/sitemap": "^3.1.5",
-    "@astrojs/tailwind": "^5.1.0",
-    "@tailwindcss/typography": "^0.5.12",
-    "astro": "^4.5.16",
-    "astro-seo": "^0.8.3",
+    "@astrojs/check": "^0.9.12",
+    "@astrojs/mdx": "^8.1.1",
+    "@astrojs/partytown": "^2.1.9",
+    "@astrojs/sitemap": "^3.7.4",
+    "@tailwindcss/typography": "^0.5.20",
+    "astro": "^7.4.2",
+    "astro-seo": "^1.2.0",
+    "autoprefixer": "^10.6.1",
     "boxicons": "^2.1.4",
-    "cypress": "^13.9.0",
+    "cypress": "^16.2.0",
     "sharp-ico": "^0.1.5",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.4"
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
     "@types/node": "^24.13.3",
-    "daisyui": "^4.10.1"
+    "daisyui": "^4.12.24"
+  },
+  "overrides": {
+    "postcss-selector-parser": "7.1.6"
   }
 }

@@ -35,10 +35,16 @@ with `npm run build` and serves `dist/` (`netlify.toml`).
 
 ## Stack
 
-- **Astro 4.5**, static output (no adapter, no SSR). `astro.config.mjs` sets
-  `site: "https://vntotxt.com"`, the `i18n` block, and integrations.
-- **Tailwind 3 + daisyUI 4** through `@astrojs/tailwind` with
-  `applyBaseStyles: false` (the base layer is in `src/styles/main.css`).
+- **Astro 7**, static output (no adapter, no SSR). `astro.config.mjs` sets
+  `site: "https://vntotxt.com"`, the `i18n` block, and integrations. It also
+  sets `compressHTML: true`, because Astro 7's default (`'jsx'`) drops the
+  spaces between text and inline tags. It pins `vite.build.cssTarget` to
+  Vite 5's browser targets so Safari before 16.4 keeps the breakpoints.
+- **Tailwind 3 + daisyUI 4** through Vite's PostCSS support
+  (`postcss.config.mjs`: `tailwindcss` + `autoprefixer`). `@astrojs/tailwind`
+  doesn't support Astro 6+. The base layer is in `src/styles/main.css`.
+  `package.json` overrides `postcss-selector-parser` to 7.1.6 for
+  GHSA-rj75-hqrm-r3gf.
   `tailwind.config.mjs` defines the `default` daisyUI theme (primary
   `#1C5F5F`, secondary `#E0F1DF`, accent `#C2FA6B`) and the `font-ubuntu`
   family. `@tailwindcss/typography` gives the `prose` classes used on the
@@ -56,7 +62,7 @@ with `npm run build` and serves `dist/` (`netlify.toml`).
 - **TypeScript** with `astro/tsconfigs/strict`; `astro check` is the type
   gate. There is no ESLint or Prettier config; formatting is Prettier's
   default as the Astro VS Code extension applies it.
-- **Cypress 13** for smoke tests against a deployed URL. It is a regular
+- **Cypress 16** for smoke tests against a deployed URL. It is a regular
   dependency, so `npm ci` would download the ~200 MB binary; the agent
   container sets `CYPRESS_INSTALL_BINARY=0` to skip that.
 - **Node 24** (Active LTS), pinned in four places that must stay in sync:
